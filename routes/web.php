@@ -39,6 +39,7 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::get('pengelola', [PengelolaPasarAdmin::class, 'index']);
         Route::post('pengelola', [PengelolaPasarAdmin::class, 'store']);
         Route::post('pengelola/edit', [PengelolaPasarAdmin::class, 'edit']);
+        Route::put('pengelola', [PengelolaPasarAdmin::class, 'update']);
         Route::delete('pengelola', [PengelolaPasarAdmin::class, 'destroy']);
 
     });

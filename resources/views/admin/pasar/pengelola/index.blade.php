@@ -304,8 +304,8 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/pasar/pengelola/update')}}",
-                    type: "POST",
+                    url : "{{url('admin/pasar/pengelola')}}",
+                    type: "PUT",
                     data: $(this).serialize(),
                     beforeSend: function(){
                         $('.spinner').show();

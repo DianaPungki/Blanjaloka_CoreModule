@@ -46,6 +46,9 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::prefix('users')->group(function() {
         // Data Admin
         Route::get('admin', [UserAdmin::class,'index']);
+        Route::post('admin', [UserAdmin::class,'store']);
+        Route::delete('admin', [UserAdmin::class,'destroy']);
+
         // Data Customer
         Route::get('customers', [CustomersAdmin::class, 'index']);
     });

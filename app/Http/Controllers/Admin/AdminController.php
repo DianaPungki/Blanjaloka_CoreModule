@@ -16,4 +16,27 @@ class AdminController extends Controller
         ];
         return view('admin.admin.index',$data);
     }
+
+    public function store(Request $request)
+    { $data = [
+        'email' => $request->input('email'),
+        'nama' => $request->input('nama'),
+        'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
+    ];
+
+    Admin::create($data);
+    return response()->json([
+        'pesan' => 'Berhasil Menambah Data Admin'
+    ]);
+        
+    }
+
+    public function destroy(Request $request)
+    {
+       Admin::where('id_admin', $request->post('id_admin'))->delete();
+
+        return response()->json([
+            'pesan' => 'Berhasil Menghapus Akun Admin'
+        ]);
+    }
 }

@@ -232,13 +232,10 @@
                 $.ajax({
                     data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
                     type: 'POST',
-                    url:"{{url('admin/pasar/pengelola/edit')}}",
+                    url:"{{url('admin/users/admin/edit')}}",
                     success : function(data){
                         $('#id_admin').val(data[0].id_admin);
-                        $('#username').val(data[0].username);
-                        $('#nama_pengelola').val(data[0].nama_pengelola);
-                        $('#alamat_pengelola').val(data[0].alamat_pengelola);
-                        $('#nomor_telepon').val(data[0].nomor_telepon);
+                        $('#nama').val(data[0].nama);
                         $('#email').val(data[0].email)
 
                         $('#editmodal').modal('show');
@@ -256,7 +253,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/pasar/pengelola/update')}}",
+                    url : "{{url('admin/users/admin/update')}}",
                     type: "POST",
                     data: $(this).serialize(),
                     beforeSend: function(){
@@ -281,14 +278,14 @@
             // hapus form
             $('.delete').click(function(e){
                 e.preventDefault();
-                var confirmed = confirm('Hapus Akun Pengelola Ini ?');
+                var confirmed = confirm('Hapus Akun Admin Ini ?');
 
                 if(confirmed) {
 
                     $.ajax({
                         data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
                         type: 'DELETE',
-                        url:"{{url('admin/pasar/pengelola')}}",
+                        url:"{{url('admin/users/admin')}}",
                         success : function(data){
                             swal(data.pesan)
                             .then((result) => {

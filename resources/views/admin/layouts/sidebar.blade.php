@@ -79,7 +79,7 @@
                 </ul>
                 </li>
 
-                @if ($title == 'Data Customers' || $title == 'Data Sellers' || $title == 'Data Driver' || $title == 'Data Pemda')
+                @if ($title == 'Data Admin' || $title == 'Data Customers' || $title == 'Data Sellers' || $title == 'Data Driver' || $title == 'Data Pemda')
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                         @else

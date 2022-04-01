@@ -226,8 +226,8 @@
 
             //-------------------------------------
 
-            //show modal update form 
-            $('.edit').click(function(e){
+             //show modal update form 
+             $('.edit').click(function(e){
                 e.preventDefault();
                 $.ajax({
                     data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
@@ -253,8 +253,8 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/users/admin/update')}}",
-                    type: "POST",
+                    url : "{{url('admin/users/admin')}}",
+                    type: "PUT",
                     data: $(this).serialize(),
                     beforeSend: function(){
                         $('.spinner').show();

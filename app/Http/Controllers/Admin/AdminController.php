@@ -18,17 +18,39 @@ class AdminController extends Controller
     }
 
     public function store(Request $request)
-    { $data = [
-        'email' => $request->input('email'),
-        'nama' => $request->input('nama'),
-        'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
-    ];
+    { 
+        $data = [
+            'email' => $request->input('email'),
+            'nama' => $request->input('nama'),
+            'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
+        ];
 
-    Admin::create($data);
-    return response()->json([
-        'pesan' => 'Berhasil Menambah Data Admin'
-    ]);
+        Admin::create($data);
+        return response()->json([
+            'pesan' => 'Berhasil Menambah Data Admin'
+        ]);
         
+    }
+
+    public function edit(Request $request)
+    {
+        return response()->json(
+            Admin::where('id_admin', $request->post('id_admin'))->get()
+        );
+    }
+
+    public function update(Request $request)
+    {
+        $data = [
+            'email' => $request->input('email'),
+            'nama' => $request->input('nama'),
+            'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
+        ];
+
+        Admin::where('id_admin', $request->post('id_admin'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Merubah Data Admin'
+        ]);
     }
 
     public function destroy(Request $request)

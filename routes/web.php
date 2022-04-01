@@ -48,6 +48,8 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         // Data Admin
         Route::get('admin', [UserAdmin::class,'index']);
         Route::post('admin', [UserAdmin::class,'store']);
+        Route::post('admin/edit', [UserAdmin::class,'edit']);
+        Route::put('admin', [UserAdmin::class,'update']);
         Route::delete('admin', [UserAdmin::class,'destroy']);
 
         // Data Customer

@@ -96,7 +96,7 @@ return [
 
         'admin' => [
             'driver' => 'eloquent',
-            'model' => App\Models\PengelolaPasar::class,
+            'model' => App\Models\Admin::class,
         ],
 
     ],

@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function login_pengelola(Request $request)
+    public function login_admin(Request $request)
     {
         return view('admin.auth.login');
     }
 
-    public function login_pengelola_handler(Request $request)
+    public function login_admin_handler(Request $request)
     {
          # Validator
          $validator = Validator::make($request->all(),[

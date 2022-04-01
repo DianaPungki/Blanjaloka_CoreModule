@@ -5,11 +5,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Pengelola Pasar</h1>
+                        <h1 class="m-0">Admin</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Pengelola Pasar</li>
+                            <li class="breadcrumb-item active">Admin</li>
                         </ol>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        Pengelola Pasar
+                       Admin
 
                         <div class="float-right d-none d-sm-inline-block">
                             <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
@@ -28,34 +28,28 @@
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-hover" id="pengelolatable">
+                        <table class="table table-bordered table-hover" id="admintable">
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
-                                    <th>Username</th>
                                     <th>Nama</th>
-                                    <th>No Telepon</th>
                                     <th>Email</th>
-                                    <th>Alamat</th>
                                     <th>Created at</th>
                                     <th>Update at</th>
                                     <th style="width:10px;" class='notexport'>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pengelola as $no=>$p)
+                                    @foreach ($admin as $no=>$a)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            <td>{{ $p->username }}</td>
-                                            <td>{{ $p->nama_pengelola }}</td>
-                                            <td>{{ $p->nomor_telepon }}</td>
-                                            <td>{{ $p->email }}</td>
-                                            <td>{{ $p->alamat_pengelola }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($p->updated_at))}}</td>
+                                            <td>{{ $a->nama }}</td>
+                                            <td>{{ $a->email }}</td>
+                                            <td>{{ date('d-M-Y', strtotime($a->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($a->updated_at))}}</td>
                                             <td class="text-center">
-                                                <a href="#" data-id="<?= $p->id_pengelola; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
-                                                <a href="#" data-id="<?= $p->id_pengelola; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
+                                                <a href="#" data-id="<?= $a->id_admin; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
+                                                <a href="#" data-id="<?= $a->id_admin; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -74,7 +68,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Pengelola Pasar</h4>
+                <h4 class="modal-title">Tambah Admin</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -83,39 +77,18 @@
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3 row">
-                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                            <input type="text" class="form-control" name="nama" placeholder="Nama" required>
                         </div>
                     </div>  
-                   
-                    <div class="mb-3 row">
-                        <label for="nama_pengelola" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama_pengelola" placeholder="Nama Pengelola" required>
-                        </div>
-                    </div>  
-    
-                    <div class="mb-3 row">
-                        <label for="nomor_telepon" class="col-sm-2 col-form-label">No Telp</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nomor_telepon" placeholder="Nomor Telp" required>
-                        </div>
-                    </div>
     
                     <div class="mb-3 row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10 validate">
                             <input type="email" class="form-control" name="email" placeholder="Email" required>
                         </div>
-                    </div>  
-
-                    <div class="mb-3 row">
-                        <label for="alamat_pengelola" class="col-sm-2 col-form-label">Alamat</label>
-                        <div class="col-sm-10 validate">
-                            <textarea name="alamat_pengelola" cols="30" rows="10"  class="form-control" required>Alamat</textarea>
-                        </div>
-                    </div>
+                    </div> 
     
                     <div class="mb-3 row">
                         <label for="nis" class="col-sm-2 col-form-label">Password</label>
@@ -142,35 +115,21 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Pengelola Pasar</h4>
+                <h4 class="modal-title">Edit Admin</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="editform">
                 @csrf
-                <input type="hidden" name="id_pengelola" id="id_pengelola">
+                <input type="hidden" name="id_admin" id="id_admin">
                 <div class="modal-body">
                     <div class="mb-3 row">
-                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" required>
                         </div>
                     </div>  
-                    
-                    <div class="mb-3 row">
-                        <label for="nama_pengelola" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama_pengelola" id="nama_pengelola" placeholder="Nama Pengelola" required>
-                        </div>
-                    </div>  
-    
-                    <div class="mb-3 row">
-                        <label for="nomor_telepon" class="col-sm-2 col-form-label">No Telp</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telp" required>
-                        </div>
-                    </div>
     
                     <div class="mb-3 row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -179,13 +138,6 @@
                         </div>
                     </div>  
 
-                    <div class="mb-3 row">
-                        <label for="alamat_pengelola" class="col-sm-2 col-form-label">Alamat</label>
-                        <div class="col-sm-10 validate">
-                            <textarea name="alamat_pengelola" id="alamat_pengelola" cols="30" rows="10"  class="form-control" id="alamat_pengelola" required>Alamat</textarea>
-                        </div>
-                    </div>
-    
                     <div class="mb-3 row">
                         <label for="nis" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10 validate">
@@ -212,7 +164,7 @@
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            $('#pengelolatable').DataTable({
+            $('#admintable').DataTable({
                 "responsive":true,
                 dom: 'Bfrtip',
                 buttons: [
@@ -251,7 +203,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/pasar/pengelola')}}",
+                    url : "{{url('admin/users/admin')}}",
                     type: "POST",
                     data: $(this).serialize(),
                     beforeSend: function(){
@@ -278,11 +230,11 @@
             $('.edit').click(function(e){
                 e.preventDefault();
                 $.ajax({
-                    data: {'id_pengelola':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                    data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
                     type: 'POST',
                     url:"{{url('admin/pasar/pengelola/edit')}}",
                     success : function(data){
-                        $('#id_pengelola').val(data[0].id_pengelola);
+                        $('#id_admin').val(data[0].id_admin);
                         $('#username').val(data[0].username);
                         $('#nama_pengelola').val(data[0].nama_pengelola);
                         $('#alamat_pengelola').val(data[0].alamat_pengelola);
@@ -334,7 +286,7 @@
                 if(confirmed) {
 
                     $.ajax({
-                        data: {'id_pengelola':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                        data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
                         type: 'DELETE',
                         url:"{{url('admin/pasar/pengelola')}}",
                         success : function(data){

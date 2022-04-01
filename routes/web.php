@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 // Admin
 use App\Http\Controllers\Admin\Dashboard as DashboardAdmin;
+use App\Http\Controllers\Admin\AdminController as UserAdmin;
 use App\Http\Controllers\Admin\CustomerController as CustomersAdmin;
-use App\Http\Controllers\Admin\PasarController;
+use App\Http\Controllers\Admin\PengelolaPasarController as PengelolaPasarAdmin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -23,8 +24,8 @@ Route::get('/', function () {
 });
 
 // login admin
-Route::get('admin/login', [AuthController::class, 'login_pengelola'])->middleware('guest')->name('login');
-Route::post('admin/login', [AuthController::class, 'login_pengelola_handler']);
+Route::get('admin/login', [AuthController::class, 'login_admin'])->middleware('guest')->name('login');
+Route::post('admin/login', [AuthController::class, 'login_admin_handler']);
 
 // logout
 Route::get('logout',[AuthController::class, 'logout']);
@@ -35,11 +36,16 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::get('/', [DashboardAdmin::class, 'index']);
 
     Route::prefix('pasar')->group(function() {
-        Route::get('pengelola', [PasarController::class, 'pengelolapasar']);
+        Route::get('pengelola', [PengelolaPasarAdmin::class, 'index']);
+        Route::post('pengelola', [PengelolaPasarAdmin::class, 'store']);
+        Route::post('pengelola/edit', [PengelolaPasarAdmin::class, 'edit']);
+        Route::delete('pengelola', [PengelolaPasarAdmin::class, 'destroy']);
 
     });
 
     Route::prefix('users')->group(function() {
+        // Data Admin
+        Route::get('admin', [UserAdmin::class,'index']);
         // Data Customer
         Route::get('customers', [CustomersAdmin::class, 'index']);
     });

@@ -177,7 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // data tables
         Yajra\DataTables\DataTablesServiceProvider::class,
+        // sweetalert
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 

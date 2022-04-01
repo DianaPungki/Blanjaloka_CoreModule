@@ -1,6 +1,6 @@
 @extends('admin/master-admin')
 @section('content')
-
+@php use Illuminate\Support\Facades\DB; @endphp
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -32,20 +32,29 @@
                             <thead>
                             <tr>
                                 <th style="width:10px;">No</th>
-                                <th>Customers</th>
+                                <th>Nam</th>
                                 <th>Email</th>
                                 <th>No Telpon</th>
                                 <th class='notexport'>Created At</th>
                                 <th class='notexport'>Update At</th>
-                                <th>Status</th>
                                 <th style="width:10px;" class='notexport'>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                                
-                                <tr>
-
-                                </tr>
+                                @foreach ($customers as $no=>$c)
+                                        <tr>
+                                            <td>{{ $no + 1 }}</td>
+                                            <td>{{ $c->nama_customer }}</td>
+                                            <td>{{ $c->email_customer }}</td>
+                                            <td>{{ $c->nomor_telepon }}</td>
+                                            <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
+                                            <td class="text-center">
+                                                <a href="#" data-id="<?= $c->id_customer; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
+                                                <a href="#" data-id="<?= $c->id_customer; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                             </tbody>
                         </table>
                         </div>
@@ -56,84 +65,163 @@
     </section>
 </div>
 <script>
-    $(document).ready(function(){
-        $('body').tooltip({selector: '[data-toggle="tooltip"]'});
+    $(document).ready(function() {
+            $('.spinner').hide();
 
-        $('#customerstable').DataTable({
-            "responsive":true,
-            processing: true,
-            serverSide: true,
-            ajax: "{{url('admin/users/customers/json')}}",
-            columns: [
-                { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                { data: 'nama_user', name: 'nama_user' },
-                { data: 'email', name: 'email' },
-                { data: 'no_telp', name: 'no_telp' },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'updated_at', name: 'updated_at' },
-                { data: 'status', name: 'status' },
-                { data: 'action', name: 'action' }
-            ],
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'excel',
-                    text: 'Excel',
-                    className: 'btn btn-success btn-sm active',
-                    exportOptions: {
-                        columns: ':not(.notexport)'
-                    }
+            $('[data-toggle="tooltip"]').tooltip();
 
-                },
-                {
-                    extend: 'pdf',
-                    text: 'PDF',
-                    className: 'btn btn-sm btn-success',
-                    exportOptions: {
-                        columns: ':not(.notexport)'
-                    }
-                },
-                {
-                    extend: 'print',
-                    text: 'Print',
-                    className: 'btn btn-success btn-sm active',
-                    exportOptions: {
-                        columns: ':not(.notexport)'
-                    }
+            $('#customerstable').DataTable({
+                "responsive": true,
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        text: 'Excel',
+                        className: 'btn btn-success btn-sm active',
+                        exportOptions: {
+                            columns: ':not(.notexport)'
+                        }
 
-                },
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'PDF',
+                        className: 'btn btn-sm btn-success',
+                        exportOptions: {
+                            columns: ':not(.notexport)'
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        className: 'btn btn-success btn-sm active',
+                        exportOptions: {
+                            columns: ':not(.notexport)'
+                        }
 
-            ],
+                    },
 
+                ],
+            });
 
+            //----------------------------
 
-        });
-
-        $('#customerstable').on('click', '.hapus_customers[data-id]', function(e){
-            e.preventDefault();
-
-            var confirmed = confirm('Hapus customers ini ?');
-
-            if(confirmed) {
+            // insert form
+            $('#tambahform').submit(function(e) {
+                e.preventDefault();
 
                 $.ajax({
-                    data: {'id_users': $(this).data('id'), '_token': "{{csrf_token()}}"},
-                    type: 'POST',
-                    url:"{{url('admin/users/customers/delete')}}",
-                    success : function(data){
-                        swal(data.pesan)
-                        .then((result) => {
-                            location.reload();
-                        });
+                    url: "{{ url('admin/produk/kategori/insert') }}",
+                    type: "POST",
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('.spinner').show();
                     },
-                    error : function(err){
+                    complete: function() {
+                        $('.spinner').hide();
+                    },
+                    success: function(data) {
+                        swal(data.pesan)
+                            .then((result) => {
+                                location.reload();
+                            });
+                    },
+                    error: function(err) {
+                        alert(err);
+                    }
+                })
+            });
+
+            //-------------------------------------
+
+            //show modal update form 
+            $('.edit').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    data: {
+                        'id_kategori': $(this).data('id'),
+                        '_token': "{{ csrf_token() }}"
+                    },
+                    type: 'POST',
+                    url: "{{ url('admin/produk/kategori/get') }}",
+                    success: function(data) {
+                        $('#id_kategori').val(data[0].id_kategori);
+                        $('#nama_kategori').val(data[0].nama_kategori);
+                        $('.icon_kategori').val(data[0].icon_kategori);
+
+                        $('#editmodal').modal('show');
+                    },
+                    error: function(err) {
                         alert(err);
                         console.log(err);
                     }
                 });
+            });
 
-            }
+
+            //----------------------------------------
+            // edit form
+            $('#editform').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "{{ url('admin/produk/kategori/update') }}",
+                    type: "POST",
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('.spinner').show();
+                    },
+                    complete: function() {
+                        $('.spinner').hide();
+                    },
+                    success: function(data) {
+                        swal(data.pesan)
+                            .then((result) => {
+                                location.reload();
+                            });
+                    },
+                    error: function(err) {
+                        alert(err);
+                    }
+                })
+            });
+
+            //----------------------------------------------
+            // hapus form
+            $('.delete').click(function(e) {
+                e.preventDefault();
+                var confirmed = confirm('Hapus Kategori Produk Ini ?');
+
+                if (confirmed) {
+
+                    $.ajax({
+                        data: {
+                            'id_kategori': $(this).data('id'),
+                            '_token': "{{ csrf_token() }}"
+                        },
+                        type: 'POST',
+                        url: "{{ url('admin/produk/kategori/delete') }}",
+                        success: function(data) {
+                            swal(data.pesan)
+                                .then((result) => {
+                                    location.reload();
+                                });
+                        },
+                        error: function(err) {
+                            alert(err);
+                            console.log(err);
+                        }
+                    });
+                }
+            });
+
         });
-    });
 </script>
 @endsection

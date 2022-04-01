@@ -9,12 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class PengelolaPasar extends  Authenticatable
+class Admin extends  Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table = "pengelola_pasar";
-    protected $primaryKey = 'id_pengelola';
+    protected $table = "admin";
+    protected $primaryKey = 'id_admin';
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +22,7 @@ class PengelolaPasar extends  Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama_pengelola','alamat_pengelola','nomor_telepon',
-        'email','username','password','id_role'
+        'nama','email','password'
     ];
 
     /**
@@ -32,11 +31,7 @@ class PengelolaPasar extends  Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'id_role',  'created_at', 'updated_at'
+        'password', 'created_at', 'updated_at'
 
     ];
-
-     public function role(){
-        return $this->belongsTo(Role::class);
-    }
 }

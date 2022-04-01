@@ -16,7 +16,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ session()->get('nama') }}</a>
+                <a href="#" class="d-block">{{ auth()->user()->nama }}</a>
             </div>
         </div>
 
@@ -94,18 +94,18 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ url('admin/users/customers') }}"
-                            class="nav-link {{ $title === 'Data Customers' ? 'active' : '' }}">
+                        <a href="{{ url('admin/users/admin') }}"
+                            class="nav-link {{ $title === 'Data Admin' ? 'active' : '' }}">
 
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Customers</p>
+                            <p>Admin</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/users/sellers') }}"
-                            class="nav-link {{ $title === 'Data Sellers' ? 'active' : '' }}">
+                        <a href="{{ url('admin/users/customers') }}"
+                            class="nav-link {{ $title === 'Data Customers' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Sellers</p>
+                            <p>Customers</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -113,6 +113,13 @@
                             class="nav-link {{ $title === 'Data Pemda' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pemda</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('admin/users/sellers') }}"
+                            class="nav-link {{ $title === 'Data Sellers' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sellers</p>
                         </a>
                     </li>
                     <li class="nav-item">

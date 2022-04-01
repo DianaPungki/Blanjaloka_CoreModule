@@ -54,5 +54,9 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 
         // Data Customer
         Route::get('customers', [CustomersAdmin::class, 'index']);
+        Route::post('customers', [CustomersAdmin::class, 'store']);
+        Route::post('customers/edit', [CustomersAdmin::class, 'edit']);
+        Route::put('customers', [CustomersAdmin::class, 'update']);
+        Route::delete('customers', [CustomersAdmin::class, 'destroy']);
     });
 });

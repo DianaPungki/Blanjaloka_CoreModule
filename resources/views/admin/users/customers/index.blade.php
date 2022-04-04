@@ -28,7 +28,7 @@
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-hover" id="admintable">
+                        <table class="table table-bordered table-hover" id="customerstable">
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
@@ -212,7 +212,7 @@
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            $('#admintable').DataTable({
+            $('#customerstable').DataTable({
                 "responsive":true,
                 dom: 'Bfrtip',
                 buttons: [
@@ -329,7 +329,7 @@
             // hapus form
             $('.delete').click(function(e){
                 e.preventDefault();
-                var confirmed = confirm('Hapus Akun Admin Ini ?');
+                var confirmed = confirm('Hapus Akun Pemda Ini ?');
 
                 if(confirmed) {
 

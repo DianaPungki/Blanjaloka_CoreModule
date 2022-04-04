@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Dashboard as DashboardAdmin;
 use App\Http\Controllers\Admin\AdminController as UserAdmin;
 use App\Http\Controllers\Admin\CustomerController as CustomersAdmin;
 use App\Http\Controllers\Admin\PengelolaPasarController as PengelolaPasarAdmin;
+use App\Http\Controllers\Admin\PemdaController as PemdaAdmin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -58,5 +59,12 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('customers/edit', [CustomersAdmin::class, 'edit']);
         Route::put('customers', [CustomersAdmin::class, 'update']);
         Route::delete('customers', [CustomersAdmin::class, 'destroy']);
+
+        // Data Pemda
+        Route::get('pemda', [PemdaAdmin::class, 'index']);
+        Route::post('pemda', [PemdaAdmin::class, 'store']);
+        Route::post('pemda/edit', [PemdaAdmin::class, 'edit']);
+        Route::put('pemda', [PemdaAdmin::class, 'update']);
+        Route::delete('pemda', [PemdaAdmin::class, 'destroy']);
     });
 });

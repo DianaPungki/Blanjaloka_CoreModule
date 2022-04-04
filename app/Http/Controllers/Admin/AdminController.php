@@ -14,7 +14,7 @@ class AdminController extends Controller
             'title' => 'Data Admin',
             'admin' =>Admin::all()
         ];
-        return view('admin.admin.index',$data);
+        return view('admin.users.admin.index',$data);
     }
 
     public function store(Request $request)

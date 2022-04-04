@@ -16,7 +16,7 @@ class CustomerController extends Controller
             'title' => 'Data Customers',
             'customers' =>Customer::all()
         ];
-        return view('admin.customers.index',$data);
+        return view('admin.users.customers.index',$data);
     }
 
     public function store(Request $request)

@@ -25,6 +25,7 @@ class PemdaController extends Controller
             'nama_pemda' => $request->input('nama_pemda'),
             'alamat_pemda' => $request->input('alamat_pemda'),
             'nomor_telepon' => $request->input('nomor_telepon'),
+            'nomor_ktp' => $request->input('nomor_ktp'),
             'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
         ];
 
@@ -48,7 +49,8 @@ class PemdaController extends Controller
             'email' => $request->input('email'),
             'nama_pemda' => $request->input('nama_pemda'),
             'alamat_pemda' => $request->input('alamat_pemda'),
-            'nomor_telepon' => $request->input('nomor_telepon'),
+            'nomor_telepon' => $request->input('nomor_telepon'),            
+            'nomor_ktp' => $request->input('nomor_ktp'),
             'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
         ];
 

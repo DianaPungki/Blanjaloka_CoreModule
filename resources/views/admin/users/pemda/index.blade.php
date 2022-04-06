@@ -36,6 +36,7 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>No Telp</th>
+                                    <th>No KTP</th>
                                     <th>Alamat</th>
                                     <th>Created at</th>
                                     <th>Update at</th>
@@ -50,6 +51,7 @@
                                             <td>{{ $c->nama_pemda }}</td>
                                             <td>{{ $c->email }}</td>
                                             <td>{{ $c->nomor_telepon }}</td>
+                                            <td>{{ $c->nomor_ktp }}</td>
                                             <td>{{ $c->alamat_pemda }}</td>
                                             <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
                                             <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
@@ -104,6 +106,13 @@
                 </div>
 
                 <div class="mb-3 row">
+                    <label for="nomor_ktp" class="col-sm-2 col-form-label">No KTP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nomor_ktp" placeholder="Nomor KTP" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10 validate">
                         <input type="email" class="form-control" name="email" placeholder="Email" required>
@@ -113,7 +122,7 @@
                 <div class="mb-3 row">
                     <label for="alamat_pemda" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10 validate">
-                        <textarea name="alamat_pemda" cols="30" rows="10"  class="form-control" required>Alamat</textarea>
+                        <textarea name="alamat_pemda" cols="30" rows="10"  class="form-control" placeholder="Alamat" required></textarea>
                     </div>
                 </div>
 
@@ -171,6 +180,13 @@
                             <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telp" required>
                         </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label for="nomor_ktp" class="col-sm-2 col-form-label">No KTP</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nomor_ktp" id="nomor_ktp" placeholder="Nomor KTP" required>
+                        </div>
+                    </div>
     
                     <div class="mb-3 row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -182,7 +198,7 @@
                     <div class="mb-3 row">
                         <label for="alamat_pemda" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_pemda" id="alamat_pemda" cols="30" rows="10"  class="form-control" id="alamat_pemda" required>Alamat</textarea>
+                            <textarea name="alamat_pemda" id="alamat_pemda" cols="30" rows="10"  class="form-control" id="alamat_pemda" placeholder="Alamat" required></textarea>
                         </div>
                     </div>
     
@@ -286,8 +302,9 @@
                         $('#username').val(data[0].username);
                         $('#nama_pemda').val(data[0].nama_pemda);
                         $('#email').val(data[0].email)
-                        $('#alamat_pemda').val(data[0].alamat_pemda)
                         $('#nomor_telepon').val(data[0].nomor_telepon)
+                        $('#nomor_ktp').val(data[0].nomor_ktp)
+                        $('#alamat_pemda').val(data[0].alamat_pemda)
 
                         $('#editmodal').modal('show');
                     },

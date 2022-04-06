@@ -25,8 +25,11 @@ class PedagangController extends Controller
             'nama_pedagang' => $request->input('nama_pedagang'),
             'nama_toko' => $request->input('nama_toko'),
             'nomor_telepon' => $request->input('nomor_telepon'),
+            'nomor_ktp' => $request->input('nomor_ktp'),
+            'tanggal_lahir' => $request->input('tanggal_lahir'),
             'alamat_toko' => $request->input('alamat_toko'),
             'alamat_pedagang' => $request->input('alamat_pedagang'),
+            'foto_rekening' => $request->input('foto_rekening'),
             // 'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
         ];
 
@@ -51,8 +54,11 @@ class PedagangController extends Controller
             'nama_pedagang' => $request->input('nama_pedagang'),
             'nama_toko' => $request->input('nama_toko'),
             'nomor_telepon' => $request->input('nomor_telepon'),
+            'nomor_ktp' => $request->input('nomor_ktp'),
+            'tanggal_lahir' => $request->input('tanggal_lahir'),
             'alamat_toko' => $request->input('alamat_toko'),
             'alamat_pedagang' => $request->input('alamat_pedagang'),
+            'foto_rekening' => $request->input('foto_rekening'),
             // 'password' => password_hash($request->input('password'),PASSWORD_DEFAULT)
         ];
 

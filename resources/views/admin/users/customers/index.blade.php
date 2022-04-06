@@ -113,7 +113,7 @@
                 <div class="mb-3 row">
                     <label for="alamat_customer" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10 validate">
-                        <textarea name="alamat_customer" cols="30" rows="10"  class="form-control" required>Alamat</textarea>
+                        <textarea name="alamat_customer" cols="30" rows="10"  class="form-control" placeholder="Alamat" required></textarea>
                     </div>
                 </div>
 
@@ -182,7 +182,7 @@
                     <div class="mb-3 row">
                         <label for="alamat_customer" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_customer" id="alamat_customer" cols="30" rows="10"  class="form-control" id="alamat_customer" required>Alamat</textarea>
+                            <textarea name="alamat_customer" id="alamat_customer" cols="30" rows="10"  class="form-control" id="alamat_customer" placeholder="Alamat" required></textarea>
                         </div>
                     </div>
     

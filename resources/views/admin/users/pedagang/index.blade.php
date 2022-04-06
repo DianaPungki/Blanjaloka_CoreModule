@@ -33,12 +33,15 @@
                                 <tr>
                                     <th style="width:10px;">No</th>
                                     {{-- <th>Username</th> --}}
-                                    <th>Nama</th>
-                                    <th>Nama Toko</th>
                                     {{-- <th>Email</th> --}}
+                                    <th>Nama</th>
                                     <th>No Telp</th>
+                                    <th>No KTP</th>
+                                    <th>Tanggal Lahir</th>
                                     <th>Alamat Pedagang</th>
+                                    <th>Nama Toko</th>
                                     <th>Alamat Toko</th>
+                                    <th>Foto Rekening</th>
                                     <th>Created at</th>
                                     <th>Update at</th>
                                     <th style="width:10px;" class='notexport'>Aksi</th>
@@ -49,12 +52,15 @@
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
                                             {{-- <td>{{ $c->username }}</td> --}}
-                                            <td>{{ $c->nama_pedagang }}</td>
-                                            <td>{{ $c->nama_toko }}</td>
                                             {{-- <td>{{ $c->email }}</td> --}}
+                                            <td>{{ $c->nama_pedagang }}</td>
                                             <td>{{ $c->nomor_telepon }}</td>
+                                            <td>{{ $c->nomor_ktp }}</td>
+                                            <td>{{ $c->tanggal_lahir }}</td>
                                             <td>{{ $c->alamat_pedagang }}</td>
+                                            <td>{{ $c->nama_toko }}</td>
                                             <td>{{ $c->alamat_toko }}</td>
+                                            <td>{{ $c->foto_rekening }}</td>
                                             <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
                                             <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
                                             <td class="text-center">
@@ -91,19 +97,19 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
-                </div>   --}}
-               
+                </div>  
+                
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10 validate">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+                </div>  --}}
+
                 <div class="mb-3 row">
                     <label for="nama_pedagang" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="nama_pedagang" placeholder="Nama Pedagang" required>
-                    </div>
-                </div>  
-
-                <div class="mb-3 row">
-                    <label for="nama_toko" class="col-sm-2 col-form-label">Nama Toko</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nama_toko" placeholder="Nama Toko" required>
                     </div>
                 </div>  
 
@@ -114,26 +120,47 @@
                     </div>
                 </div>
 
-                {{-- <div class="mb-3 row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10 validate">
-                        <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <div class="mb-3 row">
+                    <label for="nomor_ktp" class="col-sm-2 col-form-label">No KTP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nomor_ktp" placeholder="Nomor KTP" required>
                     </div>
-                </div>   --}}
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir" required>
+                    </div>
+                </div>
 
                 <div class="mb-3 row">
                     <label for="alamat_pedagang" class="col-sm-2 col-form-label">Alamat Pedagang</label>
                     <div class="col-sm-10 validate">
-                        <textarea name="alamat_pedagang" cols="30" rows="10"  class="form-control" required>Alamat Pedagang</textarea>
+                        <textarea name="alamat_pedagang" cols="30" rows="10"  class="form-control" placeholder="Alamat Pedagang" required></textarea>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
+                    <label for="nama_toko" class="col-sm-2 col-form-label">Nama Toko</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nama_toko" placeholder="Nama Toko" required>
+                    </div>
+                </div>  
+
+                <div class="mb-3 row">
                     <label for="alamat_toko" class="col-sm-2 col-form-label">Alamat Toko</label>
                     <div class="col-sm-10 validate">
-                        <textarea name="alamat_toko" cols="30" rows="10"  class="form-control" required>Alamat Toko</textarea>
+                        <textarea name="alamat_toko" cols="30" rows="10"  class="form-control" placeholder="Alamat Toko" required></textarea>
                     </div>
                 </div>
+
+                <div class="mb-3 row">
+                    <label for="foto_rekening" class="col-sm-2 col-form-label">Foto Rekening</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="foto_rekening" placeholder="Foto Rekening" required>
+                    </div>
+                </div> 
 
                 {{-- <div class="mb-3 row">
                     <label for="nis" class="col-sm-2 col-form-label">Password</label>
@@ -172,21 +199,21 @@
                     {{-- <div class="mb-3 row">
                         <label for="username" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
-                        </div>
-                    </div>   --}}
-                    
-                    <div class="mb-3 row">
-                        <label for="nama_pedagang" class="col-sm-2 col-form-label">Nama Pedagang</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama_pedagang" id="nama_pedagang" placeholder="Nama Pedagang" required>
+                            <input type="text" class="form-control" name="username" placeholder="Username" required>
                         </div>
                     </div>  
-
+                    
                     <div class="mb-3 row">
-                        <label for="nama_toko" class="col-sm-2 col-form-label">Nama Toko</label>
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10 validate">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+                    </div>  --}}
+    
+                    <div class="mb-3 row">
+                        <label for="nama_pedagang" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama_toko" id="nama_toko" placeholder="Nama Pedagang" required>
+                            <input type="text" class="form-control" name="nama_pedagang" id="nama_pedagang" placeholder="Nama Pedagang" required>
                         </div>
                     </div>  
     
@@ -197,32 +224,52 @@
                         </div>
                     </div>
     
-                    {{-- <div class="mb-3 row">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10 validate">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                    <div class="mb-3 row">
+                        <label for="nomor_ktp" class="col-sm-2 col-form-label">No KTP</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nomor_ktp" id="nomor_ktp" placeholder="Nomor KTP" required>
                         </div>
-                    </div>   --}}
-
+                    </div>
+    
+                    <div class="mb-3 row">
+                        <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal Lahir" required>
+                        </div>
+                    </div>
+    
                     <div class="mb-3 row">
                         <label for="alamat_pedagang" class="col-sm-2 col-form-label">Alamat Pedagang</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_pedagang" id="alamat_pedagang" cols="30" rows="10"  class="form-control" id="alamat_pedagang" required>Alamat Toko</textarea>
+                            <textarea name="alamat_pedagang" id="alamat_pedagang" cols="30" rows="10"  class="form-control" placeholder="Alamat Pedagang" required></textarea>
                         </div>
                     </div>
-
+    
+                    <div class="mb-3 row">
+                        <label for="nama_toko" class="col-sm-2 col-form-label">Nama Toko</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nama_toko" id="nama_toko" placeholder="Nama Toko" required>
+                        </div>
+                    </div>  
+    
                     <div class="mb-3 row">
                         <label for="alamat_toko" class="col-sm-2 col-form-label">Alamat Toko</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_toko" id="alamat_toko" cols="30" rows="10"  class="form-control" id="alamat_toko" required>Alamat Toko</textarea>
+                            <textarea name="alamat_toko" id="alamat_toko" cols="30" rows="10"  class="form-control" placeholder="Alamat Toko" required></textarea>
                         </div>
                     </div>
+    
+                    <div class="mb-3 row">
+                        <label for="foto_rekening" class="col-sm-2 col-form-label">Foto Rekening</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="foto_rekening" id="foto_rekening" placeholder="Foto Rekening" required>
+                        </div>
+                    </div> 
     
                     {{-- <div class="mb-3 row">
                         <label for="nis" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10 validate">
-                            <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password">
-                            <small id="password" class="form-text text-muted">Kalau gak perlu diubah dikosongin aja</small>
+                            <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password" required>
                         </div>
                     </div>   --}}
     
@@ -316,12 +363,15 @@
                     success : function(data){
                         $('#id_pedagang').val(data[0].id_pedagang);
                         // $('#username').val(data[0].username);
-                        $('#nama_pedagang').val(data[0].nama_pedagang);
-                        $('#nama_toko').val(data[0].nama_toko);
                         // $('#email').val(data[0].email)
+                        $('#nama_pedagang').val(data[0].nama_pedagang);
                         $('#nomor_telepon').val(data[0].nomor_telepon)
+                        $('#nomor_ktp').val(data[0].nomor_ktp)
+                        $('#tanggal_lahir').val(data[0].tanggal_lahir)
                         $('#alamat_pedagang').val(data[0].alamat_pedagang)
+                        $('#nama_toko').val(data[0].nama_toko);
                         $('#alamat_toko').val(data[0].alamat_toko)
+                        $('#foto_rekening').val(data[0].foto_rekening)
 
                         $('#editmodal').modal('show');
                     },

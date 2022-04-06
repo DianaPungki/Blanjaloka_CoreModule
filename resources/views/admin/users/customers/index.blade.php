@@ -161,7 +161,7 @@
                     <div class="mb-3 row">
                         <label for="nama_customer" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama_customer" id="nama_customer" placeholder="Nama Pengelola" required>
+                            <input type="text" class="form-control" name="nama_customer" id="nama_customer" placeholder="Masukkan nama" required>
                         </div>
                     </div>  
     

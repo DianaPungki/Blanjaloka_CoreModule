@@ -79,7 +79,7 @@
                 </ul>
                 </li>
 
-                @if ($title == 'Data Admin' || $title == 'Data Customers' || $title == 'Data Sellers' || $title == 'Data Driver' || $title == 'Data Pemda')
+                @if ($title == 'Data Admin' || $title == 'Data Customers' || $title == 'Data Pedagang' || $title == 'Data Driver' || $title == 'Data Pemda')
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                         @else
@@ -116,10 +116,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('admin/users/sellers') }}"
-                            class="nav-link {{ $title === 'Data Sellers' ? 'active' : '' }}">
+                        <a href="{{ url('admin/users/pedagang') }}"
+                            class="nav-link {{ $title === 'Data Pedagang' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Sellers</p>
+                            <p>Pedagang</p>
                         </a>
                     </li>
                     <li class="nav-item">

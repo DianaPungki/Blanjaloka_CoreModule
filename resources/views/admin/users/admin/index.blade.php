@@ -62,7 +62,7 @@
         </section>
     </div>
 
-    {{-- Modal Tambah Pengelola Pasar --}}
+    {{-- Modal Tambah Admin --}}
 
     <div class="modal fade" id="addmodal">
         <div class="modal-dialog modal-lg">
@@ -109,7 +109,7 @@
         </div>
     </div>
     
-    {{-- Modal Edit Pengelola Pasar --}}
+    {{-- Modal Edit Admin --}}
 
     <div class="modal fade" id="editmodal">
         <div class="modal-dialog modal-lg">

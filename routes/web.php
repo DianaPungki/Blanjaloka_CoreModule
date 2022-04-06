@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CustomerController as CustomersAdmin;
 use App\Http\Controllers\Admin\PengelolaPasarController as PengelolaPasarAdmin;
 use App\Http\Controllers\Admin\PemdaController as PemdaAdmin;
 use App\Http\Controllers\Admin\PedagangController as PedagangAdmin;
+use App\Http\Controllers\Admin\DriverController as DriverAdmin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -74,5 +75,12 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('pedagang/edit', [PedagangAdmin::class, 'edit']);
         Route::put('pedagang', [PedagangAdmin::class, 'update']);
         Route::delete('pedagang', [PedagangAdmin::class, 'destroy']);
+
+        // Data Driver
+        Route::get('driver', [DriverAdmin::class, 'index']);
+        Route::post('driver', [DriverAdmin::class, 'store']);
+        Route::post('driver/edit', [DriverAdmin::class, 'edit']);
+        Route::put('driver', [DriverAdmin::class, 'update']);
+        Route::delete('driver', [DriverAdmin::class, 'destroy']);
     });
 });

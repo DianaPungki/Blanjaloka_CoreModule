@@ -5,11 +5,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Admin</h1>
+                        <h1 class="m-0">Data Kategori Produk</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Admin</li>
+                            <li class="breadcrumb-item active">Data Kategori Produk</li>
                         </ol>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                       Admin
+                       Data Kategori Produk
 
                         <div class="float-right d-none d-sm-inline-block">
                             <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
@@ -28,28 +28,26 @@
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-hover" id="admintable">
+                        <table class="table table-bordered table-hover" id="kategoritable">
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
-                                    <th>Nama</th>
-                                    <th>Email</th>
+                                    <th>Kategori</th>
                                     <th>Created at</th>
                                     <th>Update at</th>
                                     <th style="width:10px;" class='notexport'>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($admin as $no=>$a)
+                                    @foreach ($kategori as $no=>$k)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            <td>{{ $a->nama }}</td>
-                                            <td>{{ $a->email }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($a->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($a->updated_at))}}</td>
+                                            <td>{{ $k->jenis_kategori }}</td>
+                                            <td>{{ date('d-M-Y', strtotime($k->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($k->updated_at))}}</td>
                                             <td class="text-center">
-                                                <a href="#" data-id="<?= $a->id_admin; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
-                                                <a href="#" data-id="<?= $a->id_admin; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
+                                                <a href="#" data-id="<?= $k->id_kategori; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
+                                                <a href="#" data-id="<?= $k->id_kategori; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -62,13 +60,13 @@
         </section>
     </div>
 
-    {{-- Modal Tambah Admin --}}
+    {{-- Modal Tambah Kategori Produk --}}
 
     <div class="modal fade" id="addmodal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Admin</h4>
+                <h4 class="modal-title">Tambah Kategori Produk</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -76,33 +74,13 @@
             <form id="tambahform">
                 @csrf
                 <div class="modal-body">
+
                     <div class="mb-3 row">
-                        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="jenis_kategori" class="col-sm-2 col-form-label">Kategori Produk</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama" placeholder="Nama">
-                            @if ($errors->has('nama'))
-                                <div class="text-danger text-small text-muted">
-                                    @foreach ($errors->get('nama') as $err)
-                                        <span class="text-danger">{{ $err }}</span>
-                                    @endforeach
-                                </div>
-                                @endif
+                            <input type="text" class="form-control" name="jenis_kategori" placeholder="Misal : Sayuran">
                         </div>
-                    </div>  
-    
-                    <div class="mb-3 row">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10 validate">
-                            <input type="email" class="form-control" name="email" placeholder="Email" required>
-                        </div>
-                    </div> 
-    
-                    <div class="mb-3 row">
-                        <label for="nis" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10 validate">
-                            <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password" required>
-                        </div>
-                    </div>  
+                    </div>   
     
                 </div>
                 <div class="modal-footer">
@@ -116,43 +94,29 @@
         </div>
     </div>
     
-    {{-- Modal Edit Admin --}}
+    {{-- Modal Edit Kategori Produk --}}
 
     <div class="modal fade" id="editmodal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Admin</h4>
+                <h4 class="modal-title">Edit Kategori Produk</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="editform">
                 @csrf
-                <input type="hidden" name="id_admin" id="id_admin">
+                <input type="hidden" name="id_kategori" id="id_kategori">
                 <div class="modal-body">
-                    <div class="mb-3 row">
-                        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" required>
-                        </div>
-                    </div>  
-    
-                    <div class="mb-3 row">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10 validate">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                        </div>
-                    </div>  
 
                     <div class="mb-3 row">
-                        <label for="nis" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10 validate">
-                            <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password">
-                            <small id="password" class="form-text text-muted">Kalau gak perlu diubah dikosongin aja</small>
+                        <label for="jenis_kategori" class="col-sm-2 col-form-label">Kategori Produk</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="jenis_kategori" id="jenis_kategori" placeholder="Misal : Sayuran" required>
                         </div>
-                    </div>  
-    
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">  
@@ -171,7 +135,7 @@
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            $('#admintable').DataTable({
+            $('#kategoritable').DataTable({
                 "responsive":true,
                 dom: 'Bfrtip',
                 buttons: [
@@ -210,7 +174,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/users/admin')}}",
+                    url : "{{url('admin/produk/kategori')}}",
                     type: "POST",
                     data: $(this).serialize(),
                     beforeSend: function(){
@@ -238,13 +202,12 @@
              $('.edit').click(function(e){
                 e.preventDefault();
                 $.ajax({
-                    data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                    data: {'id_kategori':$(this).data('id'), '_token': "{{csrf_token()}}"},
                     type: 'POST',
-                    url:"{{url('admin/users/admin/edit')}}",
+                    url:"{{url('admin/produk/kategori/edit')}}",
                     success : function(data){
-                        $('#id_admin').val(data[0].id_admin);
-                        $('#nama').val(data[0].nama);
-                        $('#email').val(data[0].email)
+                        $('#id_kategori').val(data[0].id_kategori);
+                        $('#jenis_kategori').val(data[0].jenis_kategori);
 
                         $('#editmodal').modal('show');
                     },
@@ -261,7 +224,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/users/admin')}}",
+                    url : "{{url('admin/produk/kategori')}}",
                     type: "PUT",
                     data: $(this).serialize(),
                     beforeSend: function(){
@@ -286,14 +249,14 @@
             // hapus form
             $('.delete').click(function(e){
                 e.preventDefault();
-                var confirmed = confirm('Hapus Akun Admin Ini ?');
+                var confirmed = confirm('Hapus Data kategori Ini ?');
 
                 if(confirmed) {
 
                     $.ajax({
-                        data: {'id_admin':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                        data: {'id_kategori':$(this).data('id'), '_token': "{{csrf_token()}}"},
                         type: 'DELETE',
-                        url:"{{url('admin/users/admin')}}",
+                        url:"{{url('admin/produk/kategori')}}",
                         success : function(data){
                             swal(data.pesan)
                             .then((result) => {

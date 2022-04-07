@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -19,6 +20,15 @@ class AdminController extends Controller
 
     public function store(Request $request)
     { 
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+            'email' => 'required'
+        ]);
+        
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
         $data = [
             'email' => $request->input('email'),
             'nama' => $request->input('nama'),

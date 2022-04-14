@@ -20,7 +20,7 @@ class PemdaController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'username' => $request->input('username'),
+            // 'username' => $request->input('username'),
             'email' => $request->input('email'),
             'nama_pemda' => $request->input('nama_pemda'),
             'alamat_pemda' => $request->input('alamat_pemda'),
@@ -45,7 +45,7 @@ class PemdaController extends Controller
     public function update(Request $request)
     {
         $data = [
-            'username' => $request->input('username'),
+            // 'username' => $request->input('username'),
             'email' => $request->input('email'),
             'nama_pemda' => $request->input('nama_pemda'),
             'alamat_pemda' => $request->input('alamat_pemda'),

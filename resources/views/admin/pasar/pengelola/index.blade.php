@@ -9,6 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">Modul Pasar</li>
                             <li class="breadcrumb-item active">Pengelola Pasar</li>
                         </ol>
                     </div>
@@ -20,7 +21,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        Pengelola Pasar
+                        Data Pengelola Pasar
 
                         <div class="float-right d-none d-sm-inline-block">
                             <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
@@ -113,7 +114,7 @@
                     <div class="mb-3 row">
                         <label for="alamat_pengelola" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_pengelola" cols="30" rows="10"  class="form-control" required>Alamat</textarea>
+                            <textarea name="alamat_pengelola" cols="30" rows="10"  class="form-control" placeholder="Alamat" required></textarea>
                         </div>
                     </div>
     
@@ -182,7 +183,7 @@
                     <div class="mb-3 row">
                         <label for="alamat_pengelola" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_pengelola" id="alamat_pengelola" cols="30" rows="10"  class="form-control" id="alamat_pengelola" required>Alamat</textarea>
+                            <textarea name="alamat_pengelola" id="alamat_pengelola" cols="30" rows="10"  class="form-control" placeholder="Alamat" required></textarea>
                         </div>
                     </div>
     

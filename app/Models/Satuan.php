@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pemda extends Model
+class Satuan extends Model
 {
     use HasFactory;
-
-    protected $primaryKey = 'id_pemda';
-    public $table = "pemda";
+    
+    protected $primaryKey = 'id_satuan';
+    public $table = "satuan";
 
     /**
      * The attributes that are mass assignable.
@@ -18,10 +18,7 @@ class Pemda extends Model
      * @var array
      */
     protected $fillable = [
-        // 'username',
-        'nama_pemda','nomor_telepon',
-        'email','alamat_pemda','password',
-        'nomor_ktp','id_produk'
+        'jenis_kategori'
     ];
 
     /**
@@ -30,7 +27,8 @@ class Pemda extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'created_at', 'updated_at'
+        'created_at', 'updated_at'
 
     ];
 }
+

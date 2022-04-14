@@ -9,6 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">Users</li>
                             <li class="breadcrumb-item active">Pedagang</li>
                         </ol>
                     </div>
@@ -20,7 +21,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                       Pedagang
+                       Data Pedagang
 
                         <div class="float-right d-none d-sm-inline-block">
                             <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
@@ -28,45 +29,55 @@
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-hover" id="pedagangtable">
+                        <table class="table table-bordered " id="pedagangtable">
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
                                     {{-- <th>Username</th> --}}
                                     {{-- <th>Email</th> --}}
                                     <th>Nama</th>
+                                    <th>Email</th>
                                     <th>No Telp</th>
                                     <th>No KTP</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Alamat Pedagang</th>
+                                    <th>Nama Pasar</th>
                                     <th>Nama Toko</th>
                                     <th>Alamat Toko</th>
+                                    <th>Status</th>
+                                    <th style="width:10px;" class='notexport'>Aksi</th>
+                                    <th>Bank</th>
+                                    <th>No Rekening</th>
                                     <th>Foto Rekening</th>
                                     <th>Created at</th>
                                     <th>Update at</th>
-                                    <th style="width:10px;" class='notexport'>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pedagang as $no=>$c)
+                                    @foreach ($pedagang as $no=>$p)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            {{-- <td>{{ $c->username }}</td> --}}
-                                            {{-- <td>{{ $c->email }}</td> --}}
-                                            <td>{{ $c->nama_pedagang }}</td>
-                                            <td>{{ $c->nomor_telepon }}</td>
-                                            <td>{{ $c->nomor_ktp }}</td>
-                                            <td>{{ $c->tanggal_lahir }}</td>
-                                            <td>{{ $c->alamat_pedagang }}</td>
-                                            <td>{{ $c->nama_toko }}</td>
-                                            <td>{{ $c->alamat_toko }}</td>
-                                            <td>{{ $c->foto_rekening }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
+                                            <td>{{ $p->nama_pedagang }}</td>
+                                            <td>{{ $p->email }}</td>
+                                            <td>{{ $p->nomor_telepon }}</td>
+                                            <td>{{ $p->nomor_ktp }}</td>
+                                            <td>{{ $p->tanggal_lahir }}</td>
+                                            <td>{{ $p->alamat_pedagang }}</td>
+                                            <td>{{ $p->nama_pasar }}</td>
+                                            <td>{{ $p->nama_toko }}</td>
+                                            <td>{{ $p->alamat_toko }}</td>
+                                            <td>{{ $p->status }}</td>
                                             <td class="text-center">
-                                                <a href="#" data-id="<?= $c->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
-                                                <a href="#" data-id="<?= $c->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
+                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
+                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
+                                            </td>                                            
+                                            <td>{{ $p->bank }}</td>
+                                            <td>{{ $p->no_rekening }}</td>
+                                            <td>
+                                                <img src="{{ asset('assets/admin/pedagang/foto_rekening/' . $p->foto_rekening) }}" alt="" width="50px">
                                             </td>
+                                            <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($p->updated_at))}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -89,27 +100,20 @@
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form id="tambahform">
+        <form id="tambahform" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
-                {{-- <div class="mb-3 row">
-                    <label for="username" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="username" placeholder="Username" required>
-                    </div>
-                </div>  
-                
-                <div class="mb-3 row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10 validate">
-                        <input type="email" class="form-control" name="email" placeholder="Email" required>
-                    </div>
-                </div>  --}}
-
                 <div class="mb-3 row">
                     <label for="nama_pedagang" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="nama_pedagang" placeholder="Nama Pedagang" required>
+                    </div>
+                </div>  
+
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="email" placeholder="Email" required>
                     </div>
                 </div>  
 
@@ -142,6 +146,18 @@
                 </div>
 
                 <div class="mb-3 row">
+                    <label for="id_pasar" class="col-sm-2 col-form-label">Nama Pasar</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" required name="id_pasar" id="id_pasar">
+                            <option selected value="">- PILIH PASAR -</option>
+                            @foreach($pasar as $p)
+                                    <option value="{{$p->id_pasar}}">{{$p->nama_pasar}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>  
+
+                <div class="mb-3 row">
                     <label for="nama_toko" class="col-sm-2 col-form-label">Nama Toko</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="nama_toko" placeholder="Nama Toko" required>
@@ -156,18 +172,41 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="foto_rekening" class="col-sm-2 col-form-label">Foto Rekening</label>
+                    <label for="status" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="foto_rekening" placeholder="Foto Rekening" required>
+                        <input type="radio"  name="status" value="on" placeholder="Status" required>Aktif
+                        <br>
+                        <input type="radio" name="status" value="off" placeholder="Status" required>Tidak Aktif
                     </div>
                 </div> 
 
-                {{-- <div class="mb-3 row">
+                <div class="mb-3 row">
+                    <label for="nis" class="col-sm-2 col-form-label">Bank</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="bank"  placeholder="bank" required>
+                    </div>
+                </div> 
+
+                <div class="mb-3 row">
+                    <label for="nis" class="col-sm-2 col-form-label">Nomor Rekening</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="no_rekening"  placeholder="Nomor rekening" required>
+                    </div>
+                </div> 
+
+                <div class="mb-3 row">
+                    <label for="foto_rekening" class="col-sm-2 col-form-label">Foto Rekening</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" name="foto_rekening" placeholder="Foto Rekening" required accept=".png,.jpg,.svg">
+                    </div>
+                </div> 
+
+                <div class="mb-3 row">
                     <label for="nis" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10 validate">
                         <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password" required>
                     </div>
-                </div>   --}}
+                </div>  
 
             </div>
             <div class="modal-footer">
@@ -192,28 +231,21 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="editform">
+            <form id="editform" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id_pedagang" id="id_pedagang">
                 <div class="modal-body">
-                    {{-- <div class="mb-3 row">
-                        <label for="username" class="col-sm-2 col-form-label">Username</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required>
-                        </div>
-                    </div>  
-                    
-                    <div class="mb-3 row">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10 validate">
-                            <input type="email" class="form-control" name="email" placeholder="Email" required>
-                        </div>
-                    </div>  --}}
-    
                     <div class="mb-3 row">
                         <label for="nama_pedagang" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="nama_pedagang" id="nama_pedagang" placeholder="Nama Pedagang" required>
+                        </div>
+                    </div>  
+    
+                    <div class="mb-3 row">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" required>
                         </div>
                     </div>  
     
@@ -241,9 +273,21 @@
                     <div class="mb-3 row">
                         <label for="alamat_pedagang" class="col-sm-2 col-form-label">Alamat Pedagang</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_pedagang" id="alamat_pedagang" cols="30" rows="10"  class="form-control" placeholder="Alamat Pedagang" required></textarea>
+                            <textarea name="alamat_pedagang" cols="30" rows="10" id="alamat_pedagang" class="form-control" placeholder="Alamat Pedagang" required></textarea>
                         </div>
                     </div>
+    
+                    <div class="mb-3 row">
+                        <label for="id_pasar" class="col-sm-2 col-form-label">Nama Pasar</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" required name="id_pasar" id="id_pasar">
+                                <option selected value="">- PILIH PASAR -</option>
+                                @foreach($pasar as $p)
+                                        <option value="{{$p->id_pasar}}">{{$p->nama_pasar}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>  
     
                     <div class="mb-3 row">
                         <label for="nama_toko" class="col-sm-2 col-form-label">Nama Toko</label>
@@ -255,23 +299,55 @@
                     <div class="mb-3 row">
                         <label for="alamat_toko" class="col-sm-2 col-form-label">Alamat Toko</label>
                         <div class="col-sm-10 validate">
-                            <textarea name="alamat_toko" id="alamat_toko" cols="30" rows="10"  class="form-control" placeholder="Alamat Toko" required></textarea>
+                            <textarea name="alamat_toko" cols="30" rows="10" id="alamat_toko" class="form-control" placeholder="Alamat Toko" required></textarea>
                         </div>
                     </div>
     
                     <div class="mb-3 row">
-                        <label for="foto_rekening" class="col-sm-2 col-form-label">Foto Rekening</label>
+                        <label for="nama_alumni" class="col-sm-2 col-form-label">status</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="foto_rekening" id="foto_rekening" placeholder="Foto Rekening" required>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input role" type="radio" name="status" id="flexRadioDefault11" required value="on">
+                                <label class="custom-control-label" for="flexRadioDefault11" style="font-weight: normal;">
+                                    Aktif
+                                </label>
+                                </div>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input role" type="radio" name="status" id="flexRadioDefault22" required value="off">
+                                <label class="custom-control-label" for="flexRadioDefault22" style="font-weight: normal;">
+                                    Tidak Aktif
+                                </label>
+                            </div>
                         </div>
                     </div> 
     
-                    {{-- <div class="mb-3 row">
+                    <div class="mb-3 row">
+                        <label for="nis" class="col-sm-2 col-form-label">Bank</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="bank" id="bank" placeholder="bank" required>
+                        </div>
+                    </div> 
+    
+                    <div class="mb-3 row">
+                        <label for="nis" class="col-sm-2 col-form-label">Nomor Rekening</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="no_rekening" id="no_rekening" placeholder="Nomor rekening" required>
+                        </div>
+                    </div> 
+    
+                    <div class="mb-3 row">
+                        <label for="foto_rekening" class="col-sm-2 col-form-label">Foto Rekening</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="foto_rekening" id="foto_rekening" placeholder="Foto Rekening"  accept=".png,.jpg,.svg">
+                        </div>
+                    </div> 
+    
+                    <div class="mb-3 row">
                         <label for="nis" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10 validate">
-                            <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password" required>
+                            <input type="password" class="form-control" name="password" autocomplete="on" placeholder="Password" >
                         </div>
-                    </div>   --}}
+                    </div>  
     
                 </div>
                 <div class="modal-footer">
@@ -332,7 +408,11 @@
                 $.ajax({
                     url : "{{url('admin/users/pedagang')}}",
                     type: "POST",
-                    data: $(this).serialize(),
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     beforeSend: function(){
                         $('.spinner').show();
                     },
@@ -357,13 +437,15 @@
              $('.edit').click(function(e){
                 e.preventDefault();
                 $.ajax({
-                    data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                    data: {
+                        'id_pedagang':$(this).data('id'), 
+                        '_token': "{{csrf_token()}}"
+                    },
                     type: 'POST',
                     url:"{{url('admin/users/pedagang/edit')}}",
                     success : function(data){
                         $('#id_pedagang').val(data[0].id_pedagang);
-                        // $('#username').val(data[0].username);
-                        // $('#email').val(data[0].email)
+                        $('#email').val(data[0].email)
                         $('#nama_pedagang').val(data[0].nama_pedagang);
                         $('#nomor_telepon').val(data[0].nomor_telepon)
                         $('#nomor_ktp').val(data[0].nomor_ktp)
@@ -371,7 +453,14 @@
                         $('#alamat_pedagang').val(data[0].alamat_pedagang)
                         $('#nama_toko').val(data[0].nama_toko);
                         $('#alamat_toko').val(data[0].alamat_toko)
-                        $('#foto_rekening').val(data[0].foto_rekening)
+                        $('#no_rekening').val(data[0].no_rekening)
+                        $('#bank').val(data[0].bank)
+                        
+                        if(data[0].role == "pimpinan"){
+                            $('#flexRadioDefault11').prop('checked', true);
+                        }else{
+                            $('#flexRadioDefault22').prop('checked', true);
+                        }
 
                         $('#editmodal').modal('show');
                     },
@@ -388,9 +477,13 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/users/pedagang')}}",
-                    type: "PUT",
-                    data: $(this).serialize(),
+                    url : "{{url('admin/users/pedagang/update')}}",
+                    type: "POST",
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     beforeSend: function(){
                         $('.spinner').show();
                     },

@@ -181,6 +181,8 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         // sweetalert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        // Laravolt
+        Laravolt\Indonesia\ServiceProvider::class
 
     ],
 

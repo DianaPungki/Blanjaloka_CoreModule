@@ -9,6 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">Users</li>
                             <li class="breadcrumb-item active">Pemda</li>
                         </ol>
                     </div>
@@ -20,7 +21,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                       Pemda
+                       Data Pemda
 
                         <div class="float-right d-none d-sm-inline-block">
                             <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
@@ -32,7 +33,7 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
-                                    <th>Username</th>
+                                    {{-- <th>Username</th> --}}
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>No Telp</th>
@@ -47,7 +48,7 @@
                                     @foreach ($pemda as $no=>$c)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            <td>{{ $c->username }}</td>
+                                            {{-- <td>{{ $c->username }}</td> --}}
                                             <td>{{ $c->nama_pemda }}</td>
                                             <td>{{ $c->email }}</td>
                                             <td>{{ $c->nomor_telepon }}</td>
@@ -84,12 +85,12 @@
         <form id="tambahform">
             @csrf
             <div class="modal-body">
-                <div class="mb-3 row">
+                {{-- <div class="mb-3 row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
-                </div>  
+                </div>   --}}
                
                 <div class="mb-3 row">
                     <label for="nama_pemda" class="col-sm-2 col-form-label">Nama</label>
@@ -160,12 +161,12 @@
                 @csrf
                 <input type="hidden" name="id_pemda" id="id_pemda">
                 <div class="modal-body">
-                    <div class="mb-3 row">
+                    {{-- <div class="mb-3 row">
                         <label for="username" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
                         </div>
-                    </div>  
+                    </div>   --}}
                     
                     <div class="mb-3 row">
                         <label for="nama_pemda" class="col-sm-2 col-form-label">Nama</label>
@@ -299,7 +300,7 @@
                     url:"{{url('admin/users/pemda/edit')}}",
                     success : function(data){
                         $('#id_pemda').val(data[0].id_pemda);
-                        $('#username').val(data[0].username);
+                        // $('#username').val(data[0].username);
                         $('#nama_pemda').val(data[0].nama_pemda);
                         $('#email').val(data[0].email)
                         $('#nomor_telepon').val(data[0].nomor_telepon)

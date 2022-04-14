@@ -18,7 +18,20 @@ class Pedagang extends Model
      * @var array
      */
     protected $fillable = [
-        'username','nama_pedagang','nomor_telepon','email_customer','alamat_pedagang','password','tanggal_lahir','foto_rekening','nomor_ktp','nama_toko','alamat_toko','id_pendaftaran'
+        'username',
+        'nama_pedagang',
+        'nomor_telepon',
+        'email',
+        'alamat_pedagang',
+        'password',
+        'tanggal_lahir',
+        'foto_rekening',
+        'nomor_ktp',
+        'nama_toko',
+        'alamat_toko',
+        'id_pasar',
+        'no_rekening',
+        'bank'
     ];
 
     /**

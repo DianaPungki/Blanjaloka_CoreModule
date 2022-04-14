@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\PemdaController as PemdaAdmin;
 use App\Http\Controllers\Admin\PedagangController as PedagangAdmin;
 use App\Http\Controllers\Admin\DriverController as DriverAdmin;
 use App\Http\Controllers\Admin\KategoriProdukController as KategoriProdukAdmin;
+use App\Http\Controllers\Admin\ProdukController as ProdukAdmin;
+use App\Http\Controllers\Admin\PasarController as PasarAdmin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -34,6 +36,10 @@ Route::post('admin/login', [AuthController::class, 'login_admin_handler']);
 // logout
 Route::get('logout',[AuthController::class, 'logout']);
 
+// lokasi
+Route::post('location/getkabupaten', [\App\Http\Controllers\LocationController::class, 'kabupaten']);
+Route::post('location/getkecamatan', [\App\Http\Controllers\LocationController::class, 'kecamatan']);
+
 // Admin
 Route::middleware('auth:admin')->prefix('admin')->group(function () {
   
@@ -48,6 +54,13 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::delete('pengelola', [PengelolaPasarAdmin::class, 'destroy']);
 
         // Data Pasar
+        Route::get('/', [PasarAdmin::class, 'index']);
+        Route::get('add', [PasarAdmin::class, 'create']);
+        Route::post('addhandler', [PasarAdmin::class, 'store']);
+        Route::get('edit/{id}',[PasarAdmin::class, 'edit']);
+        Route::post('update', [PasarAdmin::class, 'update']);
+        Route::delete('/', [PasarAdmin::class, 'destroy']);
+
     });
 
     Route::prefix('users')->group(function() {
@@ -76,7 +89,7 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::get('pedagang', [PedagangAdmin::class, 'index']);
         Route::post('pedagang', [PedagangAdmin::class, 'store']);
         Route::post('pedagang/edit', [PedagangAdmin::class, 'edit']);
-        Route::put('pedagang', [PedagangAdmin::class, 'update']);
+        Route::post('pedagang/update', [PedagangAdmin::class, 'update']);
         Route::delete('pedagang', [PedagangAdmin::class, 'destroy']);
 
         // Data Driver
@@ -88,11 +101,27 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     });
 
     Route::prefix('produk')->group(function() {
+        // satuan Produk
+        Route::get('satuan', [SatuanProdukAdmin::class, 'index']);
+        Route::post('satuan', [SatuanProdukAdmin::class, 'store']);
+        Route::post('satuan/edit', [SatuanProdukAdmin::class, 'edit']);
+        Route::put('satuan', [SatuanProdukAdmin::class, 'update']);
+        Route::delete('satuan', [SatuanProdukAdmin::class, 'destroy']);
+
         // Kategori Produk
         Route::get('kategori', [KategoriProdukAdmin::class, 'index']);
         Route::post('kategori', [KategoriProdukAdmin::class, 'store']);
         Route::post('kategori/edit', [KategoriProdukAdmin::class, 'edit']);
         Route::put('kategori', [KategoriProdukAdmin::class, 'update']);
         Route::delete('kategori', [KategoriProdukAdmin::class, 'destroy']);
+        
+        // Data Produk
+        Route::get('/', [ProdukAdmin::class, 'index']);
+        Route::get('add', [ProdukAdmin::class, 'create']);
+        Route::post('addhandler', [ProdukAdmin::class, 'store']);
+        Route::get('edit/{id}',[ProdukAdmin::class, 'edit']);
+        Route::post('update', [ProdukAdmin::class, 'update']);
+        Route::delete('/', [ProdukAdmin::class, 'destroy']);
+
     });
 });

@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Kategori Produk</h1>
+                        <h1 class="m-0">Data Produk</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">Produk</li>
-                            <li class="breadcrumb-item active">Kategori Produk</li>
+                            <li class="breadcrumb-item active">Data Produk</li>
                         </ol>
                     </div>
                 </div>
@@ -21,35 +21,52 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                       Data Kategori Produk
+                       Data Produk
 
                         <div class="float-right d-none d-sm-inline-block">
-                            <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
+                            <a href="{{ url('admin/produk/add') }}" class="btn btn-primary btn-sm">Tambah</a>
                         </div>
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-hover" id="kategoritable">
+                        <table class="table table-bordered " id="pedagangtable">
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
+                                    <th>Nama Produk</th>
+                                    <th>Satuan</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Deskripsi</th>
+                                    <th>Foto Produk</th>
+                                    <th>Status</th>
                                     <th>Kategori</th>
-                                    <th>Created at</th>
-                                    <th>Update at</th>
-                                    <th style="width:10px;" class='notexport'>Aksi</th>
+                                    <th>Pedagang</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th style="width:10px;">Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kategori as $no=>$k)
+                                    @foreach ($produk as $no=>$p)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            <td>{{ $k->jenis_kategori }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($k->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($k->updated_at))}}</td>
+                                            <td>{{ $p->nama_produk }}</td>
+                                            <td>{{ $p->satuan }}</td>
+                                            <td>{{ $p->harga_jual }}</td>
+                                            <td>{{ $p->jumlah_produk }}</td>
+                                            <td>{{ $p->deskripsi }}</td>
+                                            <td>{{ $p->foto_produk }}</td>
+                                            <td>{{ $p->status }}</td>
+                                            <td>{{ $p->id_kategori }}</td>
+                                            <td>{{ $p->id_pedagang }}</td>
+                                            <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($p->updated_at))}}</td>
                                             <td class="text-center">
-                                                <a href="#" data-id="<?= $k->id_kategori; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
-                                                <a href="#" data-id="<?= $k->id_kategori; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
+                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
+                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -61,74 +78,9 @@
         </section>
     </div>
 
-    {{-- Modal Tambah Kategori Produk --}}
-
-    <div class="modal fade" id="addmodal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Tambah Kategori Produk</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="tambahform">
-                @csrf
-                <div class="modal-body">
-
-                    <div class="mb-3 row">
-                        <label for="jenis_kategori" class="col-sm-2 col-form-label">Kategori Produk</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="jenis_kategori" placeholder="Misal : Sayuran">
-                        </div>
-                    </div>   
+ 
     
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">  
-                        <span class="spinner-border spinner-border-sm spinner" role="status" aria-hidden="true"></span>
-                        Tambah
-                    </button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
-    
-    {{-- Modal Edit Kategori Produk --}}
 
-    <div class="modal fade" id="editmodal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Kategori Produk</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="editform">
-                @csrf
-                <input type="hidden" name="id_kategori" id="id_kategori">
-                <div class="modal-body">
-
-                    <div class="mb-3 row">
-                        <label for="jenis_kategori" class="col-sm-2 col-form-label">Kategori Produk</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="jenis_kategori" id="jenis_kategori" placeholder="Misal : Sayuran" required>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">  
-                        <span class="spinner-border spinner-border-sm spinner" role="status" aria-hidden="true"></span>
-                        Update
-                    </button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
 
      <script>
         $(document).ready(function() {
@@ -136,7 +88,7 @@
 
             $('[data-toggle="tooltip"]').tooltip();
 
-            $('#kategoritable').DataTable({
+            $('#pedagangtable').DataTable({
                 "responsive":true,
                 dom: 'Bfrtip',
                 buttons: [
@@ -175,9 +127,13 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/produk/kategori')}}",
+                    url : "{{url('admin/users/pedagang')}}",
                     type: "POST",
-                    data: $(this).serialize(),
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     beforeSend: function(){
                         $('.spinner').show();
                     },
@@ -189,7 +145,6 @@
                         .then((result) => {
                             location.reload();
                         });
-                
                     },
                     error: function(err){
                         alert(err);
@@ -203,12 +158,23 @@
              $('.edit').click(function(e){
                 e.preventDefault();
                 $.ajax({
-                    data: {'id_kategori':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                    data: {
+                        'id_pedagang':$(this).data('id'), 
+                        '_token': "{{csrf_token()}}"
+                    },
                     type: 'POST',
-                    url:"{{url('admin/produk/kategori/edit')}}",
+                    url:"{{url('admin/users/pedagang/edit')}}",
                     success : function(data){
-                        $('#id_kategori').val(data[0].id_kategori);
-                        $('#jenis_kategori').val(data[0].jenis_kategori);
+                        $('#id_pedagang').val(data[0].id_pedagang);
+                        // $('#username').val(data[0].username);
+                        // $('#email').val(data[0].email)
+                        $('#nama_produk').val(data[0].nama_produk);
+                        $('#nomor_telepon').val(data[0].nomor_telepon)
+                        $('#nomor_ktp').val(data[0].nomor_ktp)
+                        $('#tanggal_lahir').val(data[0].tanggal_lahir)
+                        $('#alamat_pedagang').val(data[0].alamat_pedagang)
+                        $('#nama_toko').val(data[0].nama_toko);
+                        $('#alamat_toko').val(data[0].alamat_toko)
 
                         $('#editmodal').modal('show');
                     },
@@ -225,9 +191,13 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url : "{{url('admin/produk/kategori')}}",
-                    type: "PUT",
-                    data: $(this).serialize(),
+                    url : "{{url('admin/users/pedagang/update')}}",
+                    type: "POST",
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     beforeSend: function(){
                         $('.spinner').show();
                     },
@@ -250,14 +220,14 @@
             // hapus form
             $('.delete').click(function(e){
                 e.preventDefault();
-                var confirmed = confirm('Hapus Data kategori Ini ?');
+                var confirmed = confirm('Hapus Akun pedagang Ini ?');
 
                 if(confirmed) {
 
                     $.ajax({
-                        data: {'id_kategori':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                        data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
                         type: 'DELETE',
-                        url:"{{url('admin/produk/kategori')}}",
+                        url:"{{url('admin/users/pedagang')}}",
                         success : function(data){
                             swal(data.pesan)
                             .then((result) => {

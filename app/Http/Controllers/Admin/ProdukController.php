@@ -31,9 +31,14 @@ class ProdukController extends Controller
     {
         if($request->hasFile('foto_produk')){
 
-            $foto_produk = $request->file('foto_produk');
-            $filename = time().'_'.$foto_produk->getClientOriginalName();
-            $foto_produk->move('assets/admin/produk/foto_produk/', $filename);
+            $fotoproduk = $request->file('foto_produk');
+            foreach($fotoproduk as $file){
+
+                $filename = time().'_'. $file->getClientOriginalName();
+                $file->move('assets/admin/foto_produk', $filename);
+                $namaFile[] = $filename;
+            
+            }
 
             $data = [
                 'nama_produk' => $request->input('nama_produk'),

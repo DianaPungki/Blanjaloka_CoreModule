@@ -159,4 +159,68 @@ class PasarController extends Controller
         ]);
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // jam pasar 
+    public function jamoperasional(Request $request){
+
+        $data = [
+            'title' => 'Jam Operasional',
+            'jampasar' => DB::table('jam_pasar')->where('id_pasar', $request->segment(4))->get(),
+            'pasar' => DB::table('pasar')->join('pengelola_pasar', 'pengelola_pasar.id_pengelola', '=', 'pasar.id_pengelola')->where('pasar.id_pasar', $request->segment(4))->get(),
+            'id_pasar' => $request->segment(4)
+        ];
+
+        return view('admin/pasar/data_pasar/jampasar', $data);
+
+    }
+
+       public function insertjam(Request $request){
+
+        $data = [
+            'catatan' => $request->post('catatan'),
+            'hari' => $request->post('hari'),
+            'buka' => $request->post('buka'),
+            'tutup' => $request->post('tutup'),
+            'id_pasar' => $request->post('id_pasar')
+        ];
+
+        DB::table('jam_pasar')->insert($data);
+        
+        return response()->json([
+            'pesan' => 'Berhasil Tambah Jam Operasional Pasar'
+        ]);
+
+    }
+
+    public function getjam(Request $request){
+        return response()->json(
+            DB::table('jam_pasar')->where('id_jampasar', $request->post('id_jampasar'))->get()
+        );
+    }   
+
+    public function updatejam(Request $request){
+
+        $data = [
+            'catatan' => $request->post('catatan'),
+            'hari' => $request->post('hari'),
+            'buka' => $request->post('buka'),
+            'tutup' => $request->post('tutup'),
+        ];
+
+        DB::table('jam_pasar')->where('id_jampasar', $request->post('id_jampasar'))->update($data);
+        
+        return response()->json([
+            'pesan' => 'Berhasil Update Jam Operasional Pasar'
+        ]);
+
+    }
+
+    public function deletejam(Request $request){
+        DB::table('jam_pasar')->where('id_jampasar', $request->post('id_jampasar'))->delete();
+        return response()->json([
+            'pesan' => 'Berhasil Hapus Jam Operasional Pasar'
+        ]);
+    }
+
+
 }

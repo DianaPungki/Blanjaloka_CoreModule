@@ -39,7 +39,7 @@
                                     <th>Jumlah</th>
                                     <th>Deskripsi</th>
                                     <th>Foto Produk</th>
-                                    <th>Status</th>
+                                    {{-- <th>Status</th> --}}
                                     <th>Kategori</th>
                                     <th>Pedagang</th>
                                     <th>Created At</th>
@@ -57,7 +57,7 @@
                                             <td>{{ $p->jumlah_produk }}</td>
                                             <td>{{ $p->deskripsi }}</td>
                                             <td>{{ $p->foto_produk }}</td>
-                                            <td>{{ $p->status }}</td>
+                                            {{-- <td>{{ $p->status }}</td> --}}
                                             <td>{{ $p->id_kategori }}</td>
                                             <td>{{ $p->id_pedagang }}</td>
                                             <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>

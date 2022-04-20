@@ -1,5 +1,6 @@
 @extends('admin/master-admin')
 @section('content')
+<link rel="stylesheet" href="{{asset('assets/admin/css/produk.css')}}">
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -58,7 +59,7 @@
                                 <div class="input-group">
                                     <input type="number" class="form-control" name="jumlah_produk" placeholder="Total Produk" required>
                                     <div class="input-group-append">
-                                        <select name="id_satuanproduk" id="" required class="form-control input-group-text bg-white">
+                                        <select name="satuan" id="" required class="form-control input-group-text bg-white">
                                             {{-- @foreach($satuanproduk as $s)
                                                 <option value="{{$s->id_satuanproduk}}">{{$s->nama_satuan}}</option>
                                             @endforeach --}}
@@ -124,7 +125,7 @@
                                     <div class="input-group-append">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga Produk" required>
+                                    <input type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Harga Produk" required>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +210,7 @@
                                                         </div>
                                                     </div>
                                                   </label>
-                                            <input id="file-input4" name="foto_produk[]" type="file" data-id="4"/>
+                                            <input id="file-input4" name="foto_produk[]" type="file" data-id="4" />
                                           </div>
                                     </div>
                                     <div class="col-sm-1">
@@ -279,7 +280,7 @@
                         switch (value) {
          
                         case null:
-                            window.location.href = "{{ url('sellers/produk')}}";
+                            window.location.href = "{{ url('admin/produk')}}";
                         break;
         
                         default:
@@ -301,7 +302,7 @@
         
         //----------------------------------------------------------------------------------------------
         
-        $('#harga').on('keyup', function(e){
+        $('#harga_jual').on('keyup', function(e){
             var n = parseInt($(this).val().replace(/\D/g,''),10);
             $(this).val(n.toLocaleString());
         });
@@ -313,16 +314,16 @@
             var n = parseInt($(this).val().replace(/\D/g,''),10);
             $(this).val(n.toLocaleString());
         
-            var harga = parseInt($('#harga').val().split(",").join(""));
+            var harga_jual = parseInt($('#harga_jual').val().split(",").join(""));
             var diskon = parseInt($(this).val().split(",").join(""));
         
-            if(diskon > harga){
+            if(diskon > harga_jual){
                 swal("Peringatan", "Harga Diskon Tidak Boleh Lebih Besar dari Harga Produk", "warning");
                 $(this).val('');
                 $('#persendiskon').text('');
             }
         
-            var persendiskon = (diskon / harga) * 100;
+            var persendiskon = (diskon / harga_jual) * 100;
         
             $('#persendiskon').text('Diskon '+persendiskon.toFixed(0)+' %');
         

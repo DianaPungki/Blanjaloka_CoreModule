@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DriverController as DriverAdmin;
 use App\Http\Controllers\Admin\KategoriProdukController as KategoriProdukAdmin;
 use App\Http\Controllers\Admin\ProdukController as ProdukAdmin;
 use App\Http\Controllers\Admin\PasarController as PasarAdmin;
+use App\Http\Controllers\Admin\TokoController as TokoAdmin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -61,6 +62,13 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('update', [PasarAdmin::class, 'update']);
         Route::delete('/', [PasarAdmin::class, 'destroy']);
 
+        // Jam Pasar
+        Route::get('jam/{id}', [PasarAdmin::class, 'jamoperasional']);
+        Route::post('jam/insert', [PasarAdmin::class, 'insertjam']);
+        Route::post('jam/get', [PasarAdmin::class, 'getjam']);
+        Route::post('jam/update', [PasarAdmin::class, 'updatejam']);
+        Route::post('jam/delete', [PasarAdmin::class, 'deletejam']);
+
     });
 
     Route::prefix('users')->group(function() {
@@ -98,6 +106,21 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('driver/edit', [DriverAdmin::class, 'edit']);
         Route::put('driver', [DriverAdmin::class, 'update']);
         Route::delete('driver', [DriverAdmin::class, 'destroy']);
+    });
+
+    Route::prefix('toko')->group(function() {
+        // Data Toko
+        Route::get('/', [TokoAdmin::class, 'index']);
+        Route::get('/json', [TokoAdmin::class, 'datatokojson']);
+
+        // jam
+        Route::get('jam/{id}', [TokoAdmin::class, 'jamoperasional']);
+        Route::post('jam/insert', [TokoAdmin::class, 'insertjam']);
+        Route::post('jam/get', [TokoAdmin::class, 'getjam']);
+        Route::post('jam/update', [TokoAdmin::class, 'updatejam']);
+        Route::post('jam/delete', [TokoAdmin::class, 'deletejam']);
+        Route::post('status', [TokoAdmin::class, 'updatestatustoko']);
+
     });
 
     Route::prefix('produk')->group(function() {

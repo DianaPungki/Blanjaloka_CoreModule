@@ -1,5 +1,6 @@
 @extends('admin/master-admin')
 @section('content')
+@php use Illuminate\Support\Facades\DB; @endphp
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -33,6 +34,7 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
+                                    <th>Nomor Pasar</th>
                                     <th>Nama Pasar</th>
                                     <th>Pengelola Pasar</th>
                                     <th>Max Toko</th>
@@ -40,32 +42,29 @@
                                     <th>Sisa Toko</th>
                                     <th style="width:60px;" class='notexport'>Aksi</th>
                                     <th class="none">Alamat</th>
-                                    <th class="none">Kecamatan</th>
-                                    <th class="none">Kabupaten</th>
-                                    <th class="none">Provinsi</th>
-                                    {{-- <th class="notexport none">Jam Operasional Pasar</th> --}}
+                                    <th class="notexport none">Jam Operasional Pasar</th>
                                 </tr>
-                                </thead>
+                            </thead>
                                 <tbody>
                                     @foreach ($pasar as $no=>$p)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
+                                            <td>{{$p->no_pasar}}</td>
                                             <td>{{ $p->nama_pasar }}</td>
                                             <td>{{ $p->nama_pengelola }}</td>
                                             <td>{{ $p->max_toko.' Toko' }}</td>
                                             <td>{{ count(DB::table('pedagang')->where('id_pasar', $p->id_pasar)->get()).' Toko' }}</td>
                                             <td>{{ $p->max_toko - count(DB::table('pedagang')->where('id_pasar', $p->id_pasar)->get()).' Toko' }}</td>
                                             <td class="text-center">
-                                                    <a href="{{url('admin/pasar/edit/'.$p->id_pasar)}}" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
-                                                    {{-- <a href="{{url('admin/pasar/jam/'.$p->id_pasar)}}" data-toggle="tooltip" title="Jam Pasar" data-placement="top"><span class="badge badge-info"><i class="fas fa-cog"></i></span></a> --}}
-                                                    <a href="#" data-id="<?= $p->id_pasar; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
-                                               
+                                                <a href="{{url('admin/pasar/edit/'.$p->id_pasar)}}" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
+                                                <a href="{{url('admin/pasar/jam/'.$p->id_pasar)}}" data-toggle="tooltip" title="Jam Pasar" data-placement="top"><span class="badge badge-info"><i class="fas fa-cog"></i></span></a>
+                                                <a href="#" data-id="<?= $p->id_pasar; ?>" class="delete_pasar" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>
-                                            <td>{{ $p->alamat }}</td>
-                                            <td>{{ $p->kecamatan }}</td>
-                                            <td>{{ $p->kabupaten }}</td>
-                                            <td>{{ $p->provinsi }}</td>
-                                            {{-- <td>
+                                            <td>
+                                                <br>
+                                                {{ $p->alamat }}
+                                            </td>
+                                            <td>
                                                 <br>
                                                 <table class="table">
                                                     <thead>
@@ -78,7 +77,7 @@
                                                       </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach(DB::table('jampasar')->where('id_pasar', $p->id_pasar)->get() as $i=>$jam)
+                                                    @foreach(DB::table('jam_pasar')->where('id_pasar', $p->id_pasar)->get() as $i=>$jam)
                                                       <tr>
                                                         <th scope="row">{{$i+1}}</th>
                                                         <td>{{ucfirst($jam->hari)}}</td>
@@ -89,7 +88,7 @@
                                                     @endforeach
                                                     </tbody>
                                                 </table>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

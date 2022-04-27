@@ -34,7 +34,6 @@
                                 <tr>
                                     <th style="width:10px;">No</th>
                                     {{-- <th>Username</th> --}}
-                                    {{-- <th>Email</th> --}}
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>No Telp</th>
@@ -44,7 +43,7 @@
                                     <th>Nama Pasar</th>
                                     <th>Nama Toko</th>
                                     <th>Alamat Toko</th>
-                                    <th>Status</th>
+                                    {{-- <th>Status</th> --}}
                                     <th style="width:10px;" class='notexport'>Aksi</th>
                                     <th>Bank</th>
                                     <th>No Rekening</th>
@@ -66,7 +65,7 @@
                                             <td>{{ $p->nama_pasar }}</td>
                                             <td>{{ $p->nama_toko }}</td>
                                             <td>{{ $p->alamat_toko }}</td>
-                                            <td>{{ $p->status }}</td>
+                                            {{-- <td>{{ $p->status }}</td> --}}
                                             <td class="text-center">
                                                 <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
                                                 <a href="#" data-id="<?= $p->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>

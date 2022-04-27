@@ -163,7 +163,7 @@
                 </ul>
                 </li>
 
-                @if ($title == 'Data Produk' || $title == 'Kategori Produk' || $title == 'Data Satuan')
+                @if ($title == 'Data Produk' || $title == 'Kategori Produk' || $title == 'Stok Gudang')
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                         @else
@@ -182,6 +182,13 @@
                             class="nav-link {{ $title === 'Data Produk' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Data Produk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('admin/gudang') }}"
+                            class="nav-link {{ $title === 'Data Gudang' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Data Gudang</p>
                         </a>
                     </li>
                 </ul>

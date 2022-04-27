@@ -35,6 +35,18 @@
                         <form id="insertprodukform" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 row">
+                            <label for="nis" class="col-sm-2 col-form-label">Pedagang</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select" required name="id_pedagang" id="id_pedagang">
+                                    <option selected value="">- PILIH PEDAGANG -</option>
+                                    @foreach($pedagang as $p)
+                                        <option value="{{$p->id_pedagang}}">- {{$p->nama_pedagang}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
                             <label for="nis" class="col-sm-2 col-form-label">Kategori Produk</label>
                             <div class="col-sm-10">
                                 <select class="custom-select" required name="id_kategori" id="id_kategori">
@@ -119,7 +131,7 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label for="nama_produk" class="col-sm-2 col-form-label">Harga Produk</label>
+                            <label for="harga_jual" class="col-sm-2 col-form-label">Harga Produk</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <div class="input-group-append">

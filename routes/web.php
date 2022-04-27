@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\KategoriProdukController as KategoriProdukAdmin;
 use App\Http\Controllers\Admin\ProdukController as ProdukAdmin;
 use App\Http\Controllers\Admin\PasarController as PasarAdmin;
 use App\Http\Controllers\Admin\TokoController as TokoAdmin;
+use App\Http\Controllers\Admin\GudangController as GudangAdmin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -124,13 +125,6 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     });
 
     Route::prefix('produk')->group(function() {
-        // satuan Produk
-        Route::get('satuan', [SatuanProdukAdmin::class, 'index']);
-        Route::post('satuan', [SatuanProdukAdmin::class, 'store']);
-        Route::post('satuan/edit', [SatuanProdukAdmin::class, 'edit']);
-        Route::put('satuan', [SatuanProdukAdmin::class, 'update']);
-        Route::delete('satuan', [SatuanProdukAdmin::class, 'destroy']);
-
         // Kategori Produk
         Route::get('kategori', [KategoriProdukAdmin::class, 'index']);
         Route::post('kategori', [KategoriProdukAdmin::class, 'store']);
@@ -145,6 +139,9 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::get('edit/{id}',[ProdukAdmin::class, 'edit']);
         Route::post('update', [ProdukAdmin::class, 'update']);
         Route::delete('/', [ProdukAdmin::class, 'destroy']);
+        Route::post('delete/foto', [ProdukAdmin::class, 'update']);
+
+        Route::get('gudang', [GudangAdmin::class, 'index']);
 
     });
 });

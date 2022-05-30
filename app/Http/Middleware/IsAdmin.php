@@ -18,9 +18,9 @@ class IsAdmin
     public function handle(Request $request, Closure $next, $roles)
     {
         if (Auth::guard('admin')->check()) {
-
             return redirect('/admin');
-      
+          }elseif(Auth::guard('pemda')->check()) {
+              return redirect('/pemda');
           } 
       
           return $next($request);

@@ -29,7 +29,7 @@
 
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered " id="produktable">
+                        <table class="table table-bordered table-hover" id="produktable">
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
@@ -56,7 +56,9 @@
                                             <td>{{ $p->harga_jual }}</td>
                                             <td>{{ $p->jumlah_produk }}</td>
                                             <td>{{ $p->deskripsi }}</td>
-                                            <td>{{ $p->foto_produk }}</td>
+                                            <td>
+                                                <img src="{{ asset('assets/admin/foto_produk/' . $p->foto_produk) }}" alt="" width="100">
+                                            </td>
                                             {{-- <td>{{ $p->status }}</td> --}}
                                             <td>{{ $p->id_kategori }}</td>
                                             <td>{{ $p->id_pedagang }}</td>
@@ -93,8 +95,7 @@
             $('[data-toggle="tooltip"]').tooltip();
 
             $('#produktable').DataTable({
-                "responsive": true
-            });
+                "responsive": true,
 
             //----------------------------------------------------------------------------------------
 
@@ -111,7 +112,7 @@
                     if(willDelete) {
                         $.ajax({
                             data:{'id_produk':$(this).data('id_produk'), '_token': "{{csrf_token()}}"},
-                            url: "{{ url('admin/produk/') }}",
+                            url: "{{ url('admin/produk') }}",
                             type: "DELETE",
                             success: function(e){
                                 swal(e.pesan)

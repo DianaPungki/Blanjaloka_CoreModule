@@ -12,31 +12,24 @@ class GudangController extends Controller
 {
     public function index(Request $request)
     {
-        $data = [
-            'title' => 'Data Gudang',
-            'pasar' => Pasar::all(),
-            'gudang' => Produk::all(),
-            'pedagang' => Pedagang::all(),
-            'produk' => Produk::all()
-        ];
-
         if(!empty($request->get('id_pasar'))){
 
             $data = [
-                'produk' => ProdukModels::join('satuan_produk', 'produk.id_satuanproduk', 'satuan_produk.id_satuanproduk')
-                        ->where('id_penjual', $request->session()->get('id_penjual'))
-                        ->where('id_kategoriproduk', $request->get('kategoriproduk'))->get(),
-                'kategori' =>Kategori::all()
+                'title' => 'Data Gudang',
+                'pasar' => Pasar::all(),
+                'produk' => Pasar::join('pedagang', 'pedagang.id_pasar', 'pasar.id_pasar')
+                            ->join('produk', 'produk.id_pedagang', 'pedagang.id_pedagang')
+                        ->where('id_pasar', $request->get('id_pasar'))->get(),
             ];
 
         }else{
 
             $data = [
-                'produk' => ProdukModels::join('satuan_produk', 'produk.id_satuanproduk', 'satuan_produk.id_satuanproduk')
-                        ->where('id_penjual', $request->session()->get('id_penjual'))->get(),
-                'kategori' =>Kategori::all()
+                'title' => 'Data Gudang',
+                'pasar' => Pasar::all(),
+                'produk' => Pasar::join('pedagang', 'pedagang.id_pasar', 'pasar.id_pasar')
+                ->join('produk', 'produk.id_pedagang', 'pedagang.id_pedagang')->get()
             ];
-
         }
 
         return view('admin.produk.gudang.index',$data);

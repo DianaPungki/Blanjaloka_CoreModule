@@ -64,6 +64,16 @@ return [
             'driver' => 'token',
             'provider' => 'user',
         ],
+
+        'pengelola' => [
+            'driver' => 'session',
+            'provider' => 'pengelola',
+          ],
+
+        'pemda' => [
+            'driver' => 'session',
+            'provider' => 'pemda',
+          ],
     ],
 
     /*
@@ -97,6 +107,16 @@ return [
         'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'pengelola' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PengelolaPasar::class,
+        ],
+
+        'pemda' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pemda::class,
         ],
 
     ],

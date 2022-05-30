@@ -14,7 +14,14 @@ use App\Http\Controllers\Admin\ProdukController as ProdukAdmin;
 use App\Http\Controllers\Admin\PasarController as PasarAdmin;
 use App\Http\Controllers\Admin\TokoController as TokoAdmin;
 use App\Http\Controllers\Admin\GudangController as GudangAdmin;
+// Pengelola
+use App\Http\Controllers\PengelolaPasar\Dashboard as DashboardPengelola;
+// Pemda
+use App\Http\Controllers\Pemda\Dashboard as DashboardPemda;
+
 use App\Http\Controllers\AuthController;
+use GuzzleHttp\Middleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +35,20 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing_page');
 });
 
 // login admin
-Route::get('admin/login', [AuthController::class, 'login_admin'])->middleware('guest')->name('login');
+Route::get('admin/login', [AuthController::class, 'login_admin'])->middleware('guest')->name('login_admin');
 Route::post('admin/login', [AuthController::class, 'login_admin_handler']);
+
+// login pengelola pasar
+Route::get('pengelola/login', [AuthController::class, 'login_pengelola'])->middleware('guest')->name('login_pengelolapasar');
+Route::post('pengelola/login', [AuthController::class, 'login_pengelola_handler']);
+
+// login pemda
+Route::get('pemda/login', [AuthController::class, 'login_pemda'])->middleware('guest')->name('login_pemda');
+Route::post('pemda/login', [AuthController::class, 'login_pemda_handler']);
 
 // logout
 Route::get('logout',[AuthController::class, 'logout']);
@@ -144,4 +159,16 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::get('gudang', [GudangAdmin::class, 'index']);
 
     });
+});
+
+Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
+    Route::get('/', [DashboardPengelola::class, 'index']);
+
+    
+});
+
+Route::middleware('auth:pemda')->prefix('pemda')->group(function() {
+    Route::get('/', [DashboardPemda::class, 'index']);
+
+    
 });

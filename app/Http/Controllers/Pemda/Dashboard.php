@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Pemda;
 use App\http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -24,6 +24,6 @@ class Dashboard extends Controller
         $data = [
             'title' => 'Dashboard'
         ];
-        return view('admin.dashboard.index',$data);
+        return view('pemda.dashboard.index',$data);
     } 
 }

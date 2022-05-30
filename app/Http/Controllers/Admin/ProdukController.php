@@ -80,8 +80,9 @@ class ProdukController extends Controller
     public function update(Request $request)
     {
         if($request->hasFile('foto_produk')){
-
+            
             $fotoproduk = $request->file('foto_produk');
+            
             foreach($fotoproduk as $file){
 
                 $filename = time().'_'. $file->getClientOriginalName();
@@ -90,11 +91,10 @@ class ProdukController extends Controller
             
             }
 
-            $produk = Produk::join('kategori_produk', 'produk.id_kategori','=','kategori_produk.id_kategori')
-            ->join('pedagang', 'produk.id_pedagang','=','pedagang.id_pedagang')
-            ->where('produk.id_produk', $request->segment(4))->get();
+            $produk = KategoriProduk::join('produk', 'kategori_produk.id_kategori', '=', 'produk.id_kategori')
+                    ->where('produk.id_produk', $request->post('id_produk'))->get();
 
-            foreach ($produk as $p) :
+            foreach($produk as $p):
                 $arr_foto = explode(',', $p->foto_produk);
             endforeach;
 
@@ -103,33 +103,36 @@ class ProdukController extends Controller
             $data = [
                 'foto_produk' => implode(',', $new_image),
             ];
+            
+            Produk::where('id_produk', $request->post('id_produk'))->where('id_pedagang', $request->session()->get('id_pedagang'))->update($data);
 
-            Produk::where('id_produk', $request->input('id_produk'))->update($data);
-
-            $data = [
-                'nama_produk' => $request->input('nama_produk'),
-                'satuan' => $request->input('satuan'),
-                'harga_jual' => str_replace(',', '', $request->post('harga_jual')),
-                'jumlah_produk' => $request->input('jumlah_produk'),
-                'deskripsi' => $request->input('deskripsi'),
-                'foto_produk' => $request->input('foto_produk'),
-                'status_produk' => $request->input('status_produk'),
-                'id_kategori' => $request->input('id_kategori'),
-                'id_pedagang' => $request->input('id_pedagang')
-            ];
-
-            Produk::where('id_produk', $request->input('id_produk'))->update($data);
-            return response()->json([
-                'pesan' => 'Berhasil Merubah Data Produk'
-            ]);
         }
+
+        $data = [
+            'nama_produk' => $request->post('nama_produk'),
+            'harga_jual' => str_replace(',', '', $request->post('harga_jual')),
+            // 'potongan_harga' => str_replace(',', '', $request->post('potongan_harga')) ,
+            'deskripsi' => $request->post('deskripsi'),
+            'jumlah_produk' => $request->post('jumlah_produk'),
+            'id_kategori' => $request->post('id_kategori'),
+            'status_produk' => $request->post('status_produk'),
+            // 'berat_produk' => str_replace(',', '', $request->post('berat_produk')),
+            'satuan' => $request->post('satuan'),
+            'id_pedagang' => $request->post('id_pedagang'),
+        ];
+
+        Produk::where('id_produk', $request->post('id_produk'))->update($data);
+
+        return response()->json([
+            'pesan' => 'Produk Berhasil Diupdate'
+        ]);
     }
 
-    public function destroy(Request $request)
-    {
+    public function destroy(Request $request){
+
         Produk::where('id_produk', $request->post('id_produk'))->delete();
         return response()->json([
-            'pesan' => 'Berhasil Menghapus Data Produk'
+            'pesan' => 'Berhasil Hapus Data Produk'
         ]);
     }
 }

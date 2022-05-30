@@ -41,7 +41,7 @@
                                     <th>No KTP</th>
                                     <th>Kendaraan</th>
                                     <th>Alamat</th>
-                                    <th>Foto STNK</th>
+                                    {{-- <th>Foto STNK</th> --}}
                                     <th>Created at</th>
                                     <th>Update at</th>
                                     <th style="width:10px;" class='notexport'>Aksi</th>
@@ -59,7 +59,7 @@
                                             <td>{{ $d->nomor_ktp }}</td>
                                             <td>{{ $d->kendaraan }}</td>
                                             <td>{{ $d->alamat_driver }}</td>
-                                            <td>{{ $d->foto_stnk }}</td>
+                                            {{-- <td>{{ $d->foto_stnk }}</td> --}}
                                             <td>{{ date('d-M-Y', strtotime($d->created_at))}}</td>
                                             <td>{{ date('d-M-Y', strtotime($d->updated_at))}}</td>
                                             <td class="text-center">

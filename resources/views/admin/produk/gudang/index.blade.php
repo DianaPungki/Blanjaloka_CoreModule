@@ -22,7 +22,7 @@
                     <div class="card-header">
                         Data Produk
                     </div>
-                    <form action="{{url('sellers/produk')}}" method="get">
+                    <form action="{{url('admin/produk/gudang')}}" method="get">
                         <div class="card-header bg-white">
                             <div class="mb-3 row">
                                 <label for="nis" class="col-sm-2 col-form-label">Kategori Pasar</label>
@@ -46,11 +46,13 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
+                                    <th>Nama Pasar</th>
+                                    <th>Nama Toko</th>
                                     <th>Nama Produk</th>
                                     <th>Harga</th>
                                     <th>Stok</th>
                                     <th>Penjualan</th>
-                                    <th style="width:10px;">Aksi</th>
+                                    {{-- <th style="width:10px;">Aksi</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,6 +62,8 @@
                                 @endphp
                                     <tr>
                                         <td style="vertical-align: middle;" class="text-center">{{ $no + 1 }}</td>
+                                        <td>{{ $p->nama_pasar }}</td>
+                                        <td>{{ $p->nama_toko }}</td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-sm-1">
@@ -80,22 +84,22 @@
                                         </td>
                                         <td style="vertical-align: middle;">
                                             @if($p->potongan_harga == 0)
-                                                Rp. {{ $p->harga }}
+                                                Rp. {{ $p->harga_jual }}
                                             @else
                                                 <del>Rp. {{$p->harga}}</del> <br>
                                                 Rp. {{$p->harga - $p->potongan_harga}} <i><small class="text-danger text-bold">(Diskon {{number_format($p->potongan_harga / $p->harga * 100, 0, '.', '')}}%)</small></i>
                                             @endif
                                         </td>
-                                        <td style="vertical-align: middle;">{{ $p->jumlah_produk.' '.ucfirst(strtolower($p->nama_satuan)) }}</td>
-                                        <td style="vertical-align: middle;">{{'0 '.ucfirst(strtolower($p->nama_satuan))}}</td>
-                                        <td class="text-center" style="vertical-align: middle;">
+                                        <td style="vertical-align: middle;">{{ $p->jumlah_produk.' '.ucfirst(strtolower($p->satuan)) }}</td>
+                                        <td style="vertical-align: middle;">{{'0 '.ucfirst(strtolower($p->satuan))}}</td>
+                                        {{-- <td class="text-center" style="vertical-align: middle;">
                                             <a href="{{ url('sellers/produk/edit/'.$p->id_produk) }}" data-toggle="tooltip" title="Lihat" data-placement="top">
                                                 <span class="badge badge-success"><i class="fas fa-edit"></i></span>
                                             </a>
                                             <a href="#" data-id_produk="{{$p->id_produk}}" data-nama_produk="{{$p->nama_produk}}" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top">
                                                 <span class="badge badge-danger"><i class="fas fa-trash"></i></span>
                                             </a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

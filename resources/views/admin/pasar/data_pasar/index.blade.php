@@ -34,7 +34,7 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
-                                    <th>Nomor Pasar</th>
+                                    {{-- <th>Nomor Pasar</th> --}}
                                     <th>Nama Pasar</th>
                                     <th>Pengelola Pasar</th>
                                     <th>Max Toko</th>
@@ -49,7 +49,7 @@
                                     @foreach ($pasar as $no=>$p)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            <td>{{$p->no_pasar}}</td>
+                                            {{-- <td>{{$p->no_pasar}}</td> --}}
                                             <td>{{ $p->nama_pasar }}</td>
                                             <td>{{ $p->nama_pengelola }}</td>
                                             <td>{{ $p->max_toko.' Toko' }}</td>

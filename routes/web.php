@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\TokoController as TokoAdmin;
 use App\Http\Controllers\Admin\GudangController as GudangAdmin;
 // Pengelola
 use App\Http\Controllers\PengelolaPasar\Dashboard as DashboardPengelola;
+use App\Http\Controllers\PengelolaPasar\TokoController as TokoPengelola;
 // Pemda
 use App\Http\Controllers\Pemda\Dashboard as DashboardPemda;
 
@@ -128,7 +129,6 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         // Data Toko
         Route::get('/', [TokoAdmin::class, 'index']);
         Route::get('/json', [TokoAdmin::class, 'datatokojson']);
-
         // jam
         Route::get('jam/{id}', [TokoAdmin::class, 'jamoperasional']);
         Route::post('jam/insert', [TokoAdmin::class, 'insertjam']);
@@ -164,6 +164,17 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
     Route::get('/', [DashboardPengelola::class, 'index']);
 
+    Route::prefix('toko')->group(function() {
+        Route::get('/', [TokoPengelola::class, 'index']);
+        Route::get('/json', [TokoAdmin::class, 'datatokojson']);
+        // jam
+        Route::get('jam/{id}', [TokoAdmin::class, 'jamoperasional']);
+        Route::post('jam/insert', [TokoAdmin::class, 'insertjam']);
+        Route::post('jam/get', [TokoAdmin::class, 'getjam']);
+        Route::post('jam/update', [TokoAdmin::class, 'updatejam']);
+        Route::post('jam/delete', [TokoAdmin::class, 'deletejam']);
+        Route::post('status', [TokoAdmin::class, 'updatestatustoko']);
+    });
     
 });
 

@@ -141,7 +141,7 @@ class AuthController extends Controller
     {
        $request->session()->flush();
        Auth::logout();
-       return Redirect('admin/login')->with('sukses','Anda Telah Logout');
+       return Redirect('/')->with('sukses','Anda Telah Logout');
     }
 
 }

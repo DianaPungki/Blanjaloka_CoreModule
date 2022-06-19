@@ -137,37 +137,7 @@
             $('[data-toggle="tooltip"]').tooltip();
 
             $('#kategoritable').DataTable({
-                "responsive":true,
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: 'Excel',
-                        className: 'btn btn-success btn-sm active',
-                        exportOptions: {
-                            columns: ':not(.notexport)'
-                        }
-
-                    },
-                    {
-                        extend: 'pdf',
-                        text: 'PDF',
-                        className: 'btn btn-sm btn-success',
-                        exportOptions: {
-                            columns: ':not(.notexport)'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        text: 'Print',
-                        className: 'btn btn-success btn-sm active',
-                        exportOptions: {
-                            columns: ':not(.notexport)'
-                        }
-
-                    },
-
-                ],
+                "responsive":true
             });
 
             // insert form

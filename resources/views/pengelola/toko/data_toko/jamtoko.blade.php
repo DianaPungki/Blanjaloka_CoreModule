@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{url('admin/toko')}}">Data Toko</a></li>
+                            <li class="breadcrumb-item"><a href="{{url('pengelola/toko')}}">Data Toko</a></li>
                             <li class="breadcrumb-item active">Jam Operasional</li>
                         </ol>
                     </div>
@@ -231,7 +231,7 @@
                 $.ajax({
                     data: $(this).serialize(),
                     type: 'POST',
-                    url:"{{url('admin/toko/jam/insert')}}",
+                    url:"{{url('pengelola/toko/jam/insert')}}",
                     success : function(data){
                         swal(data.pesan)
                         .then((result) => {
@@ -253,7 +253,7 @@
                 $.ajax({
                     data: {'id_jamtoko':$(this).data('id'), '_token': "{{csrf_token()}}"},
                     type: 'POST',
-                    url:"{{url('admin/toko/jam/get')}}",
+                    url:"{{url('pengelola/toko/jam/get')}}",
                     success : function(data){
                         $('#id_jamtoko').val(data[0].id_jamtoko);
                         $('#hari').val(data[0].hari);
@@ -276,7 +276,7 @@
                 $.ajax({
                     data: $(this).serialize(),
                     type: 'POST',
-                    url:"{{url('admin/toko/jam/update')}}",
+                    url:"{{url('pengelola/toko/jam/update')}}",
                     success : function(data){
                         swal(data.pesan)
                         .then((result) => {
@@ -301,7 +301,7 @@
                     $.ajax({
                         data: {'id_jamtoko':$(this).data('id'), '_token': "{{csrf_token()}}"},
                         type: 'POST',
-                        url:"{{url('admin/toko/jam/delete')}}",
+                        url:"{{url('pengelola/toko/jam/delete')}}",
                         success : function(data){
                             swal(data.pesan)
                             .then((result) => {

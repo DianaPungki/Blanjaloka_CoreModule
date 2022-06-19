@@ -13,20 +13,26 @@ class TokoController extends Controller
 {
     public function index()
     {
+        $pasar = Pasar::join('pengelola_pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get();
+        foreach($pasar as $p){
+            $id_pasar = $p->id_pasar;
+        }
+
         $data=[
             'title' => 'Data Toko',
-            'pasar' => Pasar::all(),
-            'toko' => Pedagang::all()
+            'pasar' => Pasar::join('pengelola_pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get(),
+            'toko' => Pedagang::join('pasar','pedagang.id_pasar','=','pasar.id_pasar')->join('pengelola_pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get(),
         ];
 
         return view('pengelola.toko.data_toko.index', $data);
     }
 
-      # get datatables toko
-      public function datatokojson(){
+    public function datatokojson(){
 
-        $query = DB::table('pedagang')->join('pasar', 'pasar.id_pasar', '=', 'pedagang.id_pasar')->orderBy('pedagang.id_pedagang', "DESC")->get();
-        return DataTables::of($query)
+        $query = Pedagang::join('pasar','pedagang.id_pasar','=','pasar.id_pasar')->join('pengelola_pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get();
+
+    return DataTables::of($query)
+
         ->addIndexColumn()
         ->addColumn('status', function($query){
             return $query->status == 'on' ? "<i class='text-primary'>Active</i>" : "<i class='text-danger'>Not-active</i>";
@@ -62,7 +68,6 @@ class TokoController extends Controller
         ->make(true);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------------------
     // jam
     public function jamoperasional(Request $request){
 

@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('admin') }}" class="brand-link">
+    <a href="{{ url('pengelola') }}" class="brand-link">
         <img src="{{ asset('assets/admin/img/blanjaloka-white.png') }}" alt="AdminLTE Logo"
             class="brand-image" style="opacity: .8">
         <span class="brand-text font-weight-light text-bold"><b>Pengelola Pasar</b></span>
@@ -39,7 +39,7 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ url('admin') }}"
+                    <a href="{{ url('pengelola') }}"
                         class="nav-link {{ $title === 'Dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -48,7 +48,7 @@
                     </a>
                 </li>
 
-                @if ($title == 'Data Toko')
+                @if ($title == 'Data Toko' || $title == 'Sewa Toko')
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                         @else
@@ -69,10 +69,17 @@
                             <p>Data Toko</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url('pengelola/sewatoko') }}"
+                            class="nav-link {{ $title === 'Sewa Toko' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sewa Toko</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
-            @if ($title == 'Data Produk' || $title == 'Kategori Produk' || $title == 'Data Gudang')
+            @if ($title == 'Data Produk' || $title == 'Kategori Produk')
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
                         @else
@@ -87,10 +94,31 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ url('admin/produk') }}"
+                        <a href="{{ url('pengelola/kategoriproduk') }}"
+                            class="nav-link {{ $title === 'Kategori Produk' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kategori Produk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('pengelola/produk') }}"
                             class="nav-link {{ $title === 'Data Produk' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Data Produk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('pengelola/stok') }}"
+                            class="nav-link {{ $title === 'Stok Gudang' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Stok Gudang</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('pengelola/penjualan') }}"
+                            class="nav-link {{ $title === 'Penjualan Produk' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Penjualan Produk</p>
                         </a>
                     </li>
                 </ul>

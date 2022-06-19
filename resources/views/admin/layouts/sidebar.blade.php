@@ -178,19 +178,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
+                        <a href="{{ url('admin/produk/kategori') }}"
+                            class="nav-link {{ $title === 'Kategori Produk' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kategori Produk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ url('admin/produk') }}"
                             class="nav-link {{ $title === 'Data Produk' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Data Produk</p>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a href="{{ url('admin/produk/gudang') }}"
-                            class="nav-link {{ $title === 'Data Gudang' ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Data Gudang</p>
-                        </a>
-                    </li> --}}
                 </ul>
                 </li>
 

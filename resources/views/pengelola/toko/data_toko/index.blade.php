@@ -23,28 +23,7 @@
                 <div class="card-header">
                     Data Toko 
                 </div>
-                <div class="card-header bg-light">
-                    <form action="#" method="get">
-                        <div class="mb-3 row">
-                            <label for="nis" class="col-sm-2 col-form-label">Pilih Pasar</label>
-                            <div class="col-sm-10">
-                                <select class="custom-select" required name="id_pasar" required>
-                                    <option selected value="">Pilih Lokasi Pasar</option>
-                                    @foreach ($pasar as $p)
-                                        <option value="{{$p->id_pasar}}">{{$p->nama_pasar}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="mt-3 mb-3 row">
-                            <label for="nis" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary btn-sm">Terapkan</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+               
                 <div class="card-body">
                     <table id="tokotable" class="table table-bordered table-hover">
                         <thead>

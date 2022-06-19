@@ -174,7 +174,7 @@ class PasarController extends Controller
 
     }
 
-       public function insertjam(Request $request){
+    public function insertjam(Request $request){
 
         $data = [
             'catatan' => $request->post('catatan'),

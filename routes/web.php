@@ -157,23 +157,48 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('delete/foto', [ProdukAdmin::class, 'update']);
 
         Route::get('gudang', [GudangAdmin::class, 'index']);
-
     });
 });
 
 Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
     Route::get('/', [DashboardPengelola::class, 'index']);
 
+     // Jam Pasar
+     Route::
+     Route::post('jam/insert', [DashboardPengelola::class, 'insertjam']);
+     Route::post('jam/get', [DashboardPengelola::class, 'getjam']);
+     Route::post('jam/update', [DashboardPengelola::class, 'updatejam']);
+     Route::post('jam/delete', [DashboardPengelola::class, 'deletejam']);
+
     Route::prefix('toko')->group(function() {
         Route::get('/', [TokoPengelola::class, 'index']);
-        Route::get('/json', [TokoAdmin::class, 'datatokojson']);
+        Route::get('/json', [TokoPengelola::class, 'datatokojson']);
         // jam
-        Route::get('jam/{id}', [TokoAdmin::class, 'jamoperasional']);
-        Route::post('jam/insert', [TokoAdmin::class, 'insertjam']);
-        Route::post('jam/get', [TokoAdmin::class, 'getjam']);
-        Route::post('jam/update', [TokoAdmin::class, 'updatejam']);
-        Route::post('jam/delete', [TokoAdmin::class, 'deletejam']);
-        Route::post('status', [TokoAdmin::class, 'updatestatustoko']);
+        Route::get('jam/{id}', [TokoPengelola::class, 'jamoperasional']);
+        Route::post('jam/insert', [TokoPengelola::class, 'insertjam']);
+        Route::post('jam/get', [TokoPengelola::class, 'getjam']);
+        Route::post('jam/update', [TokoPengelola::class, 'updatejam']);
+        Route::post('jam/delete', [TokoPengelola::class, 'deletejam']);
+        Route::post('status', [TokoPengelola::class, 'updatestatustoko']);
+    });
+
+    Route::prefix('produk')->group(function() {
+        // Kategori Produk
+        Route::get('kategori', [KategoriProdukAdmin::class, 'index']);
+        Route::post('kategori', [KategoriProdukAdmin::class, 'store']);
+        Route::post('kategori/edit', [KategoriProdukAdmin::class, 'edit']);
+        Route::put('kategori', [KategoriProdukAdmin::class, 'update']);
+        Route::delete('kategori', [KategoriProdukAdmin::class, 'destroy']);
+        
+        // Data Produk
+        Route::get('/', [ProdukAdmin::class, 'index']);
+        Route::get('add', [ProdukAdmin::class, 'create']);
+        Route::post('addhandler', [ProdukAdmin::class, 'store']);
+        Route::get('edit/{id}',[ProdukAdmin::class, 'edit']);
+        Route::post('update', [ProdukAdmin::class, 'update']);
+        Route::delete('/', [ProdukAdmin::class, 'destroy']);
+        Route::post('delete/foto', [ProdukAdmin::class, 'update']);
+
     });
     
 });

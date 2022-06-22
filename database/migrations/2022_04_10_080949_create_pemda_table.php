@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nomor_telepon');
             $table->string('email')->unique();
             $table->string('nomor_ktp');
-            // $table->string('username')->unique();
+            $table->string('username')->unique();
             $table->string('password');
             $table->unsignedBigInteger('id_produk')->nullable();
             $table->timestamps();

@@ -146,13 +146,6 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    {{-- <li class="nav-item">
-                        <a href="{{ url('admin/toko/kategori') }}"
-                            class="nav-link {{ $title === 'Kategori Toko' ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Kategori Toko</p>
-                        </a>
-                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ url('admin/toko') }}"
                             class="nav-link {{ $title === 'Data Toko' ? 'active' : '' }}">

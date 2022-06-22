@@ -47,7 +47,36 @@
                         </p>
                     </a>
                 </li>
-
+            @if ($title == 'Data Admin' || $title == 'Data Customers' || $title == 'Data Pedagang' || $title == 'Data Driver' || $title == 'Data Pemda')
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                    @else
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+            @endif
+            <i class="fas fa-users nav-icon"></i>
+            <p>
+                Modul Users
+                <i class="fas fa-angle-left right"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ url('pengelola/users/pedagang') }}"
+                        class="nav-link {{ $title === 'Data Pedagang' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Pedagang</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('pengelola/users/driver') }}"
+                        class="nav-link {{ $title === 'Data Driver' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Driver</p>
+                    </a>
+                </li>
+            </ul>
+            </li>
                 @if ($title == 'Data Toko' || $title == 'Sewa Toko')
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
@@ -94,7 +123,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ url('pengelola/kategoriproduk') }}"
+                        <a href="{{ url('pengelola/produk/kategori') }}"
                             class="nav-link {{ $title === 'Kategori Produk' ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Kategori Produk</p>

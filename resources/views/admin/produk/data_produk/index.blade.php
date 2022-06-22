@@ -33,14 +33,13 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
+                                    <th>Foto Produk</th>
                                     <th>Nama Produk</th>
                                     <th>Satuan</th>
                                     <th>Harga</th>
                                     <th>Jumlah</th>
                                     <th>Deskripsi</th>
-                                    <th>Foto Produk</th>
                                     {{-- <th>Status</th> --}}
-                                    <th>Kategori</th>
                                     <th>Pedagang</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
@@ -51,16 +50,15 @@
                                     @foreach ($produk as $no=>$p)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
+                                            <td>
+                                                <img src="{{ asset('assets/admin/foto_produk/' . $p->foto_produk) }}" alt="" width="100">
+                                            </td>
                                             <td>{{ $p->nama_produk }}</td>
                                             <td>{{ $p->satuan }}</td>
                                             <td>{{ $p->harga_jual }}</td>
                                             <td>{{ $p->jumlah_produk }}</td>
                                             <td>{{ $p->deskripsi }}</td>
-                                            <td>
-                                                <img src="{{ asset('assets/admin/foto_produk/' . $p->foto_produk) }}" alt="" width="100">
-                                            </td>
                                             {{-- <td>{{ $p->status }}</td> --}}
-                                            <td>{{ $p->id_kategori }}</td>
                                             <td>{{ $p->id_pedagang }}</td>
                                             <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>
                                             <td>{{ date('d-M-Y', strtotime($p->updated_at))}}</td>

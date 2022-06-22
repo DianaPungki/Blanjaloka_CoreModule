@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\GudangController as GudangAdmin;
 // Pengelola
 use App\Http\Controllers\PengelolaPasar\Dashboard as DashboardPengelola;
 use App\Http\Controllers\PengelolaPasar\TokoController as TokoPengelola;
+use App\Http\Controllers\PengelolaPasar\KategoriProdukController as KategoriProdukPengelola;
+use App\Http\Controllers\PengelolaPasar\PedagangController as PedagangPengelola;
 // Pemda
 use App\Http\Controllers\Pemda\Dashboard as DashboardPemda;
 
@@ -164,11 +166,28 @@ Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
     Route::get('/', [DashboardPengelola::class, 'index']);
 
      // Jam Pasar
-     Route::
-     Route::post('jam/insert', [DashboardPengelola::class, 'insertjam']);
-     Route::post('jam/get', [DashboardPengelola::class, 'getjam']);
-     Route::post('jam/update', [DashboardPengelola::class, 'updatejam']);
-     Route::post('jam/delete', [DashboardPengelola::class, 'deletejam']);
+    Route::prefix('jam')->group(function() {
+         Route::post('insert', [DashboardPengelola::class, 'insertjam']);
+         Route::post('get', [DashboardPengelola::class, 'getjam']);
+         Route::post('update', [DashboardPengelola::class, 'updatejam']);
+         Route::post('delete', [DashboardPengelola::class, 'deletejam']);
+    });
+
+    Route::prefix('users')->group(function() {
+        // Data Pedagang
+        Route::get('pedagang', [PedagangPengelola::class, 'index']);
+        Route::post('pedagang', [PedagangPengelola::class, 'store']);
+        Route::post('pedagang/edit', [PedagangPengelola::class, 'edit']);
+        Route::post('pedagang/update', [PedagangPengelola::class, 'update']);
+        Route::delete('pedagang', [PedagangPengelola::class, 'destroy']);
+
+        // Data Driver
+        Route::get('driver', [DriverAdmin::class, 'index']);
+        Route::post('driver', [DriverAdmin::class, 'store']);
+        Route::post('driver/edit', [DriverAdmin::class, 'edit']);
+        Route::put('driver', [DriverAdmin::class, 'update']);
+        Route::delete('driver', [DriverAdmin::class, 'destroy']);
+    });
 
     Route::prefix('toko')->group(function() {
         Route::get('/', [TokoPengelola::class, 'index']);
@@ -184,11 +203,11 @@ Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
 
     Route::prefix('produk')->group(function() {
         // Kategori Produk
-        Route::get('kategori', [KategoriProdukAdmin::class, 'index']);
-        Route::post('kategori', [KategoriProdukAdmin::class, 'store']);
-        Route::post('kategori/edit', [KategoriProdukAdmin::class, 'edit']);
-        Route::put('kategori', [KategoriProdukAdmin::class, 'update']);
-        Route::delete('kategori', [KategoriProdukAdmin::class, 'destroy']);
+        Route::get('kategori', [KategoriProdukPengelola::class, 'index']);
+        Route::post('kategori', [KategoriProdukPengelola::class, 'store']);
+        Route::post('kategori/edit', [KategoriProdukPengelola::class, 'edit']);
+        Route::put('kategori', [KategoriProdukPengelola::class, 'update']);
+        Route::delete('kategori', [KategoriProdukPengelola::class, 'destroy']);
         
         // Data Produk
         Route::get('/', [ProdukAdmin::class, 'index']);

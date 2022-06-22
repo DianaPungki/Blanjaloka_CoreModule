@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('satuan');
             $table->integer('harga_jual');
             $table->bigInteger('jumlah_produk');
-            $table->text('deskripsi');
+            $table->text('deskripsi_produk');
             $table->string('foto_produk', 500);
             $table->string('status_produk');
             $table->unsignedBigInteger('id_kategori');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->foreign('id_pedagang')->references('id_pedagang')->on('pedagang')
             ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->foreign('id_kategori')->references('id_kategori')->on('kategori_produk')
+            $table->foreign('id_kategori')->references('id_kategori')->on('produk_kategori')
             ->onUpdate('cascade')->onDelete('cascade');
         });
     }

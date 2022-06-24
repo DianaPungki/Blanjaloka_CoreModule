@@ -22,7 +22,7 @@ class Produk extends Model
         'satuan',
         'harga_jual',
         'jumlah_produk',
-        'deskripsi',
+        'deskripsi_produk',
         'foto_produk',
         'status_produk',
         'id_kategori',

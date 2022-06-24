@@ -88,7 +88,7 @@
                         <div class="mb-3 row">
                             <label for="nis" class="col-sm-2 col-form-label">Deskripsi</label>
                             <div class="col-sm-10">
-                                <textarea name="deskripsi" class="form-control" cols="8" rows="8" required placeholder="Tuliskan Deskripsi Produk"></textarea>
+                                <textarea name="deskripsi_produk" class="form-control" cols="8" rows="8" required placeholder="Tuliskan _produk Produk"></textarea>
                             </div>
                         </div>
 

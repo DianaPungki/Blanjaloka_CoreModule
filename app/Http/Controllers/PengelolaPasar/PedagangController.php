@@ -13,7 +13,9 @@ class PedagangController extends Controller
     {
         $data = [
             'title' => 'Data Pedagang',
-            'pedagang' =>Pedagang::join('pasar', 'pedagang.id_pasar', '=', 'pasar.id_pasar')->get(),
+            'pedagang' => Pasar::join('pengelola_pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')
+                            ->join('pedagang', 'pasar.id_pasar','=','pedagang.id_pasar')
+                            ->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get(),
             'pasar' => Pasar::all()
         ];
         return view('pengelola.users.pedagang.index',$data);
@@ -106,6 +108,28 @@ class PedagangController extends Controller
         Pedagang::where('id_pedagang', $request->post('id_pedagang'))->delete();
         return response()->json([
             'pesan' => 'Berhasil Menghapus Data Pedagang'
+        ]);
+    }
+
+    public function nonaktif(Request $request)
+    {
+        $data = [
+            'status' => 'off'
+        ];
+        Pedagang::where('id_pedagang',$request->post('id_pedagang'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Nonaktifkan Akun Pedagang'
+        ]);
+    }
+
+    public function aktif(Request $request)
+    {
+        $data = [
+            'status' => 'on'
+        ];
+        Pedagang::where('id_pedagang',$request->post('id_pedagang'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Aktifkan Akun Pedagang'
         ]);
     }
 }

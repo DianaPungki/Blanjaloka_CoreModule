@@ -69,10 +69,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('pengelola/users/driver') }}"
-                        class="nav-link {{ $title === 'Data Driver' ? 'active' : '' }}">
+                    <a href="{{ url('pengelola/users/customer') }}"
+                        class="nav-link {{ $title === 'Data Customer' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Driver</p>
+                        <p>Customer</p>
                     </a>
                 </li>
             </ul>

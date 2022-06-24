@@ -130,7 +130,7 @@
         </div>
     </div>
 
-     <script>
+    <script>
         $(document).ready(function() {
             $('.spinner').hide();
 

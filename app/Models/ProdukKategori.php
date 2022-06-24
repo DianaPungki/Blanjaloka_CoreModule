@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KategoriProduk extends Model
+class ProdukKategori extends Model
 {
     use HasFactory;
     
     protected $primaryKey = 'id_kategori';
-    public $table = "kategori_produk";
+    public $table = "produk_kategori";
 
     /**
      * The attributes that are mass assignable.

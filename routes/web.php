@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\PengelolaPasarController as PengelolaPasarAdmin;
 use App\Http\Controllers\Admin\PemdaController as PemdaAdmin;
 use App\Http\Controllers\Admin\PedagangController as PedagangAdmin;
 use App\Http\Controllers\Admin\DriverController as DriverAdmin;
-use App\Http\Controllers\Admin\KategoriProdukController as KategoriProdukAdmin;
+use App\Http\Controllers\Admin\ProdukKategoriController as ProdukKategoriAdmin;
 use App\Http\Controllers\Admin\ProdukController as ProdukAdmin;
 use App\Http\Controllers\Admin\PasarController as PasarAdmin;
 use App\Http\Controllers\Admin\TokoController as TokoAdmin;
@@ -17,8 +17,9 @@ use App\Http\Controllers\Admin\GudangController as GudangAdmin;
 // Pengelola
 use App\Http\Controllers\PengelolaPasar\Dashboard as DashboardPengelola;
 use App\Http\Controllers\PengelolaPasar\TokoController as TokoPengelola;
-use App\Http\Controllers\PengelolaPasar\KategoriProdukController as KategoriProdukPengelola;
+use App\Http\Controllers\PengelolaPasar\ProdukKategoriController as ProdukKategoriPengelola;
 use App\Http\Controllers\PengelolaPasar\PedagangController as PedagangPengelola;
+use App\Http\Controllers\PengelolaPasar\ProdukController as ProdukPengelola;
 // Pemda
 use App\Http\Controllers\Pemda\Dashboard as DashboardPemda;
 
@@ -143,11 +144,11 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 
     Route::prefix('produk')->group(function() {
         // Kategori Produk
-        Route::get('kategori', [KategoriProdukAdmin::class, 'index']);
-        Route::post('kategori', [KategoriProdukAdmin::class, 'store']);
-        Route::post('kategori/edit', [KategoriProdukAdmin::class, 'edit']);
-        Route::put('kategori', [KategoriProdukAdmin::class, 'update']);
-        Route::delete('kategori', [KategoriProdukAdmin::class, 'destroy']);
+        Route::get('kategori', [ProdukKategoriAdmin::class, 'index']);
+        Route::post('kategori', [ProdukKategoriAdmin::class, 'store']);
+        Route::post('kategori/edit', [ProdukKategoriAdmin::class, 'edit']);
+        Route::put('kategori', [ProdukKategoriAdmin::class, 'update']);
+        Route::delete('kategori', [ProdukKategoriAdmin::class, 'destroy']);
         
         // Data Produk
         Route::get('/', [ProdukAdmin::class, 'index']);
@@ -180,6 +181,8 @@ Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
         Route::post('pedagang/edit', [PedagangPengelola::class, 'edit']);
         Route::post('pedagang/update', [PedagangPengelola::class, 'update']);
         Route::delete('pedagang', [PedagangPengelola::class, 'destroy']);
+        Route::put('pedagang/nonaktif', [PedagangPengelola::class, 'nonaktif']);
+        Route::put('pedagang/aktif', [PedagangPengelola::class, 'aktif']);
 
         // Data Driver
         Route::get('driver', [DriverAdmin::class, 'index']);
@@ -203,20 +206,23 @@ Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
 
     Route::prefix('produk')->group(function() {
         // Kategori Produk
-        Route::get('kategori', [KategoriProdukPengelola::class, 'index']);
-        Route::post('kategori', [KategoriProdukPengelola::class, 'store']);
-        Route::post('kategori/edit', [KategoriProdukPengelola::class, 'edit']);
-        Route::put('kategori', [KategoriProdukPengelola::class, 'update']);
-        Route::delete('kategori', [KategoriProdukPengelola::class, 'destroy']);
+        Route::get('kategori', [ProdukKategoriPengelola::class, 'index']);
+        Route::post('kategori', [ProdukKategoriPengelola::class, 'store']);
+        Route::post('kategori/edit', [ProdukKategoriPengelola::class, 'edit']);
+        Route::put('kategori', [ProdukKategoriPengelola::class, 'update']);
+        Route::delete('kategori', [ProdukKategoriPengelola::class, 'destroy']);
         
         // Data Produk
-        Route::get('/', [ProdukAdmin::class, 'index']);
-        Route::get('add', [ProdukAdmin::class, 'create']);
-        Route::post('addhandler', [ProdukAdmin::class, 'store']);
-        Route::get('edit/{id}',[ProdukAdmin::class, 'edit']);
-        Route::post('update', [ProdukAdmin::class, 'update']);
-        Route::delete('/', [ProdukAdmin::class, 'destroy']);
-        Route::post('delete/foto', [ProdukAdmin::class, 'update']);
+        Route::get('/', [ProdukPengelola::class, 'index']);
+        Route::get('add', [ProdukPengelola::class, 'create']);
+        Route::post('addhandler', [ProdukPengelola::class, 'store']);
+        Route::get('edit/{id}',[ProdukPengelola::class, 'edit']);
+        Route::post('update', [ProdukPengelola::class, 'update']);
+        Route::delete('/', [ProdukPengelola::class, 'destroy']);
+        Route::post('delete/foto', [ProdukPengelola::class, 'update']);
+
+        Route::put('/nonaktif', [ProdukPengelola::class, 'nonaktif']);
+        Route::put('/aktif', [ProdukPengelola::class, 'aktif']);
 
     });
     

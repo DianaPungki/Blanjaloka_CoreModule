@@ -23,9 +23,9 @@
                     <div class="card-header">
                        Data Pedagang
 
-                        <div class="float-right d-none d-sm-inline-block">
+                        {{-- <div class="float-right d-none d-sm-inline-block">
                             <a href="#" data-toggle="modal" data-target="#addmodal" class="btn btn-primary btn-sm">Tambah</a>
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="card-body">
@@ -43,7 +43,7 @@
                                     <th>Nama Pasar</th>
                                     <th>Nama Toko</th>
                                     <th>Alamat Toko</th>
-                                    {{-- <th>Status</th> --}}
+                                    <th>Status</th>
                                     <th style="width:10px;" class='notexport'>Aksi</th>
                                     <th>Bank</th>
                                     <th>No Rekening</th>
@@ -65,11 +65,25 @@
                                             <td>{{ $p->nama_pasar }}</td>
                                             <td>{{ $p->nama_toko }}</td>
                                             <td>{{ $p->alamat_toko }}</td>
-                                            {{-- <td>{{ $p->status }}</td> --}}
-                                            <td class="text-center">
+                                            <td>
+                                                @if ($p->status == "on")
+                                                <i class='text-primary'>Active</i>
+                                                @elseif ($p->status == "off")
+                                                <i class='text-danger'>Non Aktif</i>
+                                                @endif
+                                            </td>
+                                            {{-- <td class="text-center">
                                                 <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
                                                 <a href="#" data-id="<?= $p->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
-                                            </td>                                            
+                                            </td>                                             
+                                            --}}
+                                            <td class="text-center">
+                                                @if ($p->status == "on")   
+                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="editnon" data-toggle="tooltip" title="Non Aktifkan Pedagang" data-placement="top"><span class="badge badge-danger">Non Aktif</span></a>
+                                                @elseif ($p->status == "off")
+                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edita" data-toggle="tooltip" title="Aktifkan Pedagang" data-placement="top"><span class="badge badge-primary">Aktifkan</span></a>
+                                                @endif
+                                            </td>
                                             <td>{{ $p->bank }}</td>
                                             <td>{{ $p->no_rekening }}</td>
                                             <td>
@@ -513,6 +527,54 @@
                         data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
                         type: 'DELETE',
                         url:"{{url('admin/users/pedagang')}}",
+                        success : function(data){
+                            swal(data.pesan)
+                            .then((result) => {
+                                location.reload();
+                            });
+                        },
+                        error : function(err){
+                            alert(err);
+                            console.log(err);
+                        }
+                    });
+                }
+            });
+
+            $('.editnon').click(function(e){
+                e.preventDefault();
+                var confirmed = confirm('Non Aktifkan Akun pedagang Ini ?');
+
+                if(confirmed) {
+
+                    $.ajax({
+                        data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                        type: 'PUT',
+                        url:"{{url('pengelola/users/pedagang/nonaktif')}}",
+                        success : function(data){
+                            swal(data.pesan)
+                            .then((result) => {
+                                location.reload();
+                            });
+                        },
+                        error : function(err){
+                            alert(err);
+                            console.log(err);
+                        }
+                    });
+                }
+            });
+
+            $('.edita').click(function(e){
+                e.preventDefault();
+                var confirmed = confirm('Aktifkan Akun pedagang Ini ?');
+
+                if(confirmed) {
+
+                    $.ajax({
+                        data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                        type: 'PUT',
+                        url:"{{url('pengelola/users/pedagang/aktif')}}",
                         success : function(data){
                             swal(data.pesan)
                             .then((result) => {

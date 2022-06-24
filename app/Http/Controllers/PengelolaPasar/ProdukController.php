@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\PengelolaPasar;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProdukKategori;
@@ -16,7 +16,7 @@ class ProdukController extends Controller
             'title' => 'Data Produk',
             'produk' => Produk::all()
         ];
-        return view('admin.produk.data_produk.index',$data);
+        return view('pengelola.produk.data_produk.index',$data);
    }
 
    public function create()
@@ -26,7 +26,7 @@ class ProdukController extends Controller
            'pedagang' => Pedagang::all(),
            'kategori' => ProdukKategori::all()
        ];
-       return view('admin.produk.data_produk.add',$data);
+       return view('pengelola.produk.data_produk.add',$data);
    }
 
     public function store(Request $request)
@@ -67,7 +67,7 @@ class ProdukController extends Controller
     {
         $data = [
             'title' => 'Data Produk',
-            'produk' => Produk::join('produk_kategori', 'produk.id_kategori','=','produk_kategori.id_kategori')
+            'produk' => Produk::join('kategori_produk', 'produk.id_kategori','=','kategori_produk.id_kategori')
                         ->join('pedagang', 'produk.id_pedagang','=','pedagang.id_pedagang')
                         ->where('produk.id_produk', $request->segment(4))->get(),
             'kategori' => ProdukKategori::all(),
@@ -91,7 +91,7 @@ class ProdukController extends Controller
             
             }
 
-            $produk = ProdukKategori::join('produk', 'produk_kategori.id_kategori', '=', 'produk.id_kategori')
+            $produk = ProdukKategori::join('produk', 'kategori_produk.id_kategori', '=', 'produk.id_kategori')
                     ->where('produk.id_produk', $request->post('id_produk'))->get();
 
             foreach($produk as $p):
@@ -133,6 +133,28 @@ class ProdukController extends Controller
         Produk::where('id_produk', $request->post('id_produk'))->delete();
         return response()->json([
             'pesan' => 'Berhasil Hapus Data Produk'
+        ]);
+    }
+
+    public function nonaktif(Request $request)
+    {
+        $data = [
+            'status_produk' => 'off'
+        ];
+        Pedagang::where('id_produk',$request->post('id_produk'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Nonaktifkan Produk'
+        ]);
+    }
+
+    public function aktif(Request $request)
+    {
+        $data = [
+            'status_produk' => 'on'
+        ];
+        Pedagang::where('id_produk',$request->post('id_produk'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Aktifkan Produk'
         ]);
     }
 }

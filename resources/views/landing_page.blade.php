@@ -194,6 +194,7 @@
   <main>
     <a href="{{ route('login_admin') }}">Admin</a>
     <a href="{{ route('login_pengelolapasar') }}">Pengelola Pasar</a>
+    {{-- <a href="{{ route('login_pedagang') }}">Pedagang</a> --}}
     <a href="{{ route('login_pemda') }}">Pemda</a>
 
     

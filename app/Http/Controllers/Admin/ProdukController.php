@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProdukKategori;
 use App\Models\Pedagang;
+use App\Models\PengelolaPasar;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class ProdukController extends Controller
     {
         $data = [
             'title' => 'Data Produk',
-            'produk' => Produk::all()
+            'produk' => PengelolaPasar::join('pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')
+                        ->join('pedagang','pedagang.id_pasar','=','pasar.id_pasar')
+                        ->join('produk','produk.id_pedagang','=','pedagang.id_pedagang')->get(),
         ];
         return view('admin.produk.data_produk.index',$data);
    }
@@ -133,6 +136,28 @@ class ProdukController extends Controller
         Produk::where('id_produk', $request->post('id_produk'))->delete();
         return response()->json([
             'pesan' => 'Berhasil Hapus Data Produk'
+        ]);
+    }
+
+    public function nonaktif(Request $request)
+    {
+        $data = [
+            'status_produk' => 'off'
+        ];
+        Produk::where('id_produk',$request->post('id_produk'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Nonaktifkan Produk'
+        ]);
+    }
+
+    public function aktif(Request $request)
+    {
+        $data = [
+            'status_produk' => 'on'
+        ];
+        Produk::where('id_produk',$request->post('id_produk'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Aktifkan Produk'
         ]);
     }
 }

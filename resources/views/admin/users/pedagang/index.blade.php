@@ -39,17 +39,17 @@
                                     <th>No Telp</th>
                                     <th>No KTP</th>
                                     <th>Tanggal Lahir</th>
-                                    <th>Alamat Pedagang</th>
                                     <th>Nama Pasar</th>
                                     <th>Nama Toko</th>
-                                    <th>Alamat Toko</th>
                                     {{-- <th>Status</th> --}}
                                     <th style="width:10px;" class='notexport'>Aksi</th>
-                                    <th>Bank</th>
-                                    <th>No Rekening</th>
-                                    <th>Foto Rekening</th>
-                                    <th>Created at</th>
-                                    <th>Update at</th>
+                                    <th class="none">Alamat Pedagang</th>
+                                    <th class="none">Alamat Toko</th>
+                                    <th class="none">Bank</th>
+                                    <th class="none">No Rekening</th>
+                                    <th class="none">Foto Rekening</th>
+                                    <th class="none">Created at</th>
+                                    <th class="none">Update at</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,15 +61,15 @@
                                             <td>{{ $p->nomor_telepon }}</td>
                                             <td>{{ $p->nomor_ktp }}</td>
                                             <td>{{ $p->tanggal_lahir }}</td>
-                                            <td>{{ $p->alamat_pedagang }}</td>
                                             <td>{{ $p->nama_pasar }}</td>
                                             <td>{{ $p->nama_toko }}</td>
-                                            <td>{{ $p->alamat_toko }}</td>
                                             {{-- <td>{{ $p->status }}</td> --}}
                                             <td class="text-center">
                                                 <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
                                                 <a href="#" data-id="<?= $p->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>                                            
+                                            <td>{{ $p->alamat_pedagang }}</td>
+                                            <td>{{ $p->alamat_toko }}</td>
                                             <td>{{ $p->bank }}</td>
                                             <td>{{ $p->no_rekening }}</td>
                                             <td>

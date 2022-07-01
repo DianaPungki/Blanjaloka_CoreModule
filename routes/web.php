@@ -138,7 +138,8 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('jam/get', [TokoAdmin::class, 'getjam']);
         Route::post('jam/update', [TokoAdmin::class, 'updatejam']);
         Route::post('jam/delete', [TokoAdmin::class, 'deletejam']);
-        Route::post('status', [TokoAdmin::class, 'updatestatustoko']);
+        Route::put('status/nonaktif', [TokoAdmin::class, 'nonaktif']);
+        Route::put('status/aktif', [TokoAdmin::class, 'aktif']);
 
     });
 
@@ -158,6 +159,8 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::post('update', [ProdukAdmin::class, 'update']);
         Route::delete('/', [ProdukAdmin::class, 'destroy']);
         Route::post('delete/foto', [ProdukAdmin::class, 'update']);
+        Route::put('status/nonaktif', [ProdukAdmin::class, 'nonaktif']);
+        Route::put('status/aktif', [ProdukAdmin::class, 'aktif']);
 
         Route::get('gudang', [GudangAdmin::class, 'index']);
     });
@@ -221,8 +224,8 @@ Route::middleware('auth:pengelola')->prefix('pengelola')->group(function() {
         Route::delete('/', [ProdukPengelola::class, 'destroy']);
         Route::post('delete/foto', [ProdukPengelola::class, 'update']);
 
-        Route::put('/nonaktif', [ProdukPengelola::class, 'nonaktif']);
-        Route::put('/aktif', [ProdukPengelola::class, 'aktif']);
+        Route::put('status/nonaktif', [ProdukPengelola::class, 'nonaktif']);
+        Route::put('status/aktif', [ProdukPengelola::class, 'aktif']);
 
     });
     

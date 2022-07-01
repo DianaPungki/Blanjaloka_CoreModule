@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\PengelolaPasar;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pasar;
 use App\Models\ProdukKategori;
 use App\Models\Pedagang;
+use App\Models\PengelolaPasar;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,9 @@ class ProdukController extends Controller
     {
         $data = [
             'title' => 'Data Produk',
-            'produk' => Produk::all()
+            'produk' => PengelolaPasar::join('pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')
+                        ->join('pedagang','pedagang.id_pasar','=','pasar.id_pasar')
+                        ->join('produk','produk.id_pedagang','=','pedagang.id_pedagang')->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get(),
         ];
         return view('pengelola.produk.data_produk.index',$data);
    }
@@ -67,9 +71,7 @@ class ProdukController extends Controller
     {
         $data = [
             'title' => 'Data Produk',
-            'produk' => Produk::join('kategori_produk', 'produk.id_kategori','=','kategori_produk.id_kategori')
-                        ->join('pedagang', 'produk.id_pedagang','=','pedagang.id_pedagang')
-                        ->where('produk.id_produk', $request->segment(4))->get(),
+            'produk' => Pasar::join('pengelola_pasar','pasar.id_pengelola','=','pengelola_pasar.id_pengelola')->join('pedagang','pedagang.id_pasar','=','pasar.id_pasar')->where('pengelola_pasar.id_pengelola','=',auth()->user()->id_pengelola)->get(),
             'kategori' => ProdukKategori::all(),
             'pedagang' => Pedagang::all()
         ];
@@ -141,7 +143,7 @@ class ProdukController extends Controller
         $data = [
             'status_produk' => 'off'
         ];
-        Pedagang::where('id_produk',$request->post('id_produk'))->update($data);
+        Produk::where('id_produk',$request->post('id_produk'))->update($data);
         return response()->json([
             'pesan' => 'Berhasil Nonaktifkan Produk'
         ]);
@@ -152,7 +154,7 @@ class ProdukController extends Controller
         $data = [
             'status_produk' => 'on'
         ];
-        Pedagang::where('id_produk',$request->post('id_produk'))->update($data);
+        Produk::where('id_produk',$request->post('id_produk'))->update($data);
         return response()->json([
             'pesan' => 'Berhasil Aktifkan Produk'
         ]);

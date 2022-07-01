@@ -39,59 +39,55 @@
                                     <th>No Telp</th>
                                     <th>No KTP</th>
                                     <th>Tanggal Lahir</th>
-                                    <th>Alamat Pedagang</th>
                                     <th>Nama Pasar</th>
                                     <th>Nama Toko</th>
-                                    <th>Alamat Toko</th>
                                     <th>Status</th>
                                     <th style="width:10px;" class='notexport'>Aksi</th>
-                                    <th>Bank</th>
-                                    <th>No Rekening</th>
-                                    <th>Foto Rekening</th>
-                                    <th>Created at</th>
-                                    <th>Update at</th>
+                                    <th class="none">Alamat Pedagang</th>
+                                    <th class="none">Alamat Toko</th>
+                                    <th class="none">Bank</th>
+                                    <th class="none">No Rekening</th>
+                                    <th class="none">Foto Rekening</th>
+                                    <th class="none">Created at</th>
+                                    <th class="none">Update at</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($pedagang as $no=>$p)
-                                        <tr>
-                                            <td>{{ $no + 1 }}</td>
-                                            <td>{{ $p->nama_pedagang }}</td>
-                                            <td>{{ $p->email }}</td>
-                                            <td>{{ $p->nomor_telepon }}</td>
-                                            <td>{{ $p->nomor_ktp }}</td>
-                                            <td>{{ $p->tanggal_lahir }}</td>
-                                            <td>{{ $p->alamat_pedagang }}</td>
-                                            <td>{{ $p->nama_pasar }}</td>
-                                            <td>{{ $p->nama_toko }}</td>
-                                            <td>{{ $p->alamat_toko }}</td>
-                                            <td>
-                                                @if ($p->status == "on")
+                                    <tr>
+                                        <td>{{ $no + 1 }}</td>
+                                        {{-- <td>{{ $p->username }}</td> --}}
+                                        <td>{{ $p->nama_pedagang }}</td>
+                                        <td>{{ $p->email }}</td>
+                                        <td>{{ $p->nomor_telepon }}</td>
+                                        <td>{{ $p->nomor_ktp }}</td>
+                                        <td>{{ $p->tanggal_lahir }}</td>
+                                        <td>{{ $p->nama_pasar }}</td>
+                                        <td>{{ $p->nama_toko }}</td>
+                                        <td>
+                                            @if ($p->status == "on")
                                                 <i class='text-primary'>Active</i>
-                                                @elseif ($p->status == "off")
-                                                <i class='text-danger'>Non Aktif</i>
-                                                @endif
+                                            @elseif ($p->status == "off")
+                                                <i class='text-danger'>Not Active</i>
+                                            @endif
                                             </td>
-                                            {{-- <td class="text-center">
-                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
-                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
-                                            </td>                                             
-                                            --}}
-                                            <td class="text-center">
-                                                @if ($p->status == "on")   
-                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="editnon" data-toggle="tooltip" title="Non Aktifkan Pedagang" data-placement="top"><span class="badge badge-danger">Non Aktif</span></a>
-                                                @elseif ($p->status == "off")
-                                                <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edita" data-toggle="tooltip" title="Aktifkan Pedagang" data-placement="top"><span class="badge badge-primary">Aktifkan</span></a>
-                                                @endif
-                                            </td>
-                                            <td>{{ $p->bank }}</td>
-                                            <td>{{ $p->no_rekening }}</td>
-                                            <td>
-                                                <img src="{{ asset('assets/admin/pedagang/foto_rekening/' . $p->foto_rekening) }}" alt="" width="50px">
-                                            </td>
-                                            <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($p->updated_at))}}</td>
-                                        </tr>
+                                        <td class="text-center">
+                                            @if ($p->status == "on")   
+                                               <a href="#" data-id="<?= $p->id_pedagang; ?>" class="editnon" data-toggle="tooltip" title="Non Aktifkan Pedagang" data-placement="top"><span class="badge badge-danger"><i class="fas fa-times"></i></span></a>
+                                            @elseif ($p->status == "off")
+                                               <a href="#" data-id="<?= $p->id_pedagang; ?>" class="edita" data-toggle="tooltip" title="Aktifkan Pedagang" data-placement="top"><span class="badge badge-primary"><i class="fas fa-check-double"></i></span></a>
+                                            @endif
+                                        </td>
+                                        <td>{{ $p->alamat_pedagang }}</td>
+                                        <td>{{ $p->alamat_toko }}</td>
+                                        <td>{{ $p->bank }}</td>
+                                        <td>{{ $p->no_rekening }}</td>
+                                        <td>
+                                            <img src="{{ asset('assets/admin/pedagang/foto_rekening/' . $p->foto_rekening) }}" alt="" width="50px">
+                                        </td>
+                                        <td>{{ date('d-M-Y', strtotime($p->created_at))}}</td>
+                                        <td>{{ date('d-M-Y', strtotime($p->updated_at))}}</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                         </table>

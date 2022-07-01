@@ -33,33 +33,33 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px;">No</th>
-                                    {{-- <th>Username</th> --}}
+                                    <th>Username</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>No Telp</th>
                                     <th>No KTP</th>
                                     <th>Alamat</th>
-                                    <th>Created at</th>
-                                    <th>Update at</th>
-                                    <th style="width:10px;" class='notexport'>Aksi</th>
+                                    <th style="width:60px;" class='notexport'>Aksi</th>
+                                    <th class="none">Created at</th>
+                                    <th class="none">Update at</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($pemda as $no=>$c)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            {{-- <td>{{ $c->username }}</td> --}}
+                                            <td>{{ $c->username }}</td>
                                             <td>{{ $c->nama_pemda }}</td>
                                             <td>{{ $c->email }}</td>
                                             <td>{{ $c->nomor_telepon }}</td>
                                             <td>{{ $c->nomor_ktp }}</td>
                                             <td>{{ $c->alamat_pemda }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
                                             <td class="text-center">
                                                 <a href="#" data-id="<?= $c->id_pemda; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
                                                 <a href="#" data-id="<?= $c->id_pemda; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>
+                                            <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -85,12 +85,12 @@
         <form id="tambahform">
             @csrf
             <div class="modal-body">
-                {{-- <div class="mb-3 row">
+                <div class="mb-3 row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
-                </div>   --}}
+                </div>  
                
                 <div class="mb-3 row">
                     <label for="nama_pemda" class="col-sm-2 col-form-label">Nama</label>
@@ -161,12 +161,12 @@
                 @csrf
                 <input type="hidden" name="id_pemda" id="id_pemda">
                 <div class="modal-body">
-                    {{-- <div class="mb-3 row">
+                    <div class="mb-3 row">
                         <label for="username" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
                         </div>
-                    </div>   --}}
+                    </div>  
                     
                     <div class="mb-3 row">
                         <label for="nama_pemda" class="col-sm-2 col-form-label">Nama</label>

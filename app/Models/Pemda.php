@@ -21,10 +21,14 @@ class Pemda extends  Authenticatable
      * @var array
      */
     protected $fillable = [
-        // 'username',
-        'nama_pemda','nomor_telepon',
-        'email','alamat_pemda','password',
-        'nomor_ktp','id_produk'
+        'username',
+        'nama_pemda',
+        'nomor_telepon',
+        'email',
+        'alamat_pemda',
+        'password',
+        'nomor_ktp',
+        'id_produk'
     ];
 
     /**

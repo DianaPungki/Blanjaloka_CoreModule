@@ -38,9 +38,9 @@ class TokoController extends Controller
             return $query->status == 'on' ? "<i class='text-primary'>Active</i>" : "<i class='text-danger'>Not-active</i>";
         })
         ->addColumn('total_produk', function($query){
-
+            $query = count(DB::table('produk')->where('id_pedagang', $query->id_pedagang)->get()).' Produk';
             # Belum Berfungsi
-            return '23 Produk';
+            return $query;
 
         })
         ->addColumn('action', function($query){
@@ -78,7 +78,7 @@ class TokoController extends Controller
             'id_pedagang' => $request->segment(4)
         ];
 
-        return view('pengelola/toko/data_toko/jamtoko', $data);
+        return view('pengelola.toko.data_toko.jamtoko', $data);
 
     }
 

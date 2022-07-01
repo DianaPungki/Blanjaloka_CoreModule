@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -41,6 +41,7 @@ class AuthController extends Controller
     {
             $this->middleware('guest')->except('logout');
             $this->middleware('guest:admin')->except('logout');
+            $this->middleware('guest:pengelola')->except('logout');
             $this->middleware('guest:pemda')->except('logout');
     }
 

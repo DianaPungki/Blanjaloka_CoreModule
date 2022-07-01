@@ -5,21 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pasar;
 use App\Models\Pedagang;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class TokoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data=[
-            'title' => 'Data Toko',
-            'pasar' => Pasar::all(),
-            'toko' => Pedagang::all()
-        ];
+        if(isset($request->id_pasar)){
+            $data=[
+                'title' => 'Data Toko',
+                'pasar' => Pasar::all(),
+                'toko' => Pasar::join('pedagang','pedagang.id_pasar','pasar.id_pasar')
+                                    ->where('pasar.id_pasar',$request->id_pasar)->get()
+            ];
 
-        return view('admin.toko.data_toko.index', $data);
+            return view('admin.toko.data_toko.index', $data);
+
+        }else{
+            $data=[
+                'title' => 'Data Toko',
+                'pasar' => Pasar::all(),
+                'toko' => Pedagang::join('pasar','pedagang.id_pasar','pasar.id_pasar')->get()
+            ];
+
+            return view('admin.toko.data_toko.index', $data);
+
+        }
+        
     }
 
       # get datatables toko
@@ -32,8 +47,7 @@ class TokoController extends Controller
             return $query->status == 'on' ? "<i class='text-primary'>Active</i>" : "<i class='text-danger'>Not-active</i>";
         })
         ->addColumn('total_produk', function($query){
-
-            # Belum Berfungsi
+            // $id_pedagang = count(DB::table('produk'))->get();
             return '23 Produk';
 
         })
@@ -126,10 +140,25 @@ class TokoController extends Controller
     }
 
     // ------------------------------------------------------------------------------
-    public function updatestatustoko(Request $request){
-        DB::table('pedagang')->where('id_pedagang', $request->post('id_pedagang'))->update(['status'=>$request->post('status')]);
+    public function nonaktif(Request $request)
+    {
+        $data = [
+            'status' => 'off'
+        ];
+        Pedagang::where('id_pedagang',$request->post('id_pedagang'))->update($data);
         return response()->json([
-            'pesan' => 'Berhasil Update Status Toko'
+            'pesan' => 'Berhasil Nonaktifkan Pedagang'
+        ]);
+    }
+
+    public function aktif(Request $request)
+    {
+        $data = [
+            'status' => 'on'
+        ];
+        Pedagang::where('id_pedagang',$request->post('id_pedagang'))->update($data);
+        return response()->json([
+            'pesan' => 'Berhasil Aktifkan Pedagang'
         ]);
     }
 }

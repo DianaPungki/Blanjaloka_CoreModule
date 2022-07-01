@@ -101,7 +101,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('assets/admin/img/blanjaloka.png') }}" alt="AdminLTELogo" height="60" width="180">
+    <img class="animation__shake" src="{{ asset('assets/admin/img/blanjaloka.png') }}" alt="AdminLTELogo" height="60" width="200">
   </div>
   {{-- sweet alert --}}
   @include('sweetalert::alert')

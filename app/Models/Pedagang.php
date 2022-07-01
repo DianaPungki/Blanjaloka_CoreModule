@@ -31,7 +31,8 @@ class Pedagang extends Model
         'alamat_toko',
         'id_pasar',
         'no_rekening',
-        'bank'
+        'bank',
+        'status'
     ];
 
     /**

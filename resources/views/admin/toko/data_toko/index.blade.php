@@ -1,5 +1,6 @@
 @extends('admin/master-admin')
 @section('content')
+@php use Illuminate\Support\Facades\DB; @endphp
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -24,7 +25,7 @@
                     Data Toko 
                 </div>
                 <div class="card-header bg-light">
-                    <form action="#" method="get">
+                    <form action="{{ url('admin/toko') }}" method="get">
                         <div class="mb-3 row">
                             <label for="nis" class="col-sm-2 col-form-label">Pilih Pasar</label>
                             <div class="col-sm-10">
@@ -59,7 +60,34 @@
                         </tr>
                         </thead>
                         <tbody>
-                        </tbody>
+                            @foreach ($toko as $no=>$t )
+                            <tr>
+                                <td>{{ $no+1 }}</td>
+                                <td>{{ $t->nama_pedagang }}</td>
+                                <td>{{ $t->nama_pasar }}</td>
+                                <td>{{ $t->nama_toko }}</td>
+                                <td>{{count(DB::table('produk')->where('id_pedagang', $t->id_pedagang)->get()).' Produk'}}</td>
+                                <td>
+                                    @if ($t->status == "on")
+                                        <i class='text-primary'>Active</i>
+                                    @elseif ($t->status == "off")
+                                        <i class='text-danger'>Non Aktif</i>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($t->status == 'on')
+                                        <a href="" data-toggle="tooltip" title="Lihat Toko" data-placement="top"><span class="badge badge-success"><i class="fas fa-store-alt"></i></span></a>
+                                        <a href="{{ url('admin/toko/jam/'.$t->id_pedagang) }}" data-toggle="tooltip" title="Jam Toko" data-placement="top"><span class="badge badge-info"><i class="fas fa-cog"></i></span></a>
+                                        <a href="#" class="editnon" data-id="{{ $t->id_pedagang }}" data-status="off" data-pesan="Ubah Status Toko Menjadi Non Aktif ?" data-toggle="tooltip" title="Not Active" data-placement="top"><span class="badge badge-danger"><i class="fas fa-times"></i></span></a>
+                                    @elseif ($t->status == 'off')
+                                        <a href="" data-toggle="tooltip" title="Lihat Toko" data-placement="top"><span class="badge badge-success"><i class="fas fa-store-alt"></i></span></a>
+                                        <a href="{{  url('admin/toko/jam/'.$t->id_pedagang) }}" data-toggle="tooltip" title="Jam Toko" data-placement="top"><span class="badge badge-info"><i class="fas fa-cog"></i></span></a>
+                                        <a href="#" class="edita" data-id="{{ $t->id_pedagang }}" data-status="on" data-pesan="Ubah Status Toko Menjadi Aktif ?" data-toggle="tooltip" title="Active" data-placement="top"><span class="badge badge-primary"><i class="fas fa-check-double"></i></span></a>
+                                    @endif
+                                </td>
+                            </tr>
+                             @endforeach
+                            </tbody>
                     </table>
                 </div>
             </div>
@@ -69,37 +97,55 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        $('body').tooltip({selector: '[data-toggle="tooltip"]'});
+    $(document).ready(function() {
+        $('.spinner').hide();
+
+        $('[data-toggle="tooltip"]').tooltip();
 
         $('#tokotable').DataTable({
             "responsive":true,
-            processing: true,
-            serverSide: true,
-            ajax: "{{url('admin/toko/json')}}",
-            columns: [
-                { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                { data: 'nama_pedagang', name: 'nama_pedagang' },
-                { data: 'nama_pasar', name: 'nama_pasar' },
-                { data: 'nama_toko', name: 'nama_toko' },
-                { data: 'total_produk', name: 'total_produk' },
-                { data: 'status', name: 'status' },
-                { data: 'action', name: 'action' },
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    className: 'btn btn-success btn-sm active',
+                    exportOptions: {
+                        columns: ':not(.notexport)'
+                    }
+
+                },
+                {
+                    extend: 'pdf',
+                    text: 'PDF',
+                    className: 'btn btn-sm btn-success',
+                    exportOptions: {
+                        columns: ':not(.notexport)'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: 'Print',
+                    className: 'btn btn-success btn-sm active',
+                    exportOptions: {
+                        columns: ':not(.notexport)'
+                    }
+
+                },
 
             ],
         });
 
-        $('#tokotable').on('click', '.status[data-id]', function(e){
+        $('.editnon').click(function(e){
             e.preventDefault();
-
-            var confirmed = confirm($(this).data('pesan'));
+            var confirmed = confirm('Non Aktifkan Akun pedagang Ini ?');
 
             if(confirmed) {
 
                 $.ajax({
-                    data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}", 'status':$(this).data('status')},
-                    type: 'POST',
-                    url:"{{url('admin/toko/status')}}",
+                    data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                    type: 'PUT',
+                    url:"{{url('admin/toko/status/nonaktif')}}",
                     success : function(data){
                         swal(data.pesan)
                         .then((result) => {
@@ -114,6 +160,31 @@
             }
         });
 
-    }); 
+        $('.edita').click(function(e){
+            e.preventDefault();
+            var confirmed = confirm('Aktifkan Akun pedagang Ini ?');
+
+            if(confirmed) {
+
+                $.ajax({
+                    data: {'id_pedagang':$(this).data('id'), '_token': "{{csrf_token()}}"},
+                    type: 'PUT',
+                    url:"{{url('admin/toko/status/aktif')}}",
+                    success : function(data){
+                        swal(data.pesan)
+                        .then((result) => {
+                            location.reload();
+                        });
+                    },
+                    error : function(err){
+                        alert(err);
+                        console.log(err);
+                    }
+                });
+            }
+        });
+
+    });
+
 </script>
 @endsection

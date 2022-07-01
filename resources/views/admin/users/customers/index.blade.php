@@ -38,9 +38,9 @@
                                     <th>Email</th>
                                     <th>No Telp</th>
                                     <th>Alamat</th>
-                                    <th>Created at</th>
-                                    <th>Update at</th>
-                                    <th style="width:10px;" class='notexport'>Aksi</th>
+                                    <th style="width:60px;" class='notexport'>Aksi</th>
+                                    <th class="none">Created at</th>
+                                    <th class="none">Update at</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,12 +52,12 @@
                                             <td>{{ $c->email_customer }}</td>
                                             <td>{{ $c->nomor_telepon }}</td>
                                             <td>{{ $c->alamat_customer }}</td>
-                                            <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
-                                            <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
                                             <td class="text-center">
                                                 <a href="#" data-id="<?= $c->id_customer; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
                                                 <a href="#" data-id="<?= $c->id_customer; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
                                             </td>
+                                            <td>{{ date('d-M-Y', strtotime($c->created_at))}}</td>
+                                            <td>{{ date('d-M-Y', strtotime($c->updated_at))}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

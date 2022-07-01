@@ -1,5 +1,6 @@
 @extends('pengelola/master-pengelola')
 @section('content')
+@php use Illuminate\Support\Facades\DB; @endphp
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -34,9 +35,11 @@
                                 <tr>
                                     <th style="width:10px;">No</th>
                                     <th>Kategori</th>
+                                    <th>Total Produk</th>
+                                    <th>Total Toko</th>
                                     <th>Created at</th>
                                     <th>Update at</th>
-                                    <th style="width:10px;" class='notexport'>Aksi</th>
+                                    {{-- <th style="width:10px;" class='notexport'>Aksi</th> --}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -44,12 +47,14 @@
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
                                             <td>{{ $k->jenis_kategori }}</td>
+                                            <td>{{count(DB::table('produk')->where('id_kategori', $k->id_kategori)->get()).' Produk'}}</td>
+                                            <td>{{count(DB::table('pedagang')->join('produk','pedagang.id_pedagang','produk.id_pedagang')->where('id_kategori', $k->id_kategori)->get()).' Toko'}}</td>
                                             <td>{{ date('d-M-Y', strtotime($k->created_at))}}</td>
                                             <td>{{ date('d-M-Y', strtotime($k->updated_at))}}</td>
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                                 <a href="#" data-id="<?= $k->id_kategori; ?>" class="edit" data-toggle="tooltip" title="Edit" data-placement="top"><span class="badge badge-success"><i class="fas fa-edit"></i></span></a>
                                                 <a href="#" data-id="<?= $k->id_kategori; ?>" class="delete" data-toggle="tooltip" title="Hapus" data-placement="top"><span class="badge badge-danger"><i class="fas fa-trash"></i></span></a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -137,7 +142,37 @@
             $('[data-toggle="tooltip"]').tooltip();
 
             $('#kategoritable').DataTable({
-                "responsive":true
+                "responsive":true,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: 'Excel',
+                        className: 'btn btn-success btn-sm active',
+                        exportOptions: {
+                            columns: ':not(.notexport)'
+                        }
+
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'PDF',
+                        className: 'btn btn-sm btn-success',
+                        exportOptions: {
+                            columns: ':not(.notexport)'
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        className: 'btn btn-success btn-sm active',
+                        exportOptions: {
+                            columns: ':not(.notexport)'
+                        }
+
+                    },
+
+                ],
             });
 
             // insert form

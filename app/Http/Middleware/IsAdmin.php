@@ -19,9 +19,13 @@ class IsAdmin
     {
         if (Auth::guard('admin')->check()) {
             return redirect('/admin');
-          }elseif(Auth::guard('pemda')->check()) {
+        }elseif(Auth::guard('pemda')->check()) {
               return redirect('/pemda');
-          } 
+        }elseif(Auth::guard('pengelola')->check()) {
+            return redirect('/pengelola');
+        }elseif(Auth::guard('pedagang')->check()) {
+            return redirect('/pedagang');
+        } 
       
           return $next($request);
     }

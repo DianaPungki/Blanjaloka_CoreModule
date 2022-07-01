@@ -17,14 +17,22 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle($request, Closure $next, $guard = null)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        if ($guard == "admin" && Auth::guard($guard)->check()) {
+            return redirect('/admin');
+        }
+        if ($guard == "pengelola" && Auth::guard($guard)->check()) {
+            return redirect('/pengelola');
+        }
+        if ($guard == "pedagang" && Auth::guard($guard)->check()) {
+            return redirect('/pedagang');
+        }
+        if ($guard == "pemda" && Auth::guard($guard)->check()) {
+            return redirect('/pemda');
+        }
+        if (Auth::guard($guard)->check()) {
+            return redirect('/home');
         }
 
         return $next($request);

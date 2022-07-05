@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers\PengelolaPasar;
-use App\http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\Pasar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

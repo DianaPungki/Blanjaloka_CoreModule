@@ -1,0 +1,161 @@
+[33mcommit 0fd0eb0623e1410472fc5ebc4f87fef8469b4b9f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Tue Jul 5 22:15:34 2022 +0700
+
+    tambah login customer
+
+[33mcommit 12ff69032944407e6418aaf6361b08c42aec8f49[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Sun Jul 3 00:55:55 2022 +0700
+
+    perbaikan http pada Dashboard
+
+[33mcommit 416317f99b00c7d9fc3be36e06e68dbabc8cb218[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Sat Jul 2 06:35:35 2022 +0700
+
+    perbaikan login
+
+[33mcommit 81deeed44d47898bc2f9bd63c843afa1e061a69c[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Sat Jul 2 06:30:15 2022 +0700
+
+    perbaikan login
+
+[33mcommit 5fde13ec5635c08ab48fb3439a8412ff6fc60428[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Jul 1 17:06:41 2022 +0700
+
+    perbaikan
+
+[33mcommit ca268809b533410630449048d19ee30f1417212c[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Jul 1 11:09:54 2022 +0700
+
+    memperbaiki data toko dan data produk pada role pengelola pasar
+
+[33mcommit 06f2a61e5280fadea8f630ded351c097efe29147[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Jun 24 16:13:03 2022 +0700
+
+    perbaikan verivikasi pada pengelola pasar
+
+[33mcommit 19e3e2c2de09c30791727ed93bde6fc4288480c8[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Wed Jun 22 16:04:44 2022 +0700
+
+    perbaikan database terbaru
+
+[33mcommit df51970b9c7b0f39eb2d8bef59521571ce933190[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Mon Jun 20 05:55:42 2022 +0700
+
+    Perbaikan Role Pengelola Pasar
+
+[33mcommit 577d26d4fe145e3a8e77d6cf923879a11f980955[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Thu Jun 9 23:09:47 2022 +0700
+
+    tambah data toko pada pengelola pasar
+
+[33mcommit ae75ed43c71f22841ca831917493ba49860fe6f0[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Mon May 30 15:44:33 2022 +0700
+
+    update penambahan level user
+
+[33mcommit 9ac90cf1b1ceba8f120d2d5d491915c7b3c90881[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Wed Apr 27 14:37:20 2022 +0700
+
+    Tambah data produk
+
+[33mcommit de619d0ef95a5cd1e7b06aac9f79122f3146d0dd[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Wed Apr 20 13:10:23 2022 +0700
+
+    jam operasional pasar dan toko
+
+[33mcommit 57450037d1bdc27ec8a15e9d6d1b52ee26ad75e6[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Thu Apr 14 14:04:41 2022 +0700
+
+    update sprint 4
+
+[33mcommit 712b6c2d8cef603de9f23182af26ae835b302579[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Thu Apr 7 11:24:51 2022 +0700
+
+    CRUD Kategori Produk
+
+[33mcommit ba04e151f47047a2394a7f7f66ecc8ae1ccf51b1[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Wed Apr 6 14:34:29 2022 +0700
+
+    Perbaikan Users
+
+[33mcommit d2623fadce717a4444714f7c192c851dd19db544[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Wed Apr 6 13:50:12 2022 +0700
+
+    CRUD Driver
+
+[33mcommit 54db09e60755da2d88320f20ec5168eddfa1b5ce[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Wed Apr 6 12:41:26 2022 +0700
+
+    CRUD Pedagang
+
+[33mcommit a005e8ed5ce0fec6913e3ebd5d43ea65b73947d1[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Mon Apr 4 14:01:52 2022 +0700
+
+    CRUD Pemda
+
+[33mcommit 7b58ab891f30bb72be9354859bf9534eb78f2caa[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Apr 1 15:39:31 2022 +0700
+
+    CRUD users Customers
+
+[33mcommit 767adca5f6d5f73c5a0b68d45ba122732dccaf80[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Apr 1 15:12:41 2022 +0700
+
+    Update akun Admin
+
+[33mcommit 70b71ccb70c027f2dc8bd7c9760463996a6ae017[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Apr 1 15:02:11 2022 +0700
+
+    Update akun Pengelola Pasar
+
+[33mcommit 0772d1f77b93316da7d9c9cdfe196a8288cf98cc[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Apr 1 14:46:27 2022 +0700
+
+    Read dan Delete akun Admin
+
+[33mcommit 7003031228b5b384fdbcc9510a6d08b6e2e561b1[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Apr 1 14:37:08 2022 +0700
+
+    Read dan Delete Pengelola Pasar
+
+[33mcommit daa7497d7ef52944c8ce22ed6556afbd269d8a72[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Fri Mar 25 12:15:57 2022 +0700
+
+    Login Admin
+
+[33mcommit c97061195e99d586c75fd651acec30158a172a0c[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Thu Mar 24 02:50:37 2022 +0700
+
+    memasang template Admin LTE
+
+[33mcommit bf25068255df72afb5ad2de0dd0c232544c16955[m
+Author: DianaPungki <dianapungki379@gmail.com>
+Date:   Sat Mar 12 11:44:18 2022 +0700
+
+    New project

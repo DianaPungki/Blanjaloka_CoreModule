@@ -66,7 +66,7 @@
                   <button type="submit" class="btn btn-block login-btn mb-4">Login</button>
                 </form>
                 <nav class="login-card-footer-nav">
-                  © 2021 | blanjaloka, All Rights Reserved.
+                  © 2022 | Blanjaloka, All Rights Reserved.
                 </nav>
             </div>
           </div>

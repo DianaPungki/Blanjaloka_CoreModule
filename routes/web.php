@@ -25,7 +25,7 @@ use App\Http\Controllers\Pemda\Dashboard as DashboardPemda;
 
 use App\Http\Controllers\AuthController;
 use GuzzleHttp\Middleware;
-
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -239,4 +239,11 @@ Route::middleware('auth:pemda')->prefix('pemda')->group(function() {
     Route::get('/', [DashboardPemda::class, 'index']);
 
     
+});
+
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return "Cleared!";
 });

@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Homepage;
+
+// customer
+use App\Http\Controllers\Customer\Dashboard as DashboardCustomer;
+
 // Admin
 use App\Http\Controllers\Admin\Dashboard as DashboardAdmin;
 use App\Http\Controllers\Admin\AdminController as UserAdmin;
@@ -38,9 +44,15 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/', function () {
-    return view('landing_page');
-});
+Route::get('/', [Homepage::class, 'index']);
+
+// login customer
+Route::get('login', [AuthController::class, 'login_customer'])->middleware('guest')->name('login');
+Route::post('login', [AuthController::class, 'login_customer_handler'])->middleware('guest')->name('login');
+
+// register customer
+Route::get('/register', [Auth::class, 'register_customer'])->middleware('guest')->name('register');
+Route::post('/register', [Auth::class, 'register_handler'])->middleware('guest')->name('register');
 
 // login admin
 Route::get('admin/login', [AuthController::class, 'login_admin'])->middleware('guest')->name('login_admin');
@@ -241,9 +253,8 @@ Route::middleware('auth:pemda')->prefix('pemda')->group(function() {
     
 });
 
-Route::get('/clear', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-    return "Cleared!";
+Route::middleware('auth:customer')->prefix('/')->group(function() {
+    Route::get('/index', [DashboardCustomer::class, 'index']);
+    Route::post('pasar/detail', [DashboardCustomer::class, 'getdetailpasar']);
+Route::post('pasar/terapkan', [DashboardCustomer::class, 'terapkanpasar']);
 });

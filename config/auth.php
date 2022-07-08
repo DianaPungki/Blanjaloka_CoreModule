@@ -74,6 +74,11 @@ return [
             'driver' => 'session',
             'provider' => 'pemda',
           ],
+
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customer',
+          ],
     ],
 
     /*
@@ -122,6 +127,11 @@ return [
         'pemda' => [
             'driver' => 'eloquent',
             'model' => App\Models\Pemda::class,
+        ],
+
+        'customer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
         ],
 
     ],

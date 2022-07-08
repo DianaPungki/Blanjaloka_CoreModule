@@ -25,6 +25,8 @@ class IsAdmin
             return redirect('/pengelola');
         }elseif(Auth::guard('pedagang')->check()) {
             return redirect('/pedagang');
+        }elseif(Auth::guard('customer')->check()) {
+            return redirect('/');
         } 
       
           return $next($request);

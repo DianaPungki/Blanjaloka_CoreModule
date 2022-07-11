@@ -44,7 +44,10 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/', [Homepage::class, 'index']);
+Route::get('/', function () {
+    return view('landing_page');
+});
+// Route::get('/', [Homepage::class, 'index']);
 
 // login customer
 Route::get('login', [AuthController::class, 'login_customer'])->middleware('guest')->name('login');
@@ -61,10 +64,6 @@ Route::post('admin/login', [AuthController::class, 'login_admin_handler']);
 // login pengelola pasar
 Route::get('pengelola/login', [AuthController::class, 'login_pengelola'])->middleware('guest')->name('login_pengelolapasar');
 Route::post('pengelola/login', [AuthController::class, 'login_pengelola_handler']);
-
-// login pedagang
-Route::get('pedagang/login', [AuthController::class, 'login_pedagang'])->middleware('guest')->name('login_pedagang');
-Route::post('pedagang/login', [AuthController::class, 'login_pedagang_handler']);
 
 // login pemda
 Route::get('pemda/login', [AuthController::class, 'login_pemda'])->middleware('guest')->name('login_pemda');

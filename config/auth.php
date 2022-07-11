@@ -50,6 +50,11 @@ return [
           'provider' => 'admin',
         ],
 
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admin',
+        ],
+
         'user' => [
           'driver' => 'session',
           'provider' => 'user',
@@ -63,11 +68,6 @@ return [
         'pengelola' => [
             'driver' => 'session',
             'provider' => 'pengelola',
-          ],
-
-        'pedagang' => [
-            'driver' => 'session',
-            'provider' => 'pedagang',
           ],
 
         'pemda' => [
@@ -117,11 +117,6 @@ return [
         'pengelola' => [
             'driver' => 'eloquent',
             'model' => App\Models\PengelolaPasar::class,
-        ],
-
-        'pedagang' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Pedagang::class,
         ],
 
         'pemda' => [

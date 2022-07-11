@@ -107,7 +107,7 @@ class ProdukController extends Controller
                 'foto_produk' => implode(',', $new_image),
             ];
             
-            Produk::where('id_produk', $request->post('id_produk'))->where('id_pedagang', $request->session()->get('id_pedagang'))->update($data);
+            Produk::where('id_produk', $request->post('id_produk'))->update($data);
 
         }
 

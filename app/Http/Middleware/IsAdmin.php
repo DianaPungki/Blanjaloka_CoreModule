@@ -19,8 +19,9 @@ class IsAdmin
     {
         if (Auth::guard('admin')->check()) {
             return redirect('/admin');
-        }elseif(Auth::guard('pemda')->check()) {
+          }elseif(Auth::guard('pemda')->check()) {
               return redirect('/pemda');
+<<<<<<< HEAD
         }elseif(Auth::guard('pengelola')->check()) {
             return redirect('/pengelola');
         }elseif(Auth::guard('pedagang')->check()) {
@@ -28,6 +29,9 @@ class IsAdmin
         }elseif(Auth::guard('customer')->check()) {
             return redirect('/');
         } 
+=======
+          } 
+>>>>>>> parent of 5fde13e (perbaikan)
       
           return $next($request);
     }

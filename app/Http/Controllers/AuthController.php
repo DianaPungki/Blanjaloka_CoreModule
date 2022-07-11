@@ -30,7 +30,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -44,7 +44,6 @@ class AuthController extends Controller
             $this->middleware('guest:admin')->except('logout');
             $this->middleware('guest:pengelola')->except('logout');
             $this->middleware('guest:pemda')->except('logout');
-            $this->middleware('guest:pedagang')->except('logout');
     }
 
     public function login_admin(Request $request)
@@ -151,37 +150,6 @@ class AuthController extends Controller
 
             # jika validasi error kembali ke laman login pemda dengan pesan error
             return redirect('pengelola/login')->withErrors($validator);
-
-        }
-
-        // Attempt to log the user in
-            // Passwordnya pake bcrypt
-        if (Auth::guard('pengelola')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            // if successful, then redirect to their intended location
-            return redirect()->intended('/pengelola');
-        } else {
-            return redirect()->intended('pengelola/login');
-        }
-    }
-
-    public function login_pedagang(Request $request)
-    {
-     return view('pedagang.auth.login');
-    }
-
-    public function login_pedagang_handler(Request $request)
-    {
-         # Validator
-         $validator = Validator::make($request->all(),[
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
-
-        # if else validator salah atau benar
-        if($validator->fails()){
-
-            # jika validasi error kembali ke laman login pemda dengan pesan error
-            return redirect('pedagang/login')->withErrors($validator);
 
         }
 

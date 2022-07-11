@@ -1,0 +1,1599 @@
+/* dashboard */
+* {
+    font-family: 'poppins', sans-serif;
+}
+
+.text-nav-item {
+    color: #006973;
+    padding-left: 4px;
+}
+
+.chevron-right {
+    float: right;
+}
+
+.heading-chart-card {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.nav-item-main span{
+    color: #006973;
+    padding-left: 4px;
+}
+.nav-item-main.active span{
+    color: #1D75DA;
+}
+.nav-item-main span:hover{
+    color: #1D75DA;
+}
+
+/* update card */
+.heading-update-card {
+    color: #141414;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.number-update-card {
+    display: inline-flex;
+}
+
+.text-update-card {
+    font-size: 11px;
+    font-weight: 500;
+    color: #1E891E;
+}
+
+.chart-area {
+    padding: 0 4%;
+}
+
+/* kalender */
+main {
+    max-width: -webkit-max-content;
+    max-width: -moz-max-content;
+    max-width: max-content;
+    margin: 0.3em auto 1em auto;
+    margin-top: 2em;
+    padding-bottom: 1.5em;
+    background-color: #fff;
+    border: 2px solid var(--blue-grey-200);
+    border-radius: 8px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.month-indicator {
+    color: #141414;
+    text-align: center;
+    font-weight: 500;
+}
+
+.day-of-week,
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day-of-week>* {
+    font-size: 0.7em;
+    color: #141414;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+/* Dates */
+.date-grid {
+    margin-top: 0.5em;
+}
+
+/* Positioning the first day */
+.date-grid button:first-child {
+    grid-column: 1;
+}
+
+.date-grid button {
+    position: relative;
+    border: 0;
+    width: 4ch;
+    height: 4ch;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #141414;
+}
+
+.date-grid button:hover,
+.date-grid button:focus {
+    outline: none;
+    background-color: #00838F;
+    color: #FFFFFF;
+}
+
+.date-grid button:active,
+.date-grid button.is-selected {
+    background-color: #00838F;
+    color: #FFFFFF;
+}
+
+.body-card {
+    margin: 0 1em;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.dashed {
+    border-left: 2px dashed #006973;
+    height: 50px;
+    width: 0px;
+    display: inline-block;
+}
+
+.dashed-last {
+    border-left: 2px dashed #006973;
+    height: 20px;
+    width: 0px;
+    display: inline-block;
+}
+
+.important-date {
+    font-weight: 600;
+    color: #006973;
+}
+
+.text-important-date {
+    font-weight: 500;
+    color: #006973;
+}
+
+.list-important-date {
+    font-size: 13px;
+    color: #006973;
+}
+
+/* produk card */
+.produk-card {
+    padding: 3%;
+    width: 100%;
+    height: 100%;
+}
+
+.heading-produk-card {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.text-produk-card {
+    font-size: 13px;
+    font-weight: 500;
+    color: #757575;
+}
+
+.produk-terlaris-card1 {
+    width: 206px;
+    height: 323px;
+    float: right;
+}
+
+.produk-terlaris-card2 {
+    width: 206px;
+    height: 323px;
+    float: left;
+}
+
+.heading-produk-terlaris {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.total-produk {
+    font-weight: 600;
+    font-size: 12px;
+    color: #1E891E;
+}
+
+.card-footer-produk {
+    padding-top: 68px;
+    text-align: right;
+    font-weight: 500;
+    font-size: 11px;
+    color: #9E9E9E;
+}
+
+.lihat-selengkapnya {
+    float: right;
+    padding-top: 30px;
+    text-decoration: none;
+    color: #00838F;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.list-penilaian-toko {
+    border: none;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#semi-container {
+    width: 270px;
+    height: 130px;
+    margin: 50px auto;
+}
+
+.progress-text {
+    font-size: 1em;
+    color: black;
+    margin-bottom: 1em;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+/* produk saya */
+.page-produk-saya{
+    padding: 0 1%;
+}
+
+.text-form-produk{
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+}
+
+.btn-atur-kategori{
+    background: #FFFFFF;
+    border: 1px solid #00838F;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #00838F;
+    padding: 0.5% 0.8%;
+    width: 17%;
+}
+
+.btn-cari {
+    border-radius: 6px;
+    background-color: #00838F;
+    font-size: 12px;
+    line-height: 18px;
+    color: #FFFFFF;
+    padding: 5px 30px;
+}
+
+.btn-reset {
+    background: #FFFFFF;
+    border: 1px solid #00838F;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #00838F;
+    padding: 5px 30px;
+}
+
+.table-produk {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.img-produk{
+    border-radius: 6px;
+    width: 80px;
+}
+
+.btn-tambah-produk {
+    border-radius: 5px;
+    float: right;
+    background-color: #00838F;
+    box-sizing: border-box;
+}
+
+.text-produk{
+    font-weight: 400;
+    font-size: 16px;
+    color: #0B0B0B;
+}
+
+.dropdown-atur-produk{
+    border: 1px solid rgba(0, 0, 0, 0.32);
+}
+
+.text-tambah-produk {
+    font-weight: 600;
+    font-size: 12px;
+    color: white;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.text-tambah-produk i{
+    padding-right: 9px;
+    padding-left: 9px;
+    }
+
+.text-tabel-produk {
+    font-weight: 600;
+    font-size: 20px;
+    margin: 15px 15px;
+    color: black;
+}
+
+.text-tabel {
+    font-weight: 400;
+    font-size: 14px;
+    margin: 15px 15px;
+}
+
+.nav-item-page-produk-saya {
+    border-bottom: 2px solid #F3F3F3;
+}
+
+.nav-link-page-produk-saya {
+    color: black;
+}
+
+.nav-link-page-produk-saya.active {
+    color: #1D75DA;
+    border-bottom: 2px solid #1D75DA;
+}
+
+.text_popup_hapus_produk{
+    font-weight: 500;
+    font-size: 12px;
+    color: #000000;
+}
+
+.btn-batal-hapus-produk{
+    background: #FFFFFF;
+    border: 1px solid #00838F;
+    border-radius: 6px;
+    padding: 5px 30px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #00838F;
+}
+
+.btn-yakin-hapus-produk{
+    background: #00838F;
+    border-radius: 6px;
+    padding: 5px 30px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+/* style tambah produk */
+.page-tambah-produk {
+    padding: 2% 4%;
+    border-radius: 5px;
+}
+
+.title-page {
+    font-weight: 700;
+    font-size: 34px;
+    color: #141414;
+}
+
+.text-title-page {
+    font-weight: 500;
+    font-size: 16px;
+    color: #9E9E9E;
+}
+
+.label-form-tambah-produk {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.input-form-tambah-produk {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.form-image-produk {
+    border: 2px dashed #00838F;
+    border-radius: 5px;
+    height: 160px;
+    padding: 29% 0;
+}
+
+.form-image-produk-small {
+    border: 2px dashed #00838F;
+    border-radius: 5px;
+    height: 76px;
+    padding: 9% 0;
+}
+
+.text-label {
+    font-weight: 400;
+    font-size: 12px;
+    color: #9E9E9E;
+}
+
+.btn-selesai-tambah-produk {
+    background: #00838F;
+    color: #FFFFFF;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 26%;
+}
+
+
+/* style pesanan saya */
+.pills-page-pesanan {
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.nav-item-page-pesanan a {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.nav-link-page-pesanan {
+    color: #141414;
+}
+
+.nav-link-page-pesanan.active {
+    color: #1D75DA;
+    border-bottom: 3px solid #1D75DA;
+}
+
+.title-card-pesanan {
+    font-weight: 600;
+    font-size: 18px;
+    color: #141414;
+}
+
+.date-pesanan {
+    width: 290px;
+    height: 44px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    color: #9E9E9E;
+    padding: 0 1%;
+}
+
+.table-pesanan {
+    border: 1px solid #9E9E9E;
+    border-radius: 5px;
+    width: 98%;
+}
+
+.table-header {
+    background-color: #EAEAEA;
+    border: 1px solid #C2C2C2;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.table-card-pesanan {
+    border: 1px solid #C2C2C2;
+    width: 99%;
+    border-radius: 5px;
+}
+
+.text-table-header {
+    font-weight: 500;
+    font-size: 14px;
+    color: #141414;
+}
+
+.table-card-header {
+    background-color: #F3F3F3;
+    border: 1px solid #C2C2C2;
+    width: 99%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.text-table-card-header {
+    font-weight: 500;
+    font-size: 10px;
+    color: #616161;
+}
+
+.title-produk-pesanan {
+    font-weight: 600;
+    font-size: 10px;
+    color: #141414;
+}
+
+.harga-produk-pesanan {
+    font-weight: 600;
+    font-size: 12px;
+    color: #006973;
+}
+
+.qty-produk-pesanan {
+    font-weight: 400;
+    font-size: 10px;
+    color: #9E9E9E;
+}
+
+.total-pembayaran {
+    font-weight: 600;
+    font-size: 14px;
+    color: #141414;
+}
+
+.metode-pengiriman {
+    font-weight: 600;
+    font-size: 14px;
+    color: #141414;
+}
+
+.status-orange {
+    padding: 6px 12px;
+    background: rgba(228, 82, 0, 0.08);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #E45200;
+}
+
+.status-green {
+    padding: 6px 12px;
+    background: rgba(30, 137, 30, 0.08);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #1E891E;
+}
+
+.status-blue {
+    padding: 6px 12px;
+    background: rgba(29, 117, 218, 0.08);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #1D75DA;
+}
+
+.status-red {
+    padding: 6px 12px;
+    background: rgba(225, 44, 65, 0.08);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #E12C41;
+}
+
+.nama-pemesan {
+    font-weight: 500;
+    font-size: 10px;
+    color: #141414;
+}
+
+.menu-footer-table-pesanan:hover {
+    text-decoration: none;
+}
+
+.text-footer-table-pesanan {
+    font-weight: 600;
+    font-size: 12px;
+    color: #00838F;
+    text-decoration: none;
+}
+
+.text-footer-table-pesanan:hover {
+    color: #1D75DA;
+}
+
+.btn-proses-pesanan {
+    width: 100%;
+    background-color: #006973;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.btn-proses-pesanan-disabled {
+    width: 100%;
+    background-color: #E0E0E0;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #9E9E9E;
+}
+
+.detail-pesanan-card {
+    padding: 2% 2%;
+    border-radius: 5px;
+}
+
+.title-detail-pesanan {
+    font-weight: 700;
+    font-size: 14px;
+    color: #00838F;
+}
+
+.text-title-detail-pesanan {
+    font-weight: 600;
+    font-size: 12px;
+    color: #141414;
+}
+
+.table-header-detail-pesanan {
+    background-color: #EAEAEA;
+}
+
+.text-table-header-detail-pesanan {
+    font-weight: 600;
+    font-size: 10px;
+    color: #757575;
+}
+
+.text-table-body-detail-pesanan {
+    font-weight: 500;
+    font-size: 10px;
+    color: #141414;
+}
+
+.text-total-penjualan {
+    font-weight: 600;
+    font-size: 12px;
+    color: #00838F;
+}
+
+/* style toko saya */
+.card-status-toko {
+    padding: 1% 2%;
+}
+
+.nama-toko {
+    font-weight: 600;
+    font-size: 20px;
+    color: #141414;
+}
+
+.title-card-status-toko {
+    font-weight: 600;
+    font-size: 16px;
+    color: #141414;
+}
+
+.text1-card-status-toko {
+    font-weight: 500;
+    font-size: 12px;
+    color: #757575;
+}
+
+.text2-card-status-toko {
+    font-weight: 600;
+    font-size: 14px;
+    color: #616161;
+    ;
+}
+
+.card-profile {
+    padding: 2%;
+}
+
+.heading-card-profile {
+    font-weight: 700;
+    font-size: 20px;
+    color: #141414;
+}
+
+.title-card-profile {
+    font-weight: 600;
+    font-size: 16px;
+    color: #141414;
+}
+
+.text-card-profile {
+    font-weight: 500;
+    font-size: 10px;
+    color: #757575;
+}
+
+.label-card-profile {
+    font-weight: 500;
+    font-size: 14px;
+    color: #141414;
+}
+
+.form-informasi-toko {
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.kategori-informasi-toko {
+    height: 21px;
+    padding: 0 7px;
+    font-weight: 500;
+    font-size: 10px;
+    color: #00838F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #006973;
+    border-radius: 35px;
+}
+
+.example-domain {
+    font-weight: 500;
+    font-size: 12px;
+    color: #404040;
+}
+
+.form-lokasi-toko {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 12px;
+    padding-left: 0;
+}
+
+.title-pengiriman {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.jasa-pengiriman {
+    border: 1px solid #E0E0E0;
+    padding: 2% 3%;
+}
+
+.label-pengiriman {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+    margin-top: 7px;
+}
+
+.btn-simpan-toko-saya {
+    color: #FFFFFF;
+    background: #00838F;
+    border-radius: 6px;
+    padding: 0.5% 4.5%;
+    float: right;
+}
+
+/* popup cod */
+.cod-header {
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+}
+
+.cod-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #141414;
+}
+
+.cod-text {
+    font-weight: 400;
+    font-size: 12px;
+    color: #141414;
+}
+
+.cod-text2 {
+    font-weight: 500;
+    font-size: 10px;
+    color: #141414;
+}
+
+.btn-aktifkan-cod {
+    color: #FFFFFF;
+    background: #00838F;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 8px 30px;
+}
+
+/* style sewa toko */
+.card-sewa-toko {
+    padding: 2%;
+}
+
+.btn-bukti-sewa {
+    background: #00838F;
+    color: #FFFFFF;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 0.5% 4%;
+    float: right;
+}
+
+.title-card-riwayat-tagihan {
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.table-riwayat-tagihan {
+    border: 1px solid #757575;
+    border-radius: 5px;
+}
+
+.table-header-riwayat-tagihan {
+    background-color: #EAEAEA;
+}
+
+.text-table-header-riwayat {
+    font-weight: 500;
+    font-size: 13px;
+    color: #141414;
+}
+
+.text-table-body-riwayat {
+    font-weight: 600;
+    font-size: 13px;
+    color: #141414;
+}
+
+.title-card-tagihan-anda {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+
+.card-tagihan-anda {
+    padding: 7%;
+}
+
+.text1-card-tagihan-anda {
+    font-weight: 400;
+    font-size: 12px;
+    color: #757575;
+}
+
+.text2-card-tagihan-anda {
+    font-weight: 600;
+    font-size: 12px;
+    color: #141414;
+}
+
+.text3-card-tagihan-anda {
+    font-weight: 400;
+    font-size: 14px;
+    color: #757575;
+}
+
+.text4-card-tagihan-anda {
+    font-weight: 700;
+    font-size: 16px;
+    color: #141414;
+}
+
+.btn-bayar-card-tagihan {
+    color: #FFFFFF;
+    background-color: #00838F;
+    border-radius: 6px;
+    width: 90%;
+}
+
+/* pilih sewa */
+.pilih-sewa-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+}
+
+.card-sewa {
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 6%;
+}
+
+.harga-sewa {
+    font-weight: 700;
+    font-size: 20px;
+    color: #00838F;
+}
+
+.title-card-sewa {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.text-cerd-sewa {
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+}
+
+.btn-pilih-sewa {
+    color: #FFFFFF;
+    background: #00838F;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 2.5% 20%;
+}
+
+.popup-bukti-sewa{
+    padding: 3%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.text-bukti-sewa1{
+    font-weight: 400;
+    font-size: 12px;
+    color: #616161;
+}
+
+.text-bukti-sewa2{
+    font-weight: 600;
+    font-size: 12px;
+    color: #141414;
+}
+
+.text-bukti-sewa3{
+    font-weight: 500;
+    font-size: 12px;
+    color: #141414;
+}
+
+.btn-untuh-bukti-sewa{
+    font-weight: 600;
+    font-size: 12px;
+    color: #FFFFFF;
+    background: #00838F;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+/* bayar tagihan */
+.card-bayar-tagihan {
+    padding: 3%;
+    border-radius: 8px;
+}
+
+.text1-card-bayar-tagihan {
+    font-weight: 600;
+    font-size: 16px;
+    color: #141414;
+}
+
+.text2-card-bayar-tagihan {
+    font-weight: 400;
+    font-size: 14px;
+    color: #757575;
+}
+
+.text3-card-bayar-tagihan {
+    font-weight: 400;
+    font-size: 16px;
+    color: #757575;
+}
+
+.label-card-bayar-tagihan {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+
+.form-card-bayar-tagihan {
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 12px;
+    height: 50px;
+}
+
+.btn-bayar-tagihan {
+    width: 100%;
+    background: #006973;
+    color: #FFFFFF;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* tunggu bayar */
+.card-batas-pembayaran {
+    padding: 2%;
+    padding-bottom: 1%;
+}
+
+.text1-tunggu-bayar {
+    font-weight: 400;
+    font-size: 14px;
+    color: #757575;
+}
+
+.text2-tunggu-bayar {
+    font-weight: 600;
+    font-size: 16px;
+    color: #141414;
+}
+
+.text3-tunggu-bayar {
+    font-weight: 500;
+    font-size: 12px;
+    color: #141414;
+}
+
+.text-salin {
+    font-weight: 600;
+    font-size: 12px;
+    color: #00838F;
+}
+
+.text1-popup-cancel {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+}
+
+.text2-popup-cancel {
+    font-weight: 400;
+    font-size: 14px;
+    color: #757575;
+}
+
+.btn-back-popup-cancel {
+    background: #FFFFFF;
+    color: #00838F;
+    border: 1px solid #00838F;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 1.5% 10%;
+}
+
+.btn-batal-popup-cancel {
+    background: #00838F;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 1.5% 10%;
+}
+
+/* style ulasan pembeli */
+.heading-card-ulasan-pembeli {
+    padding: 2%;
+    padding-bottom: 0;
+}
+
+.text-heading-card {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.date-ulasan-pembeli {
+    width: 252px;
+    height: 44px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    color: #9E9E9E;
+    padding: 0 1%;
+}
+
+.pills-page-ulasan {
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.nav-item-page-ulasan a {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.nav-link-page-ulasan {
+    color: #141414;
+}
+
+.nav-link-page-ulasan.active {
+    color: #00838F;
+    border-bottom: 3px solid #1D75DA;
+}
+
+.content-ulasan-pembeli {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+}
+
+.header-content {
+    padding: 1% 1.5%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.nama-pembeli {
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+}
+
+.tanggal-ulasan {
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+}
+
+.body-content {
+    padding: 1% 1.5%;
+}
+
+.text1-body-content {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.text2-body-content {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+}
+
+.img-ulasan {
+    width: 70px;
+    border-radius: 10px;
+}
+
+/* laporan */
+.text-laporan {
+    font-weight: 700;
+    font-size: 34px;
+}
+
+.text-laporan-toko {
+    font-style: normal;
+    font-weight: 500;
+}
+
+.text-kriteria-utama {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.text-periode-data {
+    font-weight: 500;
+    font-size: 14px;
+    margin: 10px;
+}
+
+.btn-tampilkan {
+    border-radius: 5px;
+    background-color: #00838F;
+    box-sizing: border-box;
+    margin-left: 30px;
+}
+.text-tampilkan {
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-cetak-data {
+    border-radius: 5px;
+    background-color: #00838F;
+    box-sizing: border-box;
+float: right;
+margin-top :35px;
+
+}
+.text-cetak-data {
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+  padding-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.text-cetak-data img{
+    padding-right: 5px;
+}
+.btn-penjualan {
+    border: 1px solid;
+    width: 135%;
+    margin-left: 15px;
+
+}
+
+.btn-penjualan span {
+    float: left;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.btn-penjualan label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    float: left;
+}
+
+.btn-pesanan {
+    border: 1px solid;
+    width: 105%;
+    margin-left: 95px;
+}
+
+.btn-pesanan span {
+    font-weight: 600;
+    font-size: 18px;
+    float: left;
+}
+
+.btn-pesanan label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    float: left;
+}
+
+.btn-total-pengunjung {
+    border: 1px solid;
+    width: 100%;
+    margin-left: 120px;
+}
+
+.btn-total-pengunjung span {
+    font-weight: 600;
+    font-size: 18px;
+    float: left;
+}
+
+.btn-total-pengunjung label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    float: left;
+}
+
+.btn-produk-dilihat {
+    border: 1px solid;
+    width: 100%;
+    margin-left: 135px;
+}
+
+.btn-produk-dilihat span {
+    font-weight: 600;
+    font-size: 18px;
+    float: left;
+}
+
+.btn-produk-dilihat label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    float: left;
+}
+
+.text-grafik {
+    margin-left: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.text-daftar-pesanan-selesai {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.text-berdasarkan-produk {
+    font-weight: 500;
+    font-size: 16px;
+    margin-left: 14px;
+}
+
+.btn-pilih-kriteria {
+    width: 260px;
+    border-radius: 10px;
+}
+
+.btn-pilih-kriteria label {
+    float: left;
+    padding-top: 4px;
+}
+
+.btn-pilih-kriteria img {
+    float: right;
+    padding-top: 4px;
+}
+
+.btn-pilih-kategori {
+    width: 240px;
+    border-radius: 10px;
+}
+
+.btn-pilih-kategori label {
+    float: left;
+    padding-top: 4px;
+}
+
+.btn-pilih-kategori img {
+    float: right;
+    padding-top: 4px;
+}
+
+.table-peringkat-produk {
+    border: 1px solid grey;
+}
+
+.informasi-produk {
+    text-align: center;
+}
+
+.jumlah-produk {
+    text-align: center;
+}
+.harga-produk{
+    text-align: center;
+}
+.status{
+    text-align: center;
+}
+
+/* voucher */
+.text-promo {
+    font-weight: 700;
+    font-size: 34px;
+}
+
+.text-atur-promo {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.text-daftar-promo {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.text-buat-promo {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.nav-item-page-voucher {
+    border-bottom: 2px solid #F3F3F3;
+    width: 160px;
+    font-weight: bolder;
+}
+
+.nav-link-page-voucher {
+    color: black;
+}
+
+.nav-link-page-voucher.active {
+    color: #1D75DA;
+    border-bottom: 3px solid #1D75DA;
+}
+
+.btn-tambah-promo {
+    border-radius: 5px;
+    float: right;
+    background-color: #00838F;
+    box-sizing: border-box;
+}
+
+.text-tambah-promo {
+    font-weight: 600;
+    font-size: 12px;
+    color: white;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.text-tambah-promo i {
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+.table-promo {
+    border: 1px solid grey;
+}
+
+.table-promo p {
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.table-promo span {
+    padding-left: 10px;
+}
+
+/* tambah promo */
+
+.label-form-tambah-promo {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.input-form-tambah-promo {
+    border-radius: 10px;
+}
+
+.title-tambah-promo {
+    font-weight: 600;
+    font-size: 24px;
+    color: #141414;
+}
+
+.label-form-detail-promo {
+    font-weight: 600;
+    font-size: 18px;
+    color: #000000;
+}
+
+.label-form-pilih-produk {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.form-image-promo {
+    border: 2px dashed #00838F;
+    border-radius: 5px;
+    padding: 9% 0;
+}
+
+.label-form-nominal-diskon {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.label-form-kuota-diskon {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.label-form-tanggal-promo {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.img-promo img {
+    width: 398px;
+    height: 378px;
+    display: block;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.btn-simpan-promo {
+    float: right;
+    border-radius: 5px;
+    margin-left: 20px;
+    background-color: #00838F;
+    margin-top: 100px;
+}
+
+.btn-kembali {
+    float: right;
+    border-radius: 5px;
+    border-color: #00838F;
+    margin-top: 100px;
+}
+
+.text-kembali {
+    font-weight: 500;
+    font-size: 12px;
+    color: #00838F;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text-simpan-promo {
+    font-weight: 500;
+    font-size: 12px;
+    color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* style settings */
+.card-settings {
+    width: 80%;
+    border-radius: 5px;
+}
+
+.text1-card-settings {
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+
+.text2-card-settings {
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+}
+
+.title-card-settings {
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
+}
+
+.list-settings a {
+    border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2% 0;
+}
+
+.list-settings a.active span {
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+}
+
+.list-settings a:hover {
+    text-decoration: none;
+}
+
+.label-card-settings {
+    font-weight: 500;
+    font-size: 14px;
+    color: #141414;
+}
+
+.form-settings {
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.btn-simpan-card-settings {
+    width: 100%;
+    background: #00838F;
+    color: #FFFFFF;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.text-popup-ubah-sandi1{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: #141414;
+}
+
+.text-popup-ubah-sandi2{
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: #757575;
+}
+
+.btn-kembali-ubah-sandi{
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #00838F;
+    border-radius: 8px;
+    width: 100%;
+}
+/* end style settings */

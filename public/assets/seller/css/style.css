@@ -1,0 +1,515 @@
+/* style login */
+*{
+    font-family: 'poppins', sans-serif;
+}
+
+.background{
+    background-color: #006973;
+    /* height: 729px; */
+    padding: auto;
+    position: relative;
+}
+
+.column-text-heading{
+    color: #ffffff;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 150px;   
+}
+
+.hero-heading{
+    font-size: 34px;
+}
+
+.text-heading{
+    font-size: 24px;
+}
+
+.image-login{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-page{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+form{
+    padding-top: 50px;
+}
+
+.form-control{
+    border-radius: 10px;
+}
+
+.forgot-password{
+    text-align: end;
+}
+
+.forgot-password a{
+    text-decoration: none;
+    color: #00838F;
+}
+
+.btn-login{
+    width: 100%;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.login-with{
+    width: 100%; 
+    color: rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid #ced4da; 
+    line-height: 0.1em;
+    text-align: center;
+}
+
+.login-with span {
+    font-size: 14px;
+    background:#fff; 
+    padding: 0 50px;
+}
+
+.btn-google{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #00838F;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+ .link-register{
+     text-align: center;
+     padding-top: 158px;
+     font-size: 14px;
+ }
+
+ .link-register a{
+     text-decoration: none;
+     color: #00838F;
+ }
+ /* end style login */
+
+ /* style lupa password */
+ .title-forgot-password{
+     font-size: 34px;
+ }
+
+.form-forgot-password{
+     padding-top: 150px;
+     padding-bottom: 90px;
+ }
+
+.btn-reset-password{
+    width: 100%;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.btn-reset-password a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.back-login{
+    text-align: center;
+    padding-top: 165px;
+    padding-bottom: 15px;
+    font-size: 14px;
+}
+
+.back-login a{
+    text-decoration: none;
+    color: #00838F;
+}
+/* end style lupa password */
+
+/* style reset password */
+.title-reset-password{
+    font-size: 34px;
+}
+
+.form-reset-password{
+    padding-top: 110px;
+}
+
+.back-login-from-reset{
+    text-align: right;
+    padding-bottom: 188px;
+    font-size: 14px;
+}
+
+.back-login-from-reset a{
+    text-decoration: none;
+    color: #00838F;
+}
+
+.btn-login a{
+    text-decoration: none;
+    color: #ffffff;
+}
+/* end style reset password */
+
+/* start style register */
+.title-register{
+    font-size: x-large;
+}
+
+.text-register{
+    font-size:medium;
+    color: grey;
+}
+
+.column-text-heading-regist{
+    color: #ffffff;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 240px;   
+}
+
+.btn-registrasi{
+    width: 100%;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.btn-registrasi a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.regist-with{
+    width: 100%; 
+    color: rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid #ced4da; 
+    line-height: 0.1em;
+    text-align: center;
+}
+
+.regist-with span {
+    font-size: 14px;
+    background:#fff; 
+    padding: 0 50px;
+}
+
+.link-login-register{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+.link-login-register a{
+    text-decoration: none;
+    color: #00838F;
+}
+/* end style register */
+
+/* start style verifikasi */
+.form-verifikasi{
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+
+.input-otp {
+    width: 48px;
+    border: none;
+    border-bottom: 1px solid #BABABA ;
+    font-size: 36px;
+    outline: none;
+}
+
+.otp {
+    width:419px;
+}
+
+.title-verifikasi{
+    font-size: x-large;
+}
+
+.text-verifikasi{
+    font-size:medium;
+    color: grey;
+}
+
+.link-kirim-ulang{
+    text-align: center;
+    padding-top: 130px;
+    font-size: 14px;
+}
+
+.link-kirim-ulang a{
+    text-decoration: none;
+    color: #00838F;
+}
+
+.btn-verifikasi{
+    width: 100%;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.btn-verifikasi a{
+    text-decoration: none;
+    color: #ffffff;
+}
+/* end style verifikasi */
+
+/* start style verifikasi success */
+.title-verifikasi-success{
+    font-size: x-large;
+}
+
+.text-verifikasi-success{
+    font-size:medium;
+    color: grey;
+}
+
+.btn-verifikasi-success{
+    width: 90%;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+/* end style verifikasi success */
+
+/* start style registrasi toko */
+.hero-bg-regist-toko{
+    padding: 10% 15%;
+}
+
+.background-regist-toko{
+    border-right: 2px solid #757575;
+}
+
+.hero-heading2{
+    font-size: 30px;
+    color: black;
+}
+
+.text-heading2{
+    color: black;
+    font-size: 24px;
+}
+
+.image-regist-toko{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back a{  
+    font-style: small;
+    font-size: 16px;
+    color: #00838F;
+}
+
+.text-regist1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+    color: #141414;
+}
+
+.text-regist2{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #757575;
+}
+
+.regist-page{
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 3%;
+}
+
+.btn-group{
+    width: 100%;
+}
+
+.btn-group-regist{
+    color: black;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 10px;
+    text-decoration: none;
+}
+
+.text-konfirmasi{
+    width: 90%; 
+    color:#616161; 
+    margin: 25px;
+    text-align :center;
+}
+
+.btn-regist-toko{
+    width: 100%;
+    background-color: #00838F;
+    color: #FFFFFF;
+    height: 53px;
+    border-radius: 8px;
+}
+
+.text1-popup-dokumen{
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+}
+
+.text2-popup-dokumen{
+    font-weight: 400;
+    font-size: 14px;
+    color: #757575;
+}
+
+.btn-kembali-popup-dokumen{
+    font-weight: 600;
+    font-size: 14px;
+    color: #00838F;
+    background: #FFFFFF;
+    border: 1px solid #00838F;
+    border-radius: 8px;
+    padding: 2% 7%;
+}
+
+.btn-batal-popup-dokumen{
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #00838F;
+    border-radius: 8px;
+    padding: 2% 7%;
+}
+/* end style registrasi toko */
+
+/* style identitas pedagang */
+.back-to-login a{
+    color: #00838F;
+    text-decoration: none;
+}
+
+.form-registrasi-toko{
+    padding: 3% 25%;
+}
+
+.shadow{
+    width: 800px;
+    height: 1130px;
+}
+
+.tab-content{
+    padding: 0 17%;
+}
+
+.btn-simpan-identitas-pedagang{
+    width: 100%;
+    height: 53px;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+.nav-item{
+    border-bottom: 2px solid #F3F3F3;
+}
+
+.nav-link{
+    color: black;
+}
+
+.nav-link.active{
+    color: #1D75DA;
+    border-bottom: 2px solid #1D75DA;
+}
+/* end style identitas pedagang */
+
+/* start style identitas toko */
+.box1{
+    width: 80px;
+    height: 80px;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.box2{
+    width: 60px;
+    height: 60px;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.box3{
+    width: 40px;
+    height: 40px;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.form-select{
+    border-radius: 10px;
+}
+
+.btn-simpan-identitas-toko{
+    width: 100%;
+    height: 53px;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+/* start style identitas toko */
+
+/* start style detail rekening */
+.btn-simpan-rekening{
+    width: 100%;
+    height: 53px;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+}
+/* end style detail rekening */
+
+/* start style proses registrasi toko */
+.title-proses-registrasi{
+    font-size: x-large;
+}
+
+.text-proses-registrasi{
+    font-size:medium;
+    color: grey;
+}
+
+.btn-dokumen-pendaftaran{
+    width: 90%;
+    background-color: #00838F;
+    color: #ffffff;
+    border-radius: 12px;
+    height: 50px;
+}
+
+.btn-keluar{
+    width: 90%;
+    background: #FFFFFF;
+    border: 1px solid #00838F;
+    color: #00838F;
+    border-radius: 12px;
+    height: 50px;
+}
+/* end style proses registrasi toko */

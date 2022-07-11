@@ -28,6 +28,9 @@ use App\Http\Controllers\PengelolaPasar\PedagangController as PedagangPengelola;
 use App\Http\Controllers\PengelolaPasar\ProdukController as ProdukPengelola;
 // Pemda
 use App\Http\Controllers\Pemda\Dashboard as DashboardPemda;
+// Pedagang
+use App\Http\Controllers\Seller\MainController;
+use App\Http\Controllers\Seller\UserController;
 
 use App\Http\Controllers\AuthController;
 use GuzzleHttp\Middleware;
@@ -48,6 +51,13 @@ Route::get('/', function () {
     return view('landing_page');
 });
 // Route::get('/', [Homepage::class, 'index']);
+
+// login pedagang
+Route::get('seller/login', [UserController::class, 'login_seller'])->name('login_seller');
+Route::post('seller/login', [UserController::class, 'login_seller_action'])->name('login_seller.action');
+Route::get('seller/registrasi', [UserController::class, 'register_seller'])->name('register_seller');
+Route::post('seller/registrasi', [UserController::class, 'register_seller_action'])->name('register_seller.action');
+Route::get('seller/logout', [UserController::class, 'logout_seller'])->name('logout_seller');
 
 // login customer
 Route::get('login', [AuthController::class, 'login_customer'])->middleware('guest')->name('login');
@@ -75,6 +85,27 @@ Route::get('logout',[AuthController::class, 'logout']);
 // lokasi
 Route::post('location/getkabupaten', [\App\Http\Controllers\LocationController::class, 'kabupaten']);
 Route::post('location/getkecamatan', [\App\Http\Controllers\LocationController::class, 'kecamatan']);
+
+// Pedagang
+Route::get('seller/lupa-password', [MainController::class, 'lupa_password']);
+Route::get('seller/reset-password', [MainController::class, 'reset_password']);
+Route::get('seller/verifikasi', [MainController::class, 'verifikasi']);
+Route::get('seller/verifikasi-sukses', [MainController::class, 'verifikasi_sukses']);
+Route::get('seller/registrasi-toko', [MainController::class, 'registrasi_toko']);
+Route::get('seller/form-registrasi-toko', [MainController::class, 'form_registrasi_toko']);
+Route::get('seller/proses-registrasi-toko', [MainController::class, 'proses_registrasi_toko']);
+Route::get('dashboard', [MainController::class, 'dashboard']);
+Route::get('laporan', [MainController::class, 'laporan']);
+Route::get('toko-saya', [MainController::class, 'toko_saya']);
+Route::get('sewa-toko', [MainController::class, 'sewa_toko']);
+Route::get('ulasan-pembeli', [MainController::class, 'ulasan_pembeli']);
+Route::get('voucher', [MainController::class, 'voucher']);
+Route::get('tambah-promo', [MainController::class, 'tambah_promo']);
+Route::get('pengaturan', [UserController::class, 'password'])->name('password');
+Route::post('pengaturan', [UserController::class, 'password_action'])->name('password.action');
+
+// Data Produk Pedagang
+Route::resource('produk', ProdukController::class);
 
 // Admin
 Route::middleware('auth:admin')->prefix('admin')->group(function () {
